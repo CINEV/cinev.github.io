@@ -2,8 +2,8 @@
 
 CINEV 팀이 만들어온 제품, 기술, 연구와 작품을 기록한 한글·영어 웹사이트입니다.
 
-- Website: https://cinev-archive.cinamon-8104.chatgpt.site/
-- English: https://cinev-archive.cinamon-8104.chatgpt.site/en/
+- Website: https://cinev.github.io/
+- English: https://cinev.github.io/en/
 
 ## 구성
 
@@ -50,7 +50,11 @@ python3 translations/build-english.py
 
 ## 배포
 
-정적 호스팅의 공개 디렉터리를 `dist/`로 설정합니다. 모든 언어·상세 페이지가 디렉터리별 `index.html`로 제공됩니다. GitHub 업로드 자체는 기존 Sites 배포를 변경하지 않습니다.
+`CINEV/cinev.github.io`의 GitHub Pages로 배포합니다. `main`에 push하면 `.github/workflows/deploy-pages.yml`이 저장소에 커밋된 `dist/`를 그대로 배포합니다. Actions에서 수동 실행도 가능합니다. Pages의 Source는 **GitHub Actions**로 설정합니다.
+
+모든 언어·상세 페이지가 디렉터리별 `index.html`로 제공됩니다. Showcase 소스를 수정했다면 위 빌드 명령을 실행한 뒤 갱신된 `dist/`도 함께 커밋해야 합니다. 배포 workflow는 소스를 다시 빌드하지 않습니다.
+
+루트 `/`는 Archive가 사용하고, `/insights/`는 별도 `CINEV/insights` 저장소의 블로그가 사용합니다. `dist/insights`나 커스텀 도메인용 `CNAME` 파일을 추가하지 않습니다. 저장소는 비공개 상태로 유지합니다. GitHub Pages 사용 가능 여부는 조직의 요금제에 따릅니다.
 
 ## 미디어
 
