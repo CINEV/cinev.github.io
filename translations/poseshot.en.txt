@@ -1,0 +1,63 @@
+Page navigation
+← Product page
+More precise,
+more freedom to direct.
+Explore how PoseShot's scene composition, pose editing, and camera tools
+evolved through dated development updates.
+Project period
+Release dates
+Change log
+Camera path recording and pose interpolation
+Added
+Record simple camera movements and pose changes after saving frames with Frame Save.
+Camera path recording result
+Camera path recording process
+Added interpolation between poses.
+Pose interpolation
+Improved
+Context menu
+Moved complex interfaces and frequently used functions into the context menu for easier access.
+Feature selection
+Hand pose editing and more stable controls
+Added the Hand Editor for editing hand poses.
+Hand pose editing
+Apply poses by body part
+Apply a pose to a selected region, such as the upper or lower body.
+Select the application range
+Copy and paste poses
+Copy an existing pose and paste it for reuse.
+Added Infinity Grid to the scene editor.
+Before
+After
+Fixed
+Image2Pose timeout
+Fixed the 504 error that occurred when processing exceeded 30 seconds. Changed fal API calls from synchronous to asynchronous processing.
+Rotation Gizmo sensitivity
+Reduced excessive sensitivity in rotation controls.
+Before improvement
+After improvement
+Expanded scene composition and detailed editing
+Eight basic primitives
+Added Sphere, Cuboid, Wall, Cylinder, Capsule3D, Cone, Torus, and Plane.
+Basic primitives
+PoseShot example
+Images generated using a PoseShot reference
+Multiple selection, copy, and paste
+Supports multiple selection with Cmd, Ctrl, and Shift, plus Cmd/Ctrl+C and Cmd/Ctrl+V shortcuts.
+Finger editing
+Added editing of character fingers.
+Example application
+Transform editing
+Added move, rotate, and scale gizmos, along with numerical input controls.
+Move, rotate, and scale controls
+Character transform
+Numerical controls
+Colors for identifying meshes
+Assign colors to primitive and character meshes to distinguish objects.
+Assign mesh colors
+Manual Detection Mask for Image2Pose
+If automatic detection fails, manually define a character's Detection Mask. Manual detection supports one character at a time.
+Manual Detection Mask
+Call Image2Pose using an image URL
+Run Image2Pose externally by passing an image URL. A separate guide linked from the original document explains how to retrieve editing results.
+As we bring CineV's journey over the past few years to a close, we leave a record of the technology and works we created together.

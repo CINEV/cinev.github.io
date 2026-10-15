@@ -1,0 +1,160 @@
+CineV's 3D direction tools, motion AI, video production technology, and animated works.
+Skip to content
+Page navigation
+Imagine a story.
+Create the scene you envision.
+CineV is a service that uses AI and 3D technology to help creators produce professional videos more easily. It generates storyboards from the stories users enter, with precise pose editing and camera angle controls in 3D to refine images and video.
+Introducing CineV
+Turn scattered ideas
+into scenes.
+From entering a story to generating references, shot images, and video clips, the storyboard connects the production process.
+Storyboard creation process
+Pause storyboard autoplay
+Pause Ⅱ
+Choose a storyboard step
+Enter a story
+Review references
+Complete shot images
+Animate planning
+Generate video clips
+Story input → Storyboard generation
+Enter a story to generate a storyboard organized into scenes and shots.
+Story input and storyboard generation screen
+Review the characters, backgrounds, and props needed for the story and generate references.
+Reference review screen
+Fill the storyboard with shot images
+Generate images for each shot using the prepared references to fill the storyboard.
+Storyboard shot image generation screen
+Automatically plan the right number and duration of video clips based on the storyboard.
+Animate planning screen
+Generate the planned video clips in one batch and review the results on the canvas.
+Video clip generation screen
+After generation comes
+the freedom to direct.
+Bring an image into 3D, precisely adjust the composition and poses, and review the result. Each small refinement brings the scene closer to your intention.
+Beyond the image, into space.
+Automatically set up 3D character poses and placement based on a generated image. Re-create the scene in an editable 3D space.
+PoseShot reproducing the poses and placement of three people from an image with 3D characters
+Same scene, a new perspective.
+Fine-tune the camera angle to find the composition you want.
+Detailed camera angle adjustment in PoseShot
+Your intended pose, down to the fingertips.
+Find an action in the motion library or generate it from text, then refine the joints and hands.
+Describe an action in text and apply the generated motion to your character.
+Manipulate joints directly to refine a character's pose.
+Edit hands and fingers to complete the expression of the movement.
+Explore PoseShot
+Beyond composition,
+to direction over time.
+Place characters and props, then edit camera position, rotation, and field of view on the timeline. Your 3D camera sequence becomes the basis for video generation.
+Shotloom interface with camera position, rotation, field-of-view keyframes, and timeline
+01 — Timeline-based 3D camera sequence editing
+Video generated from a 3D camera sequence
+02 — Video generated from 3D direction
+Explore Shotloom
+Make prompting easier.
+Find useful prompts in a library and apply them to your work.
+Enhance an input prompt to describe the scene you want in greater detail.
+From a single shot
+to a finished video.
+Prepare project characters, backgrounds, and props, generate scenes on the canvas, then edit them into a finished video in Cut&Mix.
+Production workflow
+Project references
+Canvas
+Pause workflow autoplay
+Manage characters, backgrounds, and props within a project and use them to build scenes.
+Project reference management for characters, backgrounds, and props
+Build a storyboard on the canvas and continue into image and video generation.
+Canvas for storyboard, image, and video generation
+Arrange generated shots on the timeline and edit them into one complete video.
+Cut&Mix video editing timeline
+Voice separation
+Separate voices from video for use in editing.
+Find the right look
+for your story.
+Drawing on hands-on webtoon and animation production experience, choose a style that fits your work and generate scenes.
+Animation styles
+Anime-inspired characters with dramatic lighting and action
+Japanese Anime storyboard
+Chibi storyboard
+Korean Webtoon storyboard
+Refine the details
+and tone for animation.
+Refine the image's visual treatment and review the result in the final video.
+BEFORE: Detailed original image
+Detailed original image
+AFTER: Image refined for animation
+A look tailored to animation
+Final video using Style Enhancer
+Final video
+The technology behind
+our stories and worlds.
+CineV's vision went beyond generating individual video clips: we sought a production experience for creating a complete story and the world in which it lives.
+Starting with data captured in our own motion capture studio and research into AI motion, we developed 3D video production tools built on Unreal Engine. We then combined AI image and video generation with precise directing tools, connecting story development with storyboarding and video production.
+Fast generation and fine control. Stories and worlds that continue beyond individual scenes. This archive records CineV's journey toward that vision and the technology we built along the way.
+CineV vision film
+The technology we developed, in one place
+A record of the technology and production tools that grew from research into products.
+PoseShot image-based 3D pose editing interface
+PoseShot — Direct poses and cameras yourself
+The development record of a 3D editor for creating poses from images and adjusting hands, body parts, and cameras.
+Project period
+View details
+Shotloom 3D scene and camera timeline editor
+Shotloom — From images to editable 3D scenes
+A production workflow connecting character placement, motion, and camera composition with SceneGen video generation and CineV storyboards.
+Storyboard generated with A2P character and background references
+From AI generation to production tools — A2P R&D
+A progression from testing character and scene generation to a consistent production workflow and an editing experience users can direct themselves.
+Stable long-term motion generation
+with joint target control.
+Visit the COMET research page
+COMET research generating varied poses and movements from joint targets
+Generate motion that follows specified joint targets, connect poses, and apply styles. Research results and comparison demos are available on the project website.
+View research and demos
+A 3D studio for your characters
+and your creative direction
+We built an Unreal Engine-based streaming studio so users could view and edit real 3D backgrounds, characters, and motion assets directly in a web browser. Character placement, actions, camera composition, and the timeline could be adjusted to create scenes that matched their creative intent.
+CineV Studio production workflow
+Build scenes with your characters
+Generate AI actions
+Edit action positions and timing
+Direct the camera composition
+CineV Studio: Build scenes with your characters
+Place VRM and ZEPETO characters in a scene and set their actions and camera targets. Carry your 3D edits into the next production stage. Additional characters, outfits, appearance options, and background maps expanded the range of people and places, while natural idle motion during LookAt refined dialogue scenes.
+CineV Studio: Generate AI actions
+Enter a prompt to generate the action you need. Text-to-Motion support for male characters and action trimming help tailor movement to the scene.
+CineV Studio: Edit action positions and timing
+Select multiple actions and move their starting positions together. Move clips, add or remove empty intervals, reorder character tracks, and use undo and redo to fine-tune the pacing of a scene.
+CineV Studio: Direct the camera composition
+Use an expanded set of camera templates, VRM targeting, and framing based on the center of multiple characters. Selected targets are preserved when changing templates, making it easier to try different compositions.
+Motion generation and linking
+Motion technology demos
+Generate motion from text and create natural transitions between poses and actions.
+Change an action's expressive style while preserving its meaning.
+Generate varied movements from the same action.
+Compose actions in a scene with awareness of space, objects, and relationships between characters.
+Motion Data & Browser
+From motion capture to search and reuse.
+Researching movement and connecting it to production.
+Capture and data management
+Capture and polish motion, and manage its descriptions, quality, and interval information together.
+Search and discovery
+Find the right action through text-to-motion search, similarity scoring, and ranked candidates. Preview motion in GIF or 3D, inspect errors and warnings, and download FBX files.
+Production pipeline
+Convert motion to ARP rigs and share it as GLB. Create facial animation with facial controllers and keyframes.
+Motion Browser search and candidate browsing demo
+Cinamon motion capture studio
+Motion capture — from data collection to production use
+Past features and research demos may differ from the current service offering.
+Fantasy animation production example
+Stories brought to life
+through technology.
+From webtoons, manga, and picture books to original animation.
+See the moment an original world begins to move.
+Explore SHOWCASE
+As we bring CineV's journey over the past few years to a close, we leave a record of the technology and works we created together.
+Close video
+Close ×
+If the video does not play,
+open the original video

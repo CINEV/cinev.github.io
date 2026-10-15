@@ -1,0 +1,124 @@
+Page navigation
+← Product page
+From AI generation
+to production tools.
+From asking whether we can generate it, to asking whether we can create the scene we want.
+Explore how AI Lab's experiments and development grew into a production experience.
+Generation validation · Production workflow · 3D editing · Iterative production
+Research chapters
+A structure for repeatable production
+An experience users can direct
+Connecting the production workflow
+Testing feasibility
+Research and development records are presented with the latest work first. Some research ran in parallel; experimental results are distinguished from implementation and design records.
+01 / A structure for repeatable production
+Re-create while preserving
+the story and style.
+We analyzed why storyboards compressed events and directing information, and outlined a structure that separates story planning from image and video rendering.
+Intended production experience
+We aimed to let users compare results from the same story plan, produce only the parts they need, and repeatedly apply their own styles.
+Shared plans · Selective rendering
+For Lazy Storyboard V2, we documented specifications and integration directions for sharing plans and separating rendering. Video generation itself was not first introduced at this stage.
+Reusable custom styles
+We outlined a structure for converting user descriptions into prompts for each generation stage, registering them, and reusing them through an assigned style ID.
+Observed results
+Two tests identified the fixed nine-shot limit and equal allocation across scenes as the main causes of compression. Even shot-heavy climaxes received the same shot budget, losing directing information.
+Remaining limitations
+This stage primarily consists of design, specification, and integration records. No measured improvements in cost, user satisfaction, or story retention were reported, so the plan-based structure cannot be said to have solved the compression problem.
+Next direction
+The work points toward comparing generated results from the same story plan and selectively revising and producing parts of it.
+02 / An experience users can direct
+Bring a generated scene
+closer to the user's intention.
+We reconstructed images as editable 3D scenes and used poses, objects, and cameras adjusted in PoseShot and 3D Proxy for image and video generation.
+Direct control, from poses to cameras.
+Feature demonstrations from actual development records.
+PoseShot feature demos
+Apply poses
+Edit hands
+Camera paths
+Pose interpolation
+Apply poses by body part
+Select a region, such as the upper or lower body, and apply a pose.
+Hand Editor: control down to the fingertips
+Edit hand poses directly to create the expression a scene needs.
+Record camera paths
+Record camera movements and pose changes based on saved frames.
+Connect one pose to the next
+Interpolate the transition between different poses.
+We aimed to let users visually specify compositions and poses that are difficult to describe in prompts, then correct the reconstruction themselves to reach the scene they want.
+PoseShot · Pose and scene editing
+We added primitives, move/rotate/scale controls, hand and partial-pose editing, copy and paste, and manual person detection, then expanded into camera path recording and pose interpolation.
+3D Proxy · Reconstruction and manipulation
+We improved character, camera, and object reconstruction and alignment, and tested reconstruction streaming and rendering performance separately.
+Performance validation · Two distinct experiments
+Average reduction in first-object response / total completion time
+Reconstruction streaming experiment: four successfully completed images, with up to four objects each
+Median FPS
+A separate rendering experiment measuring the same scene three times
+Explore the PoseShot development record ↗
+User testing indicated that visual composition editing was more intuitive than text instructions. This was qualitative feedback, not a measurement of satisfaction or usability improvement rates.
+Occluded areas, complex interactions, and large viewpoint changes remained unstable. Reconstruction errors also affected generation results, so manual correction was necessary.
+Rather than focusing solely on perfect reconstruction, we emphasized a workflow users could correct and iterate on.
+03 / Connecting the production workflow
+Connect generated elements
+into consistent scenes.
+We derived characters, locations, and props from scripts, connected references with 3D previs, and passed the required information to each shot.
+Combine references and connect them into scenes.
+We assigned roles to reference images to generate characters, then used them with locations in storyboards.
+01 / Input references
+Enlarge character reference
+Character
+Enlarge top reference
+Top
+Enlarge bottom reference
+Bottom
+Enlarge hairstyle reference
+Hairstyle
+02 / Generated character
+Enlarge character sheet combining four references; sunglasses specified in text
+Character sheet combining four references; sunglasses specified in text
+03 / Add objects to a location
+We combined a torii gate reference with a prompt for a Shibuya background.
+Enlarge input: location object reference
+Input: location object reference
+Enlarge result: torii gate in an urban Shibuya setting
+Result: torii gate in an urban Shibuya setting
+04 / Connect to a storyboard
+Enlarge storyboard using generated elements: The Shibuya Save
+Storyboard using generated elements: The Shibuya Save
+The goal was to carry the desired appearance and spatial composition across scenes and reuse prepared assets.
+Elementalist · Reference composition
+We tested character generation combining face, top, bottom, and hairstyle references; location-object combinations; text-based prop generation; and connections to the storyboard.
+Improved scene references
+We reflected character visibility in generation and fixed an issue where the default background was referenced instead of the generated one. We analyzed why A-poses persisted and improved the prompts.
+We verified the feasibility of character and prop replacement and reuse of existing 3D backgrounds. In a validation shot, regenerating the same input resolved the A-pose while preserving composition.
+Identifying three or more people, background detail consistency, complex interactions, and contact with floors and chairs remained unstable. Prompt improvements did not solve upstream motion-application issues.
+Alongside better reference transmission, we explored editing tools that let users directly control the scene itself.
+04 / Testing feasibility
+How far could AI go
+in video production?
+We tested whether AI could create the characters, backgrounds, motion, and voices needed for video and connect them into a single production workflow.
+The same workflow, different results.
+Shot images from experiments testing character replacement through video generation.
+Enlarge successful result: experiment 2, no errors in all four clips
+Successful result: experiment 2, no errors in all four clips
+Enlarge error cases: experiment 3, errors recorded in eight of nine clips
+Error cases: experiment 3, errors recorded in eight of nine clips
+The unsuccessful experiment recorded character mix-ups and unwanted people appearing. These images are a collection of shots from the experiment, not individually annotated error examples.
+We aimed to reduce repetitive production tasks and reuse prepared characters and scenes in other content.
+Character and scene generation
+We experimented with background editing and sequential character replacement, validating a workflow from images to video.
+Motion and audio generation
+We experimented with dialogue-aligned motion and voice generation, as well as story-based background music.
+Success rate for dummy character removal
+Share of final clips with no defects
+Results from the same 108 clips evaluated under two different success criteria.
+In a test of 108 clips, success measured by dummy character removal was 87%, while the share of final videos with no defects was 56.5%. Being able to generate something and being able to use it directly in production were different standards.
+Limitations remained in overlapping characters, body proportions, pose reproduction, and background consistency across camera angles. Unwanted people appearing in video could not be fully prevented.
+We expanded the research beyond individual generation functions toward a production workflow that carries the same characters and spaces across multiple shots.
+Beyond generated results,
+toward production that expresses intent.
+We tested feasibility, analyzed limitations, and added tools for direct editing.
+A2P's records trace our exploration of both better generation technology and better tools for making things.
+As we bring CineV's journey over the past few years to a close, we leave a record of the technology and works we created together.

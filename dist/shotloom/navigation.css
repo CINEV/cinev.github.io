@@ -1,0 +1,18 @@
+/* Portfolio title area; exported document content remains below. */
+body.technology-page{margin:0;max-width:none;padding:64px 0 0}
+.portfolio-header{white-space:normal}
+.shotloom-hero{white-space:normal;background:#0a0a0a;color:#f7f4ec;padding:54px 6% 72px;font-family:Pretendard,-apple-system,BlinkMacSystemFont,sans-serif;word-break:keep-all}
+.shotloom-hero-inner{max-width:1140px;margin:0 auto}
+.shotloom-back{display:inline-block;color:#aaa;text-decoration:none;font-size:13px}
+.shotloom-back:hover{color:#d9ff43}
+.shotloom-back:focus-visible{outline:2px solid #d9ff43;outline-offset:5px}
+.shotloom-eyebrow{margin:56px 0 20px;font-size:11px;letter-spacing:2px;color:#d9ff43}
+.shotloom-hero h1{margin:0;font-size:clamp(64px,9vw,120px);font-weight:700;line-height:1.05;letter-spacing:-5px}
+.shotloom-description{margin:32px 0 0;color:#bbb;font-size:18px;line-height:1.8}
+body.technology-page>article.page{max-width:900px;margin:56px auto 0}
+html{scroll-padding-top:88px}
+@media(max-width:960px){body.technology-page>article.page{margin:40px 24px 0}}
+@media(max-width:600px){.shotloom-hero{padding:32px 24px 48px}.shotloom-eyebrow{margin-top:40px}.shotloom-hero h1{letter-spacing:-3px}.shotloom-description{margin-top:24px;font-size:16px}.shotloom-description br{display:none}}
+@media print{.portfolio-header,.shotloom-back{display:none}body.technology-page{padding-top:0}.shotloom-hero{background:white;color:#111;padding:20px 0}.shotloom-hero h1{font-size:48px}.shotloom-eyebrow{margin-top:0;color:#333}}
+
+.shotloom-period{display:flex;flex-wrap:wrap;gap:8px 20px;margin:30px 0 0;font-size:13px;line-height:1.6;color:#aaa}.shotloom-period span:last-child{color:#d9ff43;letter-spacing:.5px}

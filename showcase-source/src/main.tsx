@@ -1,0 +1,1 @@
+import React from 'react';import {createRoot} from 'react-dom/client';import {LandingPageTwo} from './app/landing/landing-two/LandingPageTwo';import './styles/index.css';if(location.pathname.startsWith('/en/'))document.documentElement.lang='en';createRoot(document.getElementById('root')!).render(<LandingPageTwo/>);
