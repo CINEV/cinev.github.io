@@ -279,7 +279,7 @@ export const webtoonPvItems: ShowcaseItem[] = [
 ];
 
 export const animationExamples: ShowcaseItem[] = [
-  { id: 'original-1', title: '十一秒 (Eleven Seconds)', description: '긴장감 있는 장면과 디테일을 보여주는 애니메이션 제작 예시입니다.', format: 'ORIGINAL ANIMATION', category: 'original', poster: '/landing-media/posters/original-animation-1-selected.png', posterAlt: '노을빛을 받는 짧은 머리 캐릭터의 애니메이션 장면', videoSrc: '/landing-media/videos/original-animation-1.mp4' },
+  { id: 'original-1', title: '十一秒 (Eleven Seconds)', description: '긴장감 있는 장면과 디테일을 보여주는 애니메이션 제작 예시입니다.', format: 'ORIGINAL ANIMATION', category: 'original', poster: '/landing-media/posters/original-animation-1-selected.webp', posterAlt: '노을빛을 받는 짧은 머리 캐릭터의 애니메이션 장면', videoSrc: '/landing-media/videos/original-animation-1.mp4' },
   ...webtoonPvItems,
   { id: 'original-2', title: '十秒だけ、世界が止まる', description: '일상의 공간과 소품으로 이야기를 전개하는 애니메이션 제작 예시입니다.', format: 'ORIGINAL ANIMATION', category: 'original', poster: '/landing-media/posters/original-animation-2.jpg', posterAlt: '十秒だけ、世界が止まる 장면', videoSrc: '/landing-media/videos/original-animation-2.mp4' },
   { id: 'original-3', title: '最強の暗殺者、幼稚園の先生になる', description: '캐릭터의 표정과 인물 간 상호작용을 보여주는 애니메이션 제작 예시입니다.', format: 'ORIGINAL ANIMATION', category: 'original', poster: '/landing-media/posters/original-animation-3.jpg', posterAlt: '最強の暗殺者、幼稚園の先生になる 장면', videoSrc: '/landing-media/videos/original-animation-3.mp4' },

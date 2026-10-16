@@ -1,0 +1,410 @@
+{
+  "originalCommit": "92b7bea9c8021e9bff5b98a54a59a7819670b199",
+  "files": [
+    {
+      "source": "dist/poseshot/media/3-02.png",
+      "output": "dist/poseshot/media/3-02.webp",
+      "before": 5099501,
+      "after": 201386,
+      "method": "artwork WebP quality 92, max 1920px",
+      "sourceSha256": "c2c0b32a26f4a16b26f974f7507924b906de2d918da39c29389d9cf342327367",
+      "outputSha256": "e38e4a572a852f01e9ded077991ee3cfeee68568c03eef7c857b9b14abf0df8e"
+    },
+    {
+      "source": "dist/shotloom/media/35.png",
+      "output": "dist/shotloom/media/35.webp",
+      "before": 2925311,
+      "after": 432366,
+      "method": "artwork WebP quality 92, max 1920px",
+      "sourceSha256": "09c58eca800a7f0952a761074f9e56db624b841460ca86e2212fa5f91e8d691d",
+      "outputSha256": "1833bac77b56874d1e3b4649163ac6a3496ce542b82832bc232ae1d9a0b75390"
+    },
+    {
+      "source": "dist/shotloom/media/29.png",
+      "output": "dist/shotloom/media/29.webp",
+      "before": 2870752,
+      "after": 230484,
+      "method": "artwork WebP quality 92, max 1920px",
+      "sourceSha256": "7bb237356472e921b79df8e06c9161679e31c664dbcf515b074401a181e5e9de",
+      "outputSha256": "335fd166804931bfebefc4d10db520f61706884858561e7197981d73336d7d9c"
+    },
+    {
+      "source": "dist/poseshot/media/3-12.png",
+      "output": "dist/poseshot/media/3-12.webp",
+      "before": 2360613,
+      "after": 1069788,
+      "method": "lossless WebP, original dimensions",
+      "pixelDifference": 0,
+      "sourceSha256": "2b93c5b7576860043b7b5bd2a1166bc103f4f87229e1fd7aed68284f053d155e",
+      "outputSha256": "617742b17f5b72b76a9dc20e0ea27e1559822062338b8a046a250321de47d82d"
+    },
+    {
+      "source": "dist/landing-media/posters/original-animation-1-selected.png",
+      "output": "dist/landing-media/posters/original-animation-1-selected.webp",
+      "before": 2246320,
+      "after": 113188,
+      "method": "artwork WebP quality 92, max 1920px",
+      "sourceSha256": "e6ffc98b707effa5725c2aa8523eeb65dc542586e1cbaada6bb40059def00f77",
+      "outputSha256": "e132806d6b2a9a41ed0a09b75bce64903604c78d52a927ba01eb49cbc3682e5b"
+    },
+    {
+      "source": "dist/poseshot/media/1-02.png",
+      "output": "dist/poseshot/media/1-02.webp",
+      "before": 4340408,
+      "after": 410190,
+      "method": "UI screenshot resized 50% to 2560x1086 with Lanczos, lossless WebP",
+      "pixelDifferenceFromResizedReference": 0,
+      "sourceSha256": "8e25a609672437e1bf6d469347cd28364eb3ccad2966824265d81fba580f9196",
+      "outputSha256": "417925ef697475e7b707b58991fa060146c3ceb9d9fb7f16f62f9db4b2f5fa7d"
+    },
+    {
+      "source": "dist/poseshot/media/1-01.png",
+      "output": "dist/poseshot/media/1-01.webp",
+      "before": 4425171,
+      "after": 352386,
+      "method": "UI screenshot resized 50% to 2560x1086 with Lanczos, lossless WebP",
+      "pixelDifferenceFromResizedReference": 0,
+      "sourceSha256": "c958dd6788f355b94b808bcc147243889bac40a73db656a79d7b6277f2c38a96",
+      "outputSha256": "e324b3ef47cb82d680697940c4217fb437bfca1ec833179dc029ef23d55b929b"
+    },
+    {
+      "source": "dist/shotloom/media/34.png",
+      "output": "dist/shotloom/media/34.webp",
+      "before": 1893041,
+      "after": 943044,
+      "method": "lossless WebP, original dimensions",
+      "pixelDifference": 0,
+      "sourceSha256": "f0ccbc4c81ab28250a5bc6b67dcf1a4f0a44a394f08d28e2c7d2d7af800e1ca4",
+      "outputSha256": "6ccce5d6a502d7c723d23b3b610202e5fb2299263ae1d4f8822e7a75a6be9d4c"
+    },
+    {
+      "source": "dist/shotloom/media/31.png",
+      "output": "dist/shotloom/media/31.webp",
+      "before": 1659659,
+      "after": 1020062,
+      "method": "lossless WebP, original dimensions",
+      "pixelDifference": 0,
+      "sourceSha256": "c433892de7fe8beafa5824856f6c2be1e35be9f2a2aa14c90fd3e81d4715ad64",
+      "outputSha256": "f97ceb001c31ca9bd5318bd6dcc60ff139aabb3df41765ebafefec572cdfb860"
+    },
+    {
+      "source": "dist/shotloom/media/27.png",
+      "output": "dist/shotloom/media/27.webp",
+      "before": 1632243,
+      "after": 1001766,
+      "method": "lossless WebP, original dimensions",
+      "pixelDifference": 0,
+      "sourceSha256": "93a8b831fa14189d7fb02d90ca2dce5e95754a4434749896bba5e5ef48ab0328",
+      "outputSha256": "d4e75ac5fc02d61375e37b402f9f111167bffaaf70739598e260f9a299d7f8b1"
+    },
+    {
+      "source": "dist/shotloom/media/28.png",
+      "output": "dist/shotloom/media/28.webp",
+      "before": 1631357,
+      "after": 998202,
+      "method": "lossless WebP, original dimensions",
+      "pixelDifference": 0,
+      "sourceSha256": "5085c25458e9d93c3660df1126a15a0d778df16862d808aa003f2f59510469e7",
+      "outputSha256": "959b49fd0378bf948a72e9ad865c70788e0bf8049b2475dfc129fb4ae25a6ff5"
+    },
+    {
+      "source": "dist/assets/cutmix.png",
+      "output": "dist/assets/cutmix.webp",
+      "before": 1610065,
+      "after": 868334,
+      "method": "lossless WebP, original dimensions",
+      "pixelDifference": 0,
+      "sourceSha256": "9a4ecf413854f25ab4c08e2489c84d667923f411fb86757a8517704518f2c559",
+      "outputSha256": "2968ee846aed0fa44972b5ae4eae56082dd7b707efed580b7b6ffed5461c9a66"
+    },
+    {
+      "source": "dist/assets/style-chibi.png",
+      "output": "dist/assets/style-chibi.webp",
+      "before": 1500052,
+      "after": 957754,
+      "method": "lossless WebP, original dimensions",
+      "pixelDifference": 0,
+      "sourceSha256": "5e244f4c492c04debb38f56b39e93b4fd79f9aaa8df4d7d85377b062cc2ce554",
+      "outputSha256": "65a34cdba4dc103be65db25eddec556ec7bbfb2e40b649f26e6eb7c605c477d2"
+    },
+    {
+      "source": "dist/shotloom/media/26.png",
+      "output": "dist/shotloom/media/26.webp",
+      "before": 1489247,
+      "after": 922344,
+      "method": "lossless WebP, original dimensions",
+      "pixelDifference": 0,
+      "sourceSha256": "680a18f60626e4590ab1ffe3cb88d277f667dee9f7716ed566fc5bd1d5eb91bf",
+      "outputSha256": "510a39ec69f7233f0fcedde1be31bb02b4942817f7ea9be331be14a99b5d2c00"
+    },
+    {
+      "source": "dist/assets/poseshot.png",
+      "output": "dist/assets/poseshot.webp",
+      "before": 1469230,
+      "after": 666296,
+      "method": "lossless WebP, original dimensions",
+      "pixelDifference": 0,
+      "sourceSha256": "fa0012a3308f6ee74c9f301f780258f402f76b86fb7a26c5da5eeac971f3804b",
+      "outputSha256": "f99aca8f245d353c43376bc2673d52463c56eef3bd1b2b3538d1d28d09fb3e30"
+    },
+    {
+      "source": "dist/shotloom/media/24.png",
+      "output": "dist/shotloom/media/24.webp",
+      "before": 1488418,
+      "after": 915150,
+      "method": "lossless WebP, original dimensions",
+      "pixelDifference": 0,
+      "sourceSha256": "cbce2dbf2ce906b37078f623a7a41d38ce03f92eabc9211eb925835ba45790f6",
+      "outputSha256": "dc899fb579980ba647f5653bfc6671ebc5b1202dc79ddda3634253afa48de1d4"
+    },
+    {
+      "source": "dist/poseshot/media/3-06.png",
+      "output": "dist/poseshot/media/3-06.webp",
+      "before": 1421194,
+      "after": 137374,
+      "method": "artwork WebP quality 92, max 1920px",
+      "sourceSha256": "121e8b397a9235c20d0d30709d91d0f99fe3a8649727254a196536c9667d19b2",
+      "outputSha256": "026f3cb4ca7261dd558620658267b5ad9172eb5a266c3e7c672930336e896b1f"
+    },
+    {
+      "source": "dist/shotloom/media/25.png",
+      "output": "dist/shotloom/media/25.webp",
+      "before": 1459619,
+      "after": 892126,
+      "method": "lossless WebP, original dimensions",
+      "pixelDifference": 0,
+      "sourceSha256": "65863738dfbda11f7a76bfacf39234734e639941d708b8c765f8ef8653183743",
+      "outputSha256": "d00e1182b5ace7ac8d13e24df7e5c75288b7448ed6ca67f6c725b868407a1e26"
+    },
+    {
+      "source": "dist/shotloom/media/30.png",
+      "output": "dist/shotloom/media/30.webp",
+      "before": 1423207,
+      "after": 873544,
+      "method": "lossless WebP, original dimensions",
+      "pixelDifference": 0,
+      "sourceSha256": "dc2c18e03e9a260656d8605ec789c7460e96891ff33b244fcaca322ad366a011",
+      "outputSha256": "7d1a218eae1f03811cacab4fef5289a48409a242d99b12d7e59f322138f2a066"
+    },
+    {
+      "source": "dist/shotloom/media/23.png",
+      "output": "dist/shotloom/media/23.webp",
+      "before": 1385452,
+      "after": 831242,
+      "method": "lossless WebP, original dimensions",
+      "pixelDifference": 0,
+      "sourceSha256": "b7d663d0c09a21ff97122b6f61322b3e98fa339b66295f3387d8af4e1f63cb1b",
+      "outputSha256": "d6379b3de76a8ba31c1b2a027d4b51a500cfbc3d4810c12a0398bf48393d9123"
+    },
+    {
+      "source": "dist/assets/story-planning.png",
+      "output": "dist/assets/story-planning.webp",
+      "before": 1099726,
+      "after": 581566,
+      "method": "lossless WebP, original dimensions",
+      "pixelDifference": 0,
+      "sourceSha256": "08a0b6b85bf63483a33f5b3b771da5d954de016745196a278af309a879a59396",
+      "outputSha256": "25a783adf3549f1349c37e09cc49c24437b53f9acd61839be48ab76c5d1fe51c"
+    },
+    {
+      "source": "dist/assets/style-anime.png",
+      "output": "dist/assets/style-anime.webp",
+      "before": 1120794,
+      "after": 641952,
+      "method": "lossless WebP, original dimensions",
+      "pixelDifference": 0,
+      "sourceSha256": "64e2e46fb557835b70f09e0aed106e6f5eda9e02a3c9f6fcd02332dcb441fec9",
+      "outputSha256": "262c02b30d2784c532eee7d35fb2354761b2243389d4843fa4426fac6e316ced"
+    },
+    {
+      "source": "dist/assets/style-webtoon.png",
+      "output": "dist/assets/style-webtoon.webp",
+      "before": 1131714,
+      "after": 615980,
+      "method": "lossless WebP, original dimensions",
+      "pixelDifference": 0,
+      "sourceSha256": "572d3d12964af63fb628bcfd782ccf21d827e4e4106f4e325926f75ad824784e",
+      "outputSha256": "a8ff6a2655688dfcc970eec7e9926dab546da512fd62accac61c672822229acf"
+    },
+    {
+      "source": "dist/assets/story-shots.png",
+      "output": "dist/assets/story-shots.webp",
+      "before": 1082496,
+      "after": 584116,
+      "method": "lossless WebP, original dimensions",
+      "pixelDifference": 0,
+      "sourceSha256": "1b23898f7c9565dd5cd5888f6b9b394b8b17864562825204a4bd1066fb610b74",
+      "outputSha256": "c9260d2800cd23f07aafdefdb0e0c1d7f24902376d50e7035ce8db71dc0b9f02"
+    },
+    {
+      "source": "dist/assets/story-clips.png",
+      "output": "dist/assets/story-clips.webp",
+      "before": 1060890,
+      "after": 588832,
+      "method": "lossless WebP, original dimensions",
+      "pixelDifference": 0,
+      "sourceSha256": "9c4abc76a6df77931a305382bccf29e0e82398fa5a875d3bb5dd3ee6f564e4a0",
+      "outputSha256": "7598e14a17d66539e6aa92a1d5dba8c308140764a3f53fba274c999c2bec0ba6"
+    },
+    {
+      "source": "dist/shotloom/media/02.png",
+      "output": "dist/shotloom/media/02.webp",
+      "before": 1062677,
+      "after": 446838,
+      "method": "lossless WebP, original dimensions",
+      "pixelDifference": 0,
+      "sourceSha256": "95579eb27736d0ce721ad79255131f824ea143aa51b26e909fa53f2df41184e6",
+      "outputSha256": "2a6b5cf9d90f17e86470c5931e362d73d3af4b3b46f2489d0e46de3c2b524460"
+    },
+    {
+      "source": "dist/shotloom/media/32.mp4",
+      "before": 6804669,
+      "after": 5240082,
+      "crf": 20,
+      "method": "H.264 slow; resolution/frame rate preserved; audio copied; faststart",
+      "output": "dist/shotloom/media/32.mp4",
+      "sourceSha256": "3e5841bbee52d56354636e273cc4b475aca4001564945eb6bf5c8b0ceef0c47c",
+      "outputSha256": "79f0805ed48e5d9541f966f9a2d69a0d2061587aebfb74a7c25ae30a9bc23674",
+      "validation": {
+        "path": "dist/shotloom/media/32.mp4",
+        "ssimAt1fps": 0.993744,
+        "sameDimensionsAndFrameCount": true
+      }
+    },
+    {
+      "source": "dist/assets/archive-motion/motion-variation.mp4",
+      "before": 3405010,
+      "after": 709851,
+      "crf": 20,
+      "method": "H.264 slow; resolution/frame rate preserved; audio copied; faststart",
+      "output": "dist/assets/archive-motion/motion-variation.mp4",
+      "sourceSha256": "800ad745232a21b4ad4a9e609837c55ae59439183b984a5ad49e390b382d7153",
+      "outputSha256": "2d0288898c75a695041200dd5decce90b44bd0dda64bf1598b8dcea6e13f7550",
+      "validation": {
+        "path": "dist/assets/archive-motion/motion-variation.mp4",
+        "ssimAt1fps": 0.996541,
+        "sameDimensionsAndFrameCount": true
+      }
+    },
+    {
+      "source": "dist/assets/archive-motion/scene-aware-staging.mp4",
+      "before": 11682753,
+      "after": 3022623,
+      "crf": 20,
+      "method": "H.264 slow; resolution/frame rate preserved; audio copied; faststart",
+      "output": "dist/assets/archive-motion/scene-aware-staging.mp4",
+      "sourceSha256": "78477d26838b4577c0e50b337000d945848db2e045877aec07c7c1bd0e5257dd",
+      "outputSha256": "298e31aa646fe6a11e30857e5536128f553b99d4f42d7b470f08cef3398e3404",
+      "validation": {
+        "path": "dist/assets/archive-motion/scene-aware-staging.mp4",
+        "ssimAt1fps": 0.99386,
+        "sameDimensionsAndFrameCount": true
+      }
+    },
+    {
+      "source": "dist/assets/archive-motion/motion-generation.mp4",
+      "before": 6829309,
+      "after": 1630840,
+      "crf": 20,
+      "method": "H.264 slow; resolution/frame rate preserved; audio copied; faststart",
+      "output": "dist/assets/archive-motion/motion-generation.mp4",
+      "sourceSha256": "5fd1612acf29ca60e262bd57f3e881c850d5725ba3582f4b6dace87c96763e75",
+      "outputSha256": "dfd55800e97da47360931d83037a9995fe1081cfb09a888084e9e44e693b7800",
+      "validation": {
+        "path": "dist/assets/archive-motion/motion-generation.mp4",
+        "ssimAt1fps": 0.997986,
+        "sameDimensionsAndFrameCount": true
+      }
+    },
+    {
+      "source": "dist/assets/archive-motion/motion-stylization.mp4",
+      "before": 19955380,
+      "after": 5925918,
+      "crf": 20,
+      "method": "H.264 slow; resolution/frame rate preserved; audio copied; faststart",
+      "output": "dist/assets/archive-motion/motion-stylization.mp4",
+      "sourceSha256": "3246edffd41d9bf77ffb55d1838db09d3faf27df98a1c25fc2e0f9ab41f0a4b4",
+      "outputSha256": "fa1fc4b13e031d102f23672d9b30b203a48637d087e98f2f2d827eeb15f17fbc",
+      "validation": {
+        "path": "dist/assets/archive-motion/motion-stylization.mp4",
+        "ssimAt1fps": 0.996827,
+        "sameDimensionsAndFrameCount": true
+      }
+    },
+    {
+      "source": "dist/landing-media/videos/original-animation-2.mp4",
+      "before": 23390798,
+      "after": 14373059,
+      "crf": 21,
+      "method": "H.264 slow; resolution/frame rate preserved; audio copied; faststart",
+      "output": "dist/landing-media/videos/original-animation-2.mp4",
+      "sourceSha256": "100844131629c419b3635f6b4eeec4e96bf2682f404572ae58ad72e2611a0916",
+      "outputSha256": "16aaf2d3477f93d0d3c97f75d85325131ae56bb8b3c923c583d7a447492a8ffa",
+      "validation": {
+        "path": "dist/landing-media/videos/original-animation-2.mp4",
+        "ssimAt1fps": 0.995472,
+        "sameDimensionsAndFrameCount": true
+      }
+    },
+    {
+      "source": "dist/landing-media/videos/original-animation-1.mp4",
+      "before": 40268375,
+      "after": 21552968,
+      "crf": 21,
+      "method": "H.264 slow; resolution/frame rate preserved; audio copied; faststart",
+      "output": "dist/landing-media/videos/original-animation-1.mp4",
+      "sourceSha256": "d530a0b6146c91ec5fdcfc85eb14b86175d324f91cd9518b2ef7ba48df064bea",
+      "outputSha256": "844871dd807871c2becbfcfc4ab6617d51c2c6dfe0aa5fda7891bd1e4c8dadba",
+      "validation": {
+        "path": "dist/landing-media/videos/original-animation-1.mp4",
+        "ssimAt1fps": 0.995458,
+        "sameDimensionsAndFrameCount": true
+      }
+    },
+    {
+      "source": "dist/landing-media/videos/original-animation-3.mp4",
+      "before": 26513498,
+      "after": 15008935,
+      "crf": 21,
+      "method": "H.264 slow; resolution/frame rate preserved; audio copied; faststart",
+      "output": "dist/landing-media/videos/original-animation-3.mp4",
+      "sourceSha256": "f5bfd897d14df6a70346e90a314b1aacf396107da16c779eac384bdd530ef1f5",
+      "outputSha256": "c31a8f3962012244535e354f4e1a7054141a93eaededa0a355ce21c4a21f0243",
+      "validation": {
+        "path": "dist/landing-media/videos/original-animation-3.mp4",
+        "ssimAt1fps": 0.994773,
+        "sameDimensionsAndFrameCount": true
+      }
+    },
+    {
+      "source": "dist/landing-media/videos/original-animation-5.mp4",
+      "before": 15100723,
+      "after": 8222161,
+      "crf": 21,
+      "method": "H.264 slow; resolution/frame rate preserved; audio copied; faststart",
+      "output": "dist/landing-media/videos/original-animation-5.mp4",
+      "sourceSha256": "e57fc43f1cbd20a92e3c6ac244bd8e054ca7aaa68881ec49f7a28082dac8b853",
+      "outputSha256": "70acd894ba60b3b64e377490ce8b11f0d7b776a4957ea49ca972ff50e75235c0",
+      "validation": {
+        "path": "dist/landing-media/videos/original-animation-5.mp4",
+        "ssimAt1fps": 0.994679,
+        "sameDimensionsAndFrameCount": true
+      }
+    },
+    {
+      "source": "dist/landing-media/videos/original-animation-4.mp4",
+      "before": 26977379,
+      "after": 16670329,
+      "crf": 21,
+      "method": "H.264 slow; resolution/frame rate preserved; audio copied; faststart",
+      "output": "dist/landing-media/videos/original-animation-4.mp4",
+      "sourceSha256": "f32a9e8a2956df69b7a6aef1d49161d1b97d5ada8f06817575873646c473d40d",
+      "outputSha256": "c572dd806598c1c7a20b8a4ab2c87fe5a35c7a3fcf541815d639523f3eed3fcd",
+      "validation": {
+        "path": "dist/landing-media/videos/original-animation-4.mp4",
+        "ssimAt1fps": 0.994134,
+        "sameDimensionsAndFrameCount": true
+      }
+    }
+  ]
+}

@@ -257,7 +257,7 @@ export const englishShowcase = {
       "description": "An animation production example featuring tension and detailed staging.",
       "format": "ORIGINAL ANIMATION",
       "category": "original",
-      "poster": "/landing-media/posters/original-animation-1-selected.png",
+      "poster": "/landing-media/posters/original-animation-1-selected.webp",
       "posterAlt": "An animated scene of a short-haired character in sunset light",
       "videoSrc": "/landing-media/videos/original-animation-1.mp4"
     },

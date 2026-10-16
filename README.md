@@ -72,3 +72,9 @@ python3 translations/build-english.py
 페이지 표시·재생에 필요한 이미지·영상·글꼴·CSS는 `dist/`에 함께 보관하며 외부 서버에서 불러오지 않습니다. Showcase 영상은 `dist/landing-media/videos/`, 글꼴과 수식 CSS는 `dist/fonts/`에 있습니다. `external-assets.json`에는 다운로드 원본 URL·크기·SHA-256을 기록합니다(CSS 내부 경로는 다운로드 후 로컬 경로로 변경). 외부 연구 사이트로 이동하는 참고 링크는 원래 주소를 유지합니다. 미디어와 작품의 권리는 각 권리자에게 있으며, 저장소 업로드는 별도 재사용 라이선스를 부여하지 않습니다.
 
 외부 글꼴·KaTeX의 라이선스와 저작권 고지는 [`dist/fonts/licenses/README.md`](dist/fonts/licenses/README.md)에 정리되어 있으며, 배포 파일에도 포함됩니다.
+
+## 웹용 미디어 최적화
+
+`media-optimizations.json`에 웹용 변환 방식·용량·원본 및 결과 SHA-256을 기록합니다. 변환 전 원본은 해당 파일에 명시된 Git 커밋에서 복구할 수 있습니다. `external-assets.json`의 다운로드 해시는 최초 보관한 원본 기준이며, 재압축한 파일의 현재 해시는 `media-optimizations.json`을 기준으로 확인합니다.
+
+글자가 포함된 화면 스크린샷은 무손실 WebP를 사용합니다. 5,120px PoseShot 스크린샷 두 장만 Lanczos 필터로 2,560px로 축소했으며, 나머지 화면 스크린샷은 원래 해상도를 유지합니다. 작품 이미지 일부는 긴 변을 최대 1,920px로 줄인 고품질 WebP를 사용합니다. 영상은 해상도·프레임률·음성을 유지하면서 H.264로 재압축하고, 빠른 재생 시작을 위한 faststart를 적용했습니다.
