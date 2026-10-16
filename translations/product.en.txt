@@ -146,14 +146,13 @@ Convert motion to ARP rigs and share it as GLB. Create facial animation with fac
 Motion Browser search and candidate browsing demo
 Cinamon motion capture studio
 Motion capture — from data collection to production use
-Past features and research demos may differ from the current service offering.
 Fantasy animation production example
 Stories brought to life
 through technology.
 From webtoons, manga, and picture books to original animation.
 See the moment an original world begins to move.
 Explore SHOWCASE
-As we bring CineV's journey over the past few years to a close, we leave a record of the technology and works we created together.
+An archive of CINEV products, technical research, and production examples.
 Close video
 Close ×
 If the video does not play,

@@ -33,13 +33,13 @@ export const englishShowcase = {
         {
           "label": "Vertical Scene",
           "mediaLabel": "WEBTOON ANIMATION / VERTICAL SCENE",
-          "video": "https://cinev.com/landing/landing-media/videos/webtoon-vertical-scene.mp4",
+          "video": "/landing-media/videos/webtoon-vertical-scene.mp4",
           "poster": "/landing-media/posters/webtoon-one-day.jpg"
         },
         {
           "label": "Character Story",
           "mediaLabel": "WEBTOON ANIMATION / CHARACTER STORY",
-          "video": "https://cinev.com/landing/landing-media/videos/webtoon-character-story.mp4",
+          "video": "/landing-media/videos/webtoon-character-story.mp4",
           "poster": "/landing-media/posters/webtoon-younger-husband.jpg"
         }
       ]
@@ -187,7 +187,7 @@ export const englishShowcase = {
       "category": "webtoon",
       "poster": "/landing-media/posters/webtoon-one-day.jpg",
       "posterAlt": "A vertical webtoon animation scene with news captions",
-      "videoSrc": "https://cinev.com/landing/landing-media/videos/webtoon-vertical-scene.mp4"
+      "videoSrc": "/landing-media/videos/webtoon-vertical-scene.mp4"
     },
     {
       "id": "webtoon-character-story",
@@ -197,7 +197,7 @@ export const englishShowcase = {
       "category": "webtoon",
       "poster": "/landing-media/posters/webtoon-younger-husband.jpg",
       "posterAlt": "A webtoon animation scene showing a sunset-lit building and an airplane",
-      "videoSrc": "https://cinev.com/landing/landing-media/videos/webtoon-character-story.mp4"
+      "videoSrc": "/landing-media/videos/webtoon-character-story.mp4"
     },
     {
       "id": "webtoon-episode",
@@ -207,7 +207,7 @@ export const englishShowcase = {
       "category": "webtoon",
       "poster": "/landing-media/posters/webtoon-divorce-episode.jpg",
       "posterAlt": "A webtoon-based fantasy animation scene with characters on a castle wall",
-      "videoSrc": "https://cinev.com/landing/landing-media/videos/webtoon-episode.mp4"
+      "videoSrc": "/landing-media/videos/webtoon-episode.mp4"
     },
     {
       "id": "storybook",
@@ -217,7 +217,7 @@ export const englishShowcase = {
       "category": "storybook",
       "poster": "/landing-media/posters/storybook-animation.jpg",
       "posterAlt": "A picture-book animation scene of a house in a rain-soaked field",
-      "videoSrc": "https://cinev.com/landing/landing-media/videos/storybook-animation.mp4"
+      "videoSrc": "/landing-media/videos/storybook-animation.mp4"
     },
     {
       "id": "manga-compare",
@@ -227,7 +227,7 @@ export const englishShowcase = {
       "category": "comparison",
       "poster": "/landing-media/posters/compare-manga.jpg",
       "posterAlt": "Side-by-side comparison of an original manga panel and its animated result",
-      "videoSrc": "https://cinev.com/landing/landing-media/videos/manga-compare.mp4"
+      "videoSrc": "/landing-media/videos/manga-compare.mp4"
     },
     {
       "id": "compare-drama",
@@ -237,7 +237,7 @@ export const englishShowcase = {
       "category": "comparison",
       "poster": "/landing-media/posters/compare-divorce.jpg",
       "posterAlt": "A drama webtoon comparison showing the original panel alongside the animated result",
-      "videoSrc": "https://cinev.com/landing/landing-media/videos/webtoon-drama-compare.mp4"
+      "videoSrc": "/landing-media/videos/webtoon-drama-compare.mp4"
     },
     {
       "id": "compare-school-action",
@@ -247,7 +247,7 @@ export const englishShowcase = {
       "category": "comparison",
       "poster": "/landing-media/posters/compare-iljin.jpg",
       "posterAlt": "Comparison of an original school webtoon and its animated result",
-      "videoSrc": "https://cinev.com/landing/landing-media/videos/webtoon-school-action.mp4"
+      "videoSrc": "/landing-media/videos/webtoon-school-action.mp4"
     }
   ],
   "animationExamples": [
@@ -259,7 +259,7 @@ export const englishShowcase = {
       "category": "original",
       "poster": "/landing-media/posters/original-animation-1-selected.png",
       "posterAlt": "An animated scene of a short-haired character in sunset light",
-      "videoSrc": "https://cinev.com/landing/landing-media/videos/original-animation-1.mp4"
+      "videoSrc": "/landing-media/videos/original-animation-1.mp4"
     },
     {
       "id": "romance-pv",
@@ -269,7 +269,7 @@ export const englishShowcase = {
       "category": "pv",
       "poster": "/landing-media/posters/romance-pv.jpg",
       "posterAlt": "Two characters beneath fireworks in a youth romance webtoon promotional video",
-      "videoSrc": "https://cinev.com/landing/landing-media/videos/romance-pv.mp4"
+      "videoSrc": "/landing-media/videos/romance-pv.mp4"
     },
     {
       "id": "fantasy-pv",
@@ -279,7 +279,7 @@ export const englishShowcase = {
       "category": "pv",
       "poster": "/landing-media/posters/fantasy-pv.jpg",
       "posterAlt": "A medieval fantasy webtoon promotional video with a castle above the clouds",
-      "videoSrc": "https://cinev.com/landing/landing-media/videos/fantasy-pv.mp4"
+      "videoSrc": "/landing-media/videos/fantasy-pv.mp4"
     },
     {
       "id": "original-2",
@@ -289,7 +289,7 @@ export const englishShowcase = {
       "category": "original",
       "poster": "/landing-media/posters/original-animation-2.jpg",
       "posterAlt": "A scene from For Just Ten Seconds, the World Stops",
-      "videoSrc": "https://cinev.com/landing/landing-media/videos/original-animation-2.mp4"
+      "videoSrc": "/landing-media/videos/original-animation-2.mp4"
     },
     {
       "id": "original-3",
@@ -299,7 +299,7 @@ export const englishShowcase = {
       "category": "original",
       "poster": "/landing-media/posters/original-animation-3.jpg",
       "posterAlt": "A scene from The Strongest Assassin Becomes a Kindergarten Teacher",
-      "videoSrc": "https://cinev.com/landing/landing-media/videos/original-animation-3.mp4"
+      "videoSrc": "/landing-media/videos/original-animation-3.mp4"
     },
     {
       "id": "original-4",
@@ -309,7 +309,7 @@ export const englishShowcase = {
       "category": "original",
       "poster": "/landing-media/posters/original-animation-4.jpg",
       "posterAlt": "A scene from The Public Bath Switches Between Men and Women",
-      "videoSrc": "https://cinev.com/landing/landing-media/videos/original-animation-4.mp4"
+      "videoSrc": "/landing-media/videos/original-animation-4.mp4"
     },
     {
       "id": "original-5",
@@ -319,7 +319,7 @@ export const englishShowcase = {
       "category": "original",
       "poster": "/landing-media/posters/original-animation-5.jpg",
       "posterAlt": "A scene from Falling with You Beyond the Mist",
-      "videoSrc": "https://cinev.com/landing/landing-media/videos/original-animation-5.mp4"
+      "videoSrc": "/landing-media/videos/original-animation-5.mp4"
     },
     {
       "id": "original-6",
@@ -329,7 +329,7 @@ export const englishShowcase = {
       "category": "original",
       "poster": "/landing-media/posters/original-animation-6-selected.png",
       "posterAlt": "An animated scene from The Three Konogamine Brothers",
-      "videoSrc": "https://cinev.com/landing/landing-media/videos/original-animation-6.mp4"
+      "videoSrc": "/landing-media/videos/original-animation-6.mp4"
     },
     {
       "id": "original-7",
@@ -339,7 +339,7 @@ export const englishShowcase = {
       "category": "original",
       "poster": "/landing-media/posters/original-animation-7-selected.png",
       "posterAlt": "An animated scene from Before I'm Home",
-      "videoSrc": "https://cinev.com/landing/landing-media/videos/original-animation-7.mp4"
+      "videoSrc": "/landing-media/videos/original-animation-7.mp4"
     }
   ]
 };

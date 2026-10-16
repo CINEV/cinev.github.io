@@ -8,7 +8,7 @@
 
 @font-face {
   font-family: 'CineV Poppins';
-  src: url('https://cinev.com/_next/static/media/6f826e9f9b03ddb0-s.p.otf') format('opentype');
+  src: url('/fonts/cinev/6f826e9f9b03ddb0-s.p.otf') format('opentype');
   font-style: normal;
   font-weight: 45 920;
   font-display: swap;
@@ -16,7 +16,7 @@
 
 @font-face {
   font-family: 'CineV Roboto Slab';
-  src: url('https://cinev.com/_next/static/media/923dc277b1eb7754-s.p.ttf') format('truetype');
+  src: url('/fonts/cinev/923dc277b1eb7754-s.p.ttf') format('truetype');
   font-style: normal;
   font-weight: 45 920;
   font-display: swap;
@@ -24,7 +24,7 @@
 
 @font-face {
   font-family: 'MaruBuri';
-  src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_20-10-21@1.0/MaruBuri-Regular.woff')
+  src: url('/fonts/cinev/MaruBuri-Regular.woff')
     format('woff');
   font-style: normal;
   font-weight: 400;

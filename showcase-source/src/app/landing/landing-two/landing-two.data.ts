@@ -43,13 +43,13 @@ export const landingTwoContent = {
       {
         label: 'Vertical Scene',
         mediaLabel: 'WEBTOON ANIMATION / VERTICAL SCENE',
-        video: 'https://cinev.com/landing/landing-media/videos/webtoon-vertical-scene.mp4',
+        video: '/landing-media/videos/webtoon-vertical-scene.mp4',
         poster: '/landing-media/posters/webtoon-one-day.jpg',
       },
       {
         label: 'Character Story',
         mediaLabel: 'WEBTOON ANIMATION / CHARACTER STORY',
-        video: 'https://cinev.com/landing/landing-media/videos/webtoon-character-story.mp4',
+        video: '/landing-media/videos/webtoon-character-story.mp4',
         poster: '/landing-media/posters/webtoon-younger-husband.jpg',
       },
     ],
@@ -191,7 +191,7 @@ export const showcaseItems: ShowcaseItem[] = [
     category: 'webtoon',
     poster: '/landing-media/posters/webtoon-one-day.jpg',
     posterAlt: '뉴스 자막이 포함된 세로형 웹툰 애니메이션 장면',
-    videoSrc: 'https://cinev.com/landing/landing-media/videos/webtoon-vertical-scene.mp4',
+    videoSrc: '/landing-media/videos/webtoon-vertical-scene.mp4',
   },
   {
     id: 'webtoon-character-story',
@@ -201,7 +201,7 @@ export const showcaseItems: ShowcaseItem[] = [
     category: 'webtoon',
     poster: '/landing-media/posters/webtoon-younger-husband.jpg',
     posterAlt: '노을 진 건물과 비행기를 보여주는 웹툰 애니메이션 장면',
-    videoSrc: 'https://cinev.com/landing/landing-media/videos/webtoon-character-story.mp4',
+    videoSrc: '/landing-media/videos/webtoon-character-story.mp4',
   },
   {
     id: 'webtoon-episode',
@@ -211,7 +211,7 @@ export const showcaseItems: ShowcaseItem[] = [
     category: 'webtoon',
     poster: '/landing-media/posters/webtoon-divorce-episode.jpg',
     posterAlt: '성 위의 인물들을 보여주는 웹툰 기반 판타지 애니메이션 장면',
-    videoSrc: 'https://cinev.com/landing/landing-media/videos/webtoon-episode.mp4',
+    videoSrc: '/landing-media/videos/webtoon-episode.mp4',
   },
   {
     id: 'storybook',
@@ -221,7 +221,7 @@ export const showcaseItems: ShowcaseItem[] = [
     category: 'storybook',
     poster: '/landing-media/posters/storybook-animation.jpg',
     posterAlt: '비 내리는 들판의 집을 그린 동화책 애니메이션 장면',
-    videoSrc: 'https://cinev.com/landing/landing-media/videos/storybook-animation.mp4',
+    videoSrc: '/landing-media/videos/storybook-animation.mp4',
   },
   {
     id: 'manga-compare',
@@ -231,7 +231,7 @@ export const showcaseItems: ShowcaseItem[] = [
     category: 'comparison',
     poster: '/landing-media/posters/compare-manga.jpg',
     posterAlt: '만화 원작 컷과 애니메이션 결과를 나란히 보여주는 비교 장면',
-    videoSrc: 'https://cinev.com/landing/landing-media/videos/manga-compare.mp4',
+    videoSrc: '/landing-media/videos/manga-compare.mp4',
   },
   {
     id: 'compare-drama',
@@ -241,7 +241,7 @@ export const showcaseItems: ShowcaseItem[] = [
     category: 'comparison',
     poster: '/landing-media/posters/compare-divorce.jpg',
     posterAlt: '원작 컷과 애니메이션 결과를 함께 배치한 드라마 웹툰 비교 장면',
-    videoSrc: 'https://cinev.com/landing/landing-media/videos/webtoon-drama-compare.mp4',
+    videoSrc: '/landing-media/videos/webtoon-drama-compare.mp4',
   },
   {
     id: 'compare-school-action',
@@ -251,7 +251,7 @@ export const showcaseItems: ShowcaseItem[] = [
     category: 'comparison',
     poster: '/landing-media/posters/compare-iljin.jpg',
     posterAlt: '학교를 배경으로 웹툰 원작과 애니메이션 결과를 비교한 장면',
-    videoSrc: 'https://cinev.com/landing/landing-media/videos/webtoon-school-action.mp4',
+    videoSrc: '/landing-media/videos/webtoon-school-action.mp4',
   },
 ];
 
@@ -264,7 +264,7 @@ export const webtoonPvItems: ShowcaseItem[] = [
     category: 'pv',
     poster: '/landing-media/posters/romance-pv.jpg',
     posterAlt: '불꽃놀이 아래 두 인물이 함께 있는 로맨스 청춘물 웹툰 PV 장면',
-    videoSrc: 'https://cinev.com/landing/landing-media/videos/romance-pv.mp4',
+    videoSrc: '/landing-media/videos/romance-pv.mp4',
   },
   {
     id: 'fantasy-pv',
@@ -274,17 +274,17 @@ export const webtoonPvItems: ShowcaseItem[] = [
     category: 'pv',
     poster: '/landing-media/posters/fantasy-pv.jpg',
     posterAlt: '구름 위 성이 보이는 중세 판타지 웹툰 PV 장면',
-    videoSrc: 'https://cinev.com/landing/landing-media/videos/fantasy-pv.mp4',
+    videoSrc: '/landing-media/videos/fantasy-pv.mp4',
   },
 ];
 
 export const animationExamples: ShowcaseItem[] = [
-  { id: 'original-1', title: '十一秒 (Eleven Seconds)', description: '긴장감 있는 장면과 디테일을 보여주는 애니메이션 제작 예시입니다.', format: 'ORIGINAL ANIMATION', category: 'original', poster: '/landing-media/posters/original-animation-1-selected.png', posterAlt: '노을빛을 받는 짧은 머리 캐릭터의 애니메이션 장면', videoSrc: 'https://cinev.com/landing/landing-media/videos/original-animation-1.mp4' },
+  { id: 'original-1', title: '十一秒 (Eleven Seconds)', description: '긴장감 있는 장면과 디테일을 보여주는 애니메이션 제작 예시입니다.', format: 'ORIGINAL ANIMATION', category: 'original', poster: '/landing-media/posters/original-animation-1-selected.png', posterAlt: '노을빛을 받는 짧은 머리 캐릭터의 애니메이션 장면', videoSrc: '/landing-media/videos/original-animation-1.mp4' },
   ...webtoonPvItems,
-  { id: 'original-2', title: '十秒だけ、世界が止まる', description: '일상의 공간과 소품으로 이야기를 전개하는 애니메이션 제작 예시입니다.', format: 'ORIGINAL ANIMATION', category: 'original', poster: '/landing-media/posters/original-animation-2.jpg', posterAlt: '十秒だけ、世界が止まる 장면', videoSrc: 'https://cinev.com/landing/landing-media/videos/original-animation-2.mp4' },
-  { id: 'original-3', title: '最強の暗殺者、幼稚園の先生になる', description: '캐릭터의 표정과 인물 간 상호작용을 보여주는 애니메이션 제작 예시입니다.', format: 'ORIGINAL ANIMATION', category: 'original', poster: '/landing-media/posters/original-animation-3.jpg', posterAlt: '最強の暗殺者、幼稚園の先生になる 장면', videoSrc: 'https://cinev.com/landing/landing-media/videos/original-animation-3.mp4' },
-  { id: 'original-4', title: '大浴場は男女入れ替え制', description: '다양한 캐릭터와 관계를 장면으로 풀어낸 애니메이션 제작 예시입니다.', format: 'ORIGINAL ANIMATION', category: 'original', poster: '/landing-media/posters/original-animation-4.jpg', posterAlt: '大浴場は男女入れ替え制 장면', videoSrc: 'https://cinev.com/landing/landing-media/videos/original-animation-4.mp4' },
-  { id: 'original-5', title: '霧の果てで君と落ちる', description: '판타지 공간과 인물의 분위기를 보여주는 애니메이션 제작 예시입니다.', format: 'ORIGINAL ANIMATION', category: 'original', poster: '/landing-media/posters/original-animation-5.jpg', posterAlt: '霧の果てで君と落ちる 장면', videoSrc: 'https://cinev.com/landing/landing-media/videos/original-animation-5.mp4' },
-  { id: 'original-6', title: '紺ヶ峰さんちの三兄弟', description: '紺ヶ峰さんちの三兄弟 — 오리지널 애니메이션 제작 사례입니다.', format: 'ORIGINAL ANIMATION', category: 'original', poster: '/landing-media/posters/original-animation-6-selected.png', posterAlt: '紺ヶ峰さんちの三兄弟 애니메이션 장면', videoSrc: 'https://cinev.com/landing/landing-media/videos/original-animation-6.mp4' },
-  { id: 'original-7', title: 'ただいまの前に。', description: 'ただいまの前に。 — 오리지널 애니메이션 제작 사례입니다.', format: 'ORIGINAL ANIMATION', category: 'original', poster: '/landing-media/posters/original-animation-7-selected.png', posterAlt: 'ただいまの前に。 애니메이션 장면', videoSrc: 'https://cinev.com/landing/landing-media/videos/original-animation-7.mp4' },
+  { id: 'original-2', title: '十秒だけ、世界が止まる', description: '일상의 공간과 소품으로 이야기를 전개하는 애니메이션 제작 예시입니다.', format: 'ORIGINAL ANIMATION', category: 'original', poster: '/landing-media/posters/original-animation-2.jpg', posterAlt: '十秒だけ、世界が止まる 장면', videoSrc: '/landing-media/videos/original-animation-2.mp4' },
+  { id: 'original-3', title: '最強の暗殺者、幼稚園の先生になる', description: '캐릭터의 표정과 인물 간 상호작용을 보여주는 애니메이션 제작 예시입니다.', format: 'ORIGINAL ANIMATION', category: 'original', poster: '/landing-media/posters/original-animation-3.jpg', posterAlt: '最強の暗殺者、幼稚園の先生になる 장면', videoSrc: '/landing-media/videos/original-animation-3.mp4' },
+  { id: 'original-4', title: '大浴場は男女入れ替え制', description: '다양한 캐릭터와 관계를 장면으로 풀어낸 애니메이션 제작 예시입니다.', format: 'ORIGINAL ANIMATION', category: 'original', poster: '/landing-media/posters/original-animation-4.jpg', posterAlt: '大浴場は男女入れ替え制 장면', videoSrc: '/landing-media/videos/original-animation-4.mp4' },
+  { id: 'original-5', title: '霧の果てで君と落ちる', description: '판타지 공간과 인물의 분위기를 보여주는 애니메이션 제작 예시입니다.', format: 'ORIGINAL ANIMATION', category: 'original', poster: '/landing-media/posters/original-animation-5.jpg', posterAlt: '霧の果てで君と落ちる 장면', videoSrc: '/landing-media/videos/original-animation-5.mp4' },
+  { id: 'original-6', title: '紺ヶ峰さんちの三兄弟', description: '紺ヶ峰さんちの三兄弟 — 오리지널 애니메이션 제작 사례입니다.', format: 'ORIGINAL ANIMATION', category: 'original', poster: '/landing-media/posters/original-animation-6-selected.png', posterAlt: '紺ヶ峰さんちの三兄弟 애니메이션 장면', videoSrc: '/landing-media/videos/original-animation-6.mp4' },
+  { id: 'original-7', title: 'ただいまの前に。', description: 'ただいまの前に。 — 오리지널 애니메이션 제작 사례입니다.', format: 'ORIGINAL ANIMATION', category: 'original', poster: '/landing-media/posters/original-animation-7-selected.png', posterAlt: 'ただいまの前に。 애니메이션 장면', videoSrc: '/landing-media/videos/original-animation-7.mp4' },
 ];

@@ -121,4 +121,4 @@ Beyond generated results,
 toward production that expresses intent.
 We tested feasibility, analyzed limitations, and added tools for direct editing.
 A2P's records trace our exploration of both better generation technology and better tools for making things.
-As we bring CineV's journey over the past few years to a close, we leave a record of the technology and works we created together.
+An archive of CINEV products, technical research, and production examples.

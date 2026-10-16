@@ -1,0 +1,7 @@
+Bundled file: ../cinev/923dc277b1eb7754-s.p.ttf
+
+Copyright 2018 The Roboto Slab Project Authors (https://github.com/googlefonts/robotoslab)
+Licensed under the Apache License, Version 2.0
+
+Copyright and license identification above are copied from the bundled font name table.
+See RobotoSlab-Apache-2.0.txt for the license text.

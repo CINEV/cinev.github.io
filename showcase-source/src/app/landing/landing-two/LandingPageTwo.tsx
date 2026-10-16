@@ -397,7 +397,7 @@ export function LandingPageTwo() {
       <footer className="portfolio-footer">
         <div className="portfolio-footer-inner">
           <div className="portfolio-footer-brand"><CineVWordmark /><span className="portfolio-archive-badge">Archive</span></div>
-          <p className="portfolio-footer-note">{tr('지난 몇 년간 이어온 CINEV의 여정을 마무리하며, 함께 만들어온 기술과 작품을 기록으로 남깁니다.', "As we bring CineV's journey over the past few years to a close, we leave a record of the technology and works we created together.")}</p>
+          <p className="portfolio-footer-note">{tr('CINEV의 제품, 기술 연구 및 제작 사례를 소개합니다.', "An archive of CINEV products, technical research, and production examples.")}</p>
           <div className="portfolio-footer-bottom">
             <span>{content.footer.copyright}</span>
 

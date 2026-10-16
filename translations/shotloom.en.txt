@@ -224,4 +224,4 @@ Export the edited 3D scene as first- and last-frame camera PNGs and a silent Web
 SceneGen generation
 Generate new video from the scene and generation settings.
 Transfer the last-frame image of the selected SceneGen result to the CineV storyboard.
-As we bring CineV's journey over the past few years to a close, we leave a record of the technology and works we created together.
+An archive of CINEV products, technical research, and production examples.

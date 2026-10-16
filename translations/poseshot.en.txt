@@ -60,4 +60,4 @@ If automatic detection fails, manually define a character's Detection Mask. Manu
 Manual Detection Mask
 Call Image2Pose using an image URL
 Run Image2Pose externally by passing an image URL. A separate guide linked from the original document explains how to retrieve editing results.
-As we bring CineV's journey over the past few years to a close, we leave a record of the technology and works we created together.
+An archive of CINEV products, technical research, and production examples.
