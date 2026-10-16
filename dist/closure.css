@@ -224,3 +224,5 @@ body[lang="en"] .closure-title {
     transition: none !important;
   }
 }
+
+.closure-footer a{color:inherit;text-underline-offset:4px}

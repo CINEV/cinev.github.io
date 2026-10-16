@@ -9,6 +9,7 @@ const check = process.argv.includes('--check');
 const paths = process.argv.slice(2).filter(arg => arg !== '--check');
 const files = paths.length ? paths : [
   'showcase-source/index.html',
+  'dist/404.html',
   ...['', 'en/'].flatMap(language =>
     ['', 'archive/', 'poseshot/', 'shotloom/', 'a2p/', 'showcase/'].map(
       page => `dist/${language}${page}index.html`,

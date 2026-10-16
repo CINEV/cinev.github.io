@@ -25,6 +25,11 @@ jobs:
     steps:
       - uses: actions/checkout@v7.0.1
       - uses: actions/configure-pages@v6.0.0
+        id: pages
+      - name: Generate metadata for the deployment domain
+        env:
+          PAGES_ORIGIN: ${{ steps.pages.outputs.base_url }}
+        run: python3 scripts/update-seo.py --origin "$PAGES_ORIGIN"
       - name: Verify static entry points
         run: |
           test -f dist/index.html
@@ -32,6 +37,7 @@ jobs:
           test -f dist/archive/index.html
           test -f dist/en/archive/index.html
           test ! -e dist/insights
+          python3 scripts/verify-site.py
       - uses: actions/upload-pages-artifact@v5.0.0
         with:
           path: dist

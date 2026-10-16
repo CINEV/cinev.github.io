@@ -61,7 +61,7 @@ python3 translations/build-english.py
 
 ## 배포
 
-`CINEV/cinev.github.io`의 GitHub Pages로 배포합니다. `main`에 push하면 `.github/workflows/deploy-pages.yml`이 저장소에 커밋된 `dist/`를 그대로 배포합니다. Actions에서 수동 실행도 가능합니다. Pages의 Source는 **GitHub Actions**로 설정합니다.
+`CINEV/cinev.github.io`의 GitHub Pages로 배포합니다. `main`에 push하면 `.github/workflows/deploy-pages.yml`이 저장소에 커밋된 `dist/`를 배포하며 canonical·hreflang·사이트맵은 Pages 설정의 배포 도메인으로 갱신합니다. Actions에서 수동 실행도 가능합니다. Pages의 Source는 **GitHub Actions**로 설정합니다.
 
 모든 언어·상세 페이지가 디렉터리별 `index.html`로 제공됩니다. Showcase 소스를 수정했다면 위 빌드 명령을 실행한 뒤 갱신된 `dist/`도 함께 커밋해야 합니다. 배포 workflow는 소스를 다시 빌드하지 않습니다.
 
@@ -78,3 +78,9 @@ python3 translations/build-english.py
 `media-optimizations.json`에 웹용 변환 방식·용량·원본 및 결과 SHA-256을 기록합니다. 변환 전 원본은 해당 파일에 명시된 Git 커밋에서 복구할 수 있습니다. `external-assets.json`의 다운로드 해시는 최초 보관한 원본 기준이며, 재압축한 파일의 현재 해시는 `media-optimizations.json`을 기준으로 확인합니다.
 
 글자가 포함된 화면 스크린샷은 무손실 WebP를 사용합니다. 5,120px PoseShot 스크린샷 두 장만 Lanczos 필터로 2,560px로 축소했으며, 나머지 화면 스크린샷은 원래 해상도를 유지합니다. 작품 이미지 일부는 긴 변을 최대 1,920px로 줄인 고품질 WebP를 사용합니다. 영상은 해상도·프레임률·음성을 유지하면서 H.264로 재압축하고, 빠른 재생 시작을 위한 faststart를 적용했습니다.
+
+## Insights 연결과 검색 설정
+
+메뉴의 INSIGHTS는 한국어에서 `/insights/ko/`, 영어에서 `/insights/`로 연결됩니다. Insights의 공통 홈 버튼은 같은 호스트의 `/`로 돌아옵니다. 두 저장소를 각각 배포해야 하며 로컬 Python 서버는 Insights를 포함하지 않으므로 해당 링크는 404가 정상입니다.
+
+HTML 생성 후 `python3 scripts/update-seo.py`와 HTML 포맷팅을 실행하고 `python3 scripts/verify-site.py`로 링크·메타데이터를 검사합니다. 기본 origin은 `https://cinev.github.io`이며 배포에서는 `actions/configure-pages`가 반환한 주소를 사용합니다. 나중에 Pages 커스텀 도메인을 `cinev.com`으로 설정하고 메인 사이트를 재배포하면 메타데이터도 해당 주소로 바뀝니다. DNS와 Pages 도메인 설정은 별도로 필요합니다. Insights는 현재도 운영 중인 `https://cinev.com/insights/`를 canonical로 유지합니다. 루트 robots는 두 사이트의 수집을 허용하고 사이트맵을 안내합니다.

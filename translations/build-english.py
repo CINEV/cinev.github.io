@@ -32,7 +32,8 @@ class Translate(HTMLParser):
    if k in ['src','poster','href'] and not v.startswith(('#','https:','http:','data:','mailto:','tel:')):
     original=urljoin(self.base,v)
     parsed=urlsplit(original)
-    if k=='href' and parsed.path in ['/archive/','/showcase/','/shotloom/','/poseshot/','/a2p/']:v='/en'+original
+    if k=='href' and parsed.path=='/insights/ko/':v='/insights/'
+    elif k=='href' and parsed.path in ['/archive/','/showcase/','/shotloom/','/poseshot/','/a2p/']:v='/en'+original
     elif not v.startswith('/en/'):v=original
    if k=='src' and v.startswith('/app.js'):v='/en/app.js?v=20261015-en'
    result.append(k+'="'+html.escape(v,quote=True)+'"')

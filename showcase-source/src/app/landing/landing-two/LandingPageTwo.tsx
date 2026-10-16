@@ -190,6 +190,7 @@ export function LandingPageTwo() {
           <nav className="portfolio-nav" aria-label={tr('페이지 메뉴', 'Page navigation')}>
             <a href={isEnglish ? "/en/archive/" : "/archive/"}>PRODUCT</a>
             <a href={isEnglish ? "/en/showcase/" : "/showcase/"} aria-current="page">SHOWCASE</a>
+            <a href={isEnglish ? "/insights/" : "/insights/ko/"}>INSIGHTS</a>
           </nav>
           <a className="portfolio-language" href={isEnglish ? '/showcase/' : '/en/showcase/'} hrefLang={isEnglish ? 'ko' : 'en'} lang={isEnglish ? 'ko' : 'en'} aria-label={isEnglish ? '한국어로 보기' : 'Switch to English'} onClick={event => { event.currentTarget.href = (isEnglish ? '/showcase/' : '/en/showcase/') + window.location.hash; }}>{isEnglish ? '한국어' : 'EN'}</a>
         </div>
