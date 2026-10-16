@@ -7,11 +7,11 @@ CINEV 팀이 만들어온 제품, 기술, 연구와 작품을 기록한 한글·
 
 ## 구성
 
-- `dist/`: 정적 사이트와 이미지·영상
+- `dist/`: 서비스 종료 예정 안내 첫 화면과 정적 사이트·이미지·영상
+- `dist/archive/`, `dist/en/archive/`: 한글·영어 Product 아카이브 첫 화면
 - `dist/showcase/`: Showcase 빌드 결과
 - `dist/poseshot/`, `dist/shotloom/`, `dist/a2p/`: 프로젝트 상세 페이지
 - `dist/en/`: 같은 구성의 영어 페이지
-- `dist/service-closed/`, `dist/en/service-closed/`: 향후 사용할 서비스 종료 안내 페이지. 아카이브 첫 화면과 분리되어 있습니다.
 - `showcase-source/`: React·Vite 기반 Showcase 원본
 - `translations/`: 한영 번역 자료와 영어 페이지 생성 스크립트
 - `.openai/hosting.json`: 기존 Sites 정적 배포 설정
@@ -40,6 +40,17 @@ python3 translations/build-showcase-english.py
 
 Vite가 `dist/showcase/`를 갱신하며, 마지막 명령은 같은 빌드를 사용하는 영어 진입 페이지를 생성합니다.
 
+## HTML 포맷팅
+
+본문이 있는 HTML은 Prettier로 멀티라인 관리합니다. 최초 실행 전 `npm ci --prefix showcase-source`로 개발 의존성을 설치합니다.
+
+```sh
+npm run format:html --prefix showcase-source
+npm run format:html:check --prefix showcase-source
+```
+
+포맷팅 대상은 `dist/`의 HTML과 `showcase-source/index.html`입니다. 압축된 JS·CSS 번들은 변경하지 않습니다. 영어 페이지 생성과 Showcase 빌드에도 HTML 포맷팅이 포함됩니다. 번역 스크립트 실행에는 Python 3과 Node.js 20 이상이 필요합니다.
+
 ## Product·상세 페이지의 영어 버전 생성
 
 ```sh
@@ -54,7 +65,7 @@ python3 translations/build-english.py
 
 모든 언어·상세 페이지가 디렉터리별 `index.html`로 제공됩니다. Showcase 소스를 수정했다면 위 빌드 명령을 실행한 뒤 갱신된 `dist/`도 함께 커밋해야 합니다. 배포 workflow는 소스를 다시 빌드하지 않습니다.
 
-루트 `/`는 Archive가 사용하고, `/insights/`는 별도 `CINEV/insights` 저장소의 블로그가 사용합니다. `dist/insights`나 커스텀 도메인용 `CNAME` 파일을 추가하지 않습니다. 저장소는 비공개 상태로 유지합니다. GitHub Pages 사용 가능 여부는 조직의 요금제에 따릅니다.
+루트 `/`와 `/en/`는 서비스 종료 예정 안내가 사용하고, 안내 버튼은 `/archive/`와 `/en/archive/`로 연결됩니다. `/insights/`는 별도 `CINEV/insights` 저장소의 블로그가 사용합니다. `dist/insights`나 커스텀 도메인용 `CNAME` 파일을 추가하지 않습니다. 저장소는 비공개 상태로 유지합니다. GitHub Pages 사용 가능 여부는 조직의 요금제에 따릅니다.
 
 ## 미디어
 

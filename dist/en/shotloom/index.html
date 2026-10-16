@@ -1,803 +1,1315 @@
-<!doctype html><html lang="en"><head><meta name="viewport" content="width=device-width, initial-scale=1"><meta http-equiv="Content-Type" content="text/html; charset=utf-8"><title>Shotloom | CINEV Archive</title><style>
-/* cspell:disable-file */
-/* webkit printing magic: print all background colors */
-html {
-	-webkit-print-color-adjust: exact;
-}
-* {
-	box-sizing: border-box;
-	-webkit-print-color-adjust: exact;
-}
-
-html,
-body {
-	margin: 0;
-	padding: 0;
-}
-@media only screen {
-	body {
-		margin: 2em auto;
-		max-width: 900px;
-		color: rgb(55, 53, 47);
-	}
-}
-
-body {
-	line-height: 1.5;
-	white-space: pre-wrap;
-}
-
-a,
-a.visited {
-	color: inherit;
-	text-decoration: underline;
-}
-
-.pdf-relative-link-path {
-	font-size: 80%;
-	color: #444;
-}
-
-h1,
-h2,
-h3 {
-	letter-spacing: -0.01em;
-	line-height: 1.2;
-	font-weight: 600;
-	margin-bottom: 0;
-}
-
-/* Override strong tags inside headings to maintain consistent weight */
-h1 strong,
-h2 strong,
-h3 strong {
-	font-weight: 600;
-}
-
-.page-title {
-	font-size: 2.5rem;
-	font-weight: 700;
-	margin-top: 0;
-	margin-bottom: 0.75em;
-}
-
-h1 {
-	font-size: 1.875rem;
-	margin-top: 1.875rem;
-}
-
-h2 {
-	font-size: 1.5rem;
-	margin-top: 1.5rem;
-}
-
-h3 {
-	font-size: 1.25rem;
-	margin-top: 1.25rem;
-}
-
-.source {
-	border: 1px solid #ddd;
-	border-radius: 3px;
-	padding: 1.5em;
-	word-break: break-all;
-}
-
-.callout {
-	border-radius: 10px;
-	padding: 1rem;
-	/* Paint a complete callout box on every PDF page fragment. */
-	-webkit-box-decoration-break: clone;
-	box-decoration-break: clone;
-}
-
-/* For default-background callouts, render the border outline. */
-.callout.block-color-default_background {
-	border: 1px solid rgba(55, 53, 47, 0.09);
-}
-
-figure {
-	margin: 1.25em 0;
-	page-break-inside: avoid;
-}
-
-/*
- * Toggles and callouts hold arbitrary content, so they can easily be taller
- * than a page. They must stay breakable: avoiding breaks inside them makes
- * Chromium push the whole block onto the next page, which leaves the previous
- * page mostly empty before every long toggle.
- */
-details,
-aside {
-	margin: 1.25em 0;
-}
-
-/* Keep a toggle's title on the same page as the start of its content. */
-summary {
-	page-break-after: avoid;
-	break-after: avoid;
-}
-
-/*
- * Toggle headings render as <h1/h2/h3 style="display:inline-block"> inside
- * <summary>. Without this reset, the heading's margin-top pushes it below the
- * ::marker (▼), so the triangle and the title appear on separate lines.
- */
-summary h1,
-summary h2,
-summary h3,
-summary h4 {
-	margin-top: 0;
-}
-
-figcaption {
-	opacity: 0.5;
-	font-size: 85%;
-	margin-top: 0.5em;
-}
-
-mark {
-	background-color: transparent;
-}
-
-.indented {
-	padding-left: 1.5em;
-}
-
-hr {
-	background: transparent;
-	display: block;
-	width: 100%;
-	height: 1px;
-	visibility: visible;
-	border: none;
-	border-bottom: 1px solid rgba(55, 53, 47, 0.09);
-}
-
-img {
-	max-width: 100%;
-}
-
-@media only print {
-	img {
-		max-height: 100vh;
-		object-fit: contain;
-	}
-
-	table.collection-content {
-		width: 100%;
-		table-layout: fixed;
-	}
-
-	table.collection-content th,
-	table.collection-content td {
-		overflow-wrap: anywhere;
-	}
-
-	table.collection-content td > .user,
-	table.collection-content td > time {
-		white-space: pre-wrap;
-	}
-}
-
-@page {
-	margin: 1in;
-}
-
-.collection-content-wrapper {
-	overflow-x: auto;
-}
-
-@media only print {
-	.collection-content-wrapper {
-		overflow-x: visible;
-	}
-}
-
-.collection-content {
-	font-size: 0.875rem;
-}
-
-.collection-content td {
-	white-space: pre-wrap;
-	word-break: break-word;
-}
-
-.column-list {
-	display: flex;
-	gap: 46px;
-}
-
-.column {
-	min-width: 0;
-	overflow: hidden;
-}
-
-.column > *:first-child {
-	margin-top: 0;
-}
-
-.table_of_contents-item {
-	display: block;
-	font-size: 0.875rem;
-	line-height: 1.3;
-	padding-inline: 0.125rem;
-	padding-block: 0.375rem;
-}
-
-.table_of_contents-indent-1 {
-	margin-left: 1.5rem;
-}
-
-.table_of_contents-indent-2 {
-	margin-left: 3rem;
-}
-
-.table_of_contents-indent-3 {
-	margin-left: 4.5rem;
-}
-
-.table_of_contents-link {
-	text-decoration: none;
-	opacity: 0.7;
-	border-bottom: 1px solid rgba(55, 53, 47, 0.18);
-}
-
-table,
-th,
-td {
-	border: 1px solid rgba(55, 53, 47, 0.09);
-}
-
-table {
-	border-collapse: collapse;
-	border-left: none;
-	border-right: none;
-}
-
-th,
-td {
-	font-weight: normal;
-	padding: 0.25em 0.5em;
-	line-height: 1.5;
-	min-height: 1.5em;
-	text-align: left;
-}
-
-th {
-	color: rgba(55, 53, 47, 0.6);
-}
-
-ol,
-ul {
-	margin: 0;
-	margin-block-start: 0.6em;
-	margin-block-end: 0.6em;
-}
-
-li > ol:first-child,
-li > ul:first-child {
-	margin-block-start: 0.6em;
-}
-
-ul > li {
-	list-style: disc;
-}
-
-ul.to-do-list {
-	padding-inline-start: 0;
-}
-
-ul.to-do-list > li {
-	list-style: none;
-}
-
-.to-do-children-checked {
-	text-decoration: line-through;
-	opacity: 0.375;
-}
-
-ul.toggle > li {
-	list-style: none;
-}
-
-ul {
-	padding-inline-start: 1.7em;
-}
-
-ul > li {
-	padding-left: 0.1em;
-}
-
-ol {
-	padding-inline-start: 1.6em;
-}
-
-ol.numbered-list.numbered-list-digits-2 {
-	padding-inline-start: 2em;
-}
-
-ol.numbered-list.numbered-list-digits-3plus {
-	padding-inline-start: 2.4em;
-}
-
-ol > li {
-	padding-left: 0.2em;
-}
-
-.mono ol {
-	padding-inline-start: 2em;
-}
-
-.mono ol > li {
-	text-indent: -0.4em;
-}
-
-.toggle {
-	padding-inline-start: 0em;
-	list-style-type: none;
-}
-
-/* Indent toggle children */
-.toggle > li > details {
-	padding-left: 1.7em;
-}
-
-.toggle > li > details > summary {
-	margin-left: -1.1em;
-}
-
-.selected-value {
-	display: inline-block;
-	padding: 0 0.5em;
-	background: rgba(206, 205, 202, 0.5);
-	border-radius: 3px;
-	margin-right: 0.5em;
-	margin-top: 0.3em;
-	margin-bottom: 0.3em;
-	white-space: nowrap;
-}
-
-.collection-title {
-	display: inline-block;
-	margin-right: 1em;
-}
-
-.page-description {
-	margin-bottom: 2em;
-}
-
-.simple-table {
-	margin-top: 1em;
-	font-size: 0.875rem;
-	empty-cells: show;
-}
-.simple-table td {
-	height: 29px;
-	min-width: 120px;
-}
-
-.simple-table th {
-	height: 29px;
-	min-width: 120px;
-}
-
-.simple-table-header-color {
-	background: rgb(247, 246, 243);
-	color: black;
-}
-.simple-table-header {
-	font-weight: 500;
-}
-
-time {
-	opacity: 0.5;
-}
-
-.icon {
-	display: inline-flex;
-	align-items: center;
-	justify-content: center;
-	max-width: 1.2em;
-	max-height: 1.2em;
-	text-decoration: none;
-	vertical-align: text-bottom;
-	margin-right: 0.5em;
-}
-
-/*
- * Render emoji icons using a ::before pseudo-element to keep the glyph
- * out of the DOM textContent traversal. This avoids double-rendering icons
- * in callouts and page titles.
- * NOTE(slim/html-export-pseudo-icons): I can't tagref this because it will
- * flag as a duplicate tag after codegen.
- */
-.icon[data-emoji]::before {
-	content: attr(data-emoji);
-}
-
-img.icon {
-	border-radius: 3px;
-}
-
-.callout img.notion-static-icon {
-	width: 1em;
-	height: 1em;
-}
-
-.callout p {
-	margin: 0;
-}
-
-.callout h1,
-.callout h2,
-.callout h3 {
-	margin: 0 0 0.6rem;
-}
-
-.user-icon {
-	width: 1.5em;
-	height: 1.5em;
-	border-radius: 100%;
-	margin-right: 0.5rem;
-}
-
-.user-icon-inner {
-	font-size: 0.8em;
-}
-
-.text-icon {
-	border: 1px solid #000;
-	text-align: center;
-}
-
-.page-cover-image {
-	display: block;
-	object-fit: cover;
-	width: 100%;
-	max-height: 30vh;
-}
-
-.page-header-icon {
-	font-size: 3rem;
-	margin-bottom: 1rem;
-}
-
-.page-header-icon-with-cover {
-	margin-top: -0.72em;
-	margin-left: 0.07em;
-}
-
-.page-header-icon img {
-	border-radius: 3px;
-}
-
-.link-to-page {
-	margin: 1em 0;
-	padding: 0;
-	border: none;
-	font-weight: 500;
-}
-
-p > .user {
-	opacity: 0.5;
-}
-
-td > .user,
-td > time {
-	white-space: nowrap;
-}
-
-input[type="checkbox"] {
-	margin-right: 0.4em;
-	vertical-align: middle;
-}
-
-p {
-	margin-top: 0.5em;
-	margin-bottom: 0.5em;
-}
-
-.image {
-	border: none;
-	margin: 1.5em 0;
-	padding: 0;
-	border-radius: 0;
-	text-align: center;
-}
-
-.code,
-code {
-	background: rgba(135, 131, 120, 0.15);
-	border-radius: 3px;
-	padding: 0.2em 0.4em;
-	border-radius: 3px;
-	font-size: 85%;
-	tab-size: 2;
-}
-
-code {
-	color: #eb5757;
-}
-
-.code {
-	padding: 1.5em 1em;
-}
-
-.code-wrap {
-	white-space: pre-wrap;
-	word-break: break-all;
-}
-
-.code > code {
-	background: none;
-	padding: 0;
-	font-size: 100%;
-	color: inherit;
-}
-
-blockquote {
-	font-size: 1em;
-	margin: 1em 0;
-	padding-left: 1em;
-	border-left: 3px solid rgb(55, 53, 47);
-}
-
-blockquote.quote-large {
-	font-size: 1.25em;
-}
-
-.bookmark {
-	text-decoration: none;
-	max-height: 8em;
-	padding: 0;
-	display: flex;
-	width: 100%;
-	align-items: stretch;
-}
-
-.bookmark-title {
-	font-size: 0.85em;
-	overflow: hidden;
-	text-overflow: ellipsis;
-	height: 1.75em;
-	white-space: nowrap;
-}
-
-.bookmark-text {
-	display: flex;
-	flex-direction: column;
-}
-
-.bookmark-info {
-	flex: 4 1 180px;
-	padding: 12px 14px 14px;
-	display: flex;
-	flex-direction: column;
-	justify-content: space-between;
-}
-
-.bookmark-image {
-	width: 33%;
-	flex: 1 1 180px;
-	display: block;
-	position: relative;
-	object-fit: cover;
-	border-radius: 1px;
-}
-
-.bookmark-description {
-	color: rgba(55, 53, 47, 0.6);
-	font-size: 0.75em;
-	overflow: hidden;
-	max-height: 4.5em;
-	word-break: break-word;
-}
-
-.bookmark-href {
-	font-size: 0.75em;
-	margin-top: 0.25em;
-}
-
-.tab {
-	margin: 1.25em 0;
-	padding-inline: 1rem;
-	border: 1px solid rgba(55, 53, 47, 0.09);
-}
-
-.sans { font-family: ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", "Noto Sans Arabic", "Noto Sans Hebrew", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol"; }
-.code { font-family: "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace; }
-.serif { font-family: Lyon-Text, Georgia, ui-serif, serif; }
-.mono { font-family: iawriter-mono, Nitti, Menlo, Courier, monospace; }
-.pdf .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", "Noto Sans Arabic", "Noto Sans Hebrew", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK JP'; }
-.pdf:lang(zh-CN) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", "Noto Sans Arabic", "Noto Sans Hebrew", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK SC'; }
-.pdf:lang(zh-TW) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", "Noto Sans Arabic", "Noto Sans Hebrew", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK TC'; }
-.pdf:lang(ko-KR) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", "Noto Sans Arabic", "Noto Sans Hebrew", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK KR'; }
-.pdf .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
-.pdf:lang(zh-CN) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
-.pdf:lang(zh-TW) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
-.pdf:lang(ko-KR) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
-.pdf .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK JP'; }
-.pdf:lang(zh-CN) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK SC'; }
-.pdf:lang(zh-TW) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK TC'; }
-.pdf:lang(ko-KR) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK KR'; }
-.pdf .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
-.pdf:lang(zh-CN) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
-.pdf:lang(zh-TW) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
-.pdf:lang(ko-KR) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
-.highlight-default {
-	color: rgba(44, 44, 43, 1);
-}
-.highlight-gray {
-	color: rgba(125, 122, 117, 1);
-	fill: rgba(125, 122, 117, 1);
-}
-.highlight-brown {
-	color: rgba(159, 118, 90, 1);
-	fill: rgba(159, 118, 90, 1);
-}
-.highlight-orange {
-	color: rgba(210, 123, 45, 1);
-	fill: rgba(210, 123, 45, 1);
-}
-.highlight-yellow {
-	color: rgba(203, 148, 52, 1);
-	fill: rgba(203, 148, 52, 1);
-}
-.highlight-teal {
-	color: rgba(80, 148, 110, 1);
-	fill: rgba(80, 148, 110, 1);
-}
-.highlight-blue {
-	color: rgba(56, 125, 201, 1);
-	fill: rgba(56, 125, 201, 1);
-}
-.highlight-purple {
-	color: rgba(154, 107, 180, 1);
-	fill: rgba(154, 107, 180, 1);
-}
-.highlight-pink {
-	color: rgba(193, 76, 138, 1);
-	fill: rgba(193, 76, 138, 1);
-}
-.highlight-red {
-	color: rgba(207, 81, 72, 1);
-	fill: rgba(207, 81, 72, 1);
-}
-.highlight-default_background {
-	color: rgba(44, 44, 43, 1);
-}
-.highlight-gray_background {
-	background: rgba(42, 28, 0, 0.07);
-}
-.highlight-brown_background {
-	background: rgba(139, 46, 0, 0.086);
-}
-.highlight-orange_background {
-	background: rgba(224, 101, 1, 0.129);
-}
-.highlight-yellow_background {
-	background: rgba(211, 168, 0, 0.137);
-}
-.highlight-teal_background {
-	background: rgba(0, 100, 45, 0.09);
-}
-.highlight-blue_background {
-	background: rgba(0, 124, 215, 0.094);
-}
-.highlight-purple_background {
-	background: rgba(102, 0, 178, 0.078);
-}
-.highlight-pink_background {
-	background: rgba(197, 0, 93, 0.086);
-}
-.highlight-red_background {
-	background: rgba(223, 22, 0, 0.094);
-}
-.block-color-default {
-	color: inherit;
-	fill: inherit;
-}
-.block-color-gray {
-	color: rgba(125, 122, 117, 1);
-	fill: rgba(125, 122, 117, 1);
-}
-.block-color-brown {
-	color: rgba(159, 118, 90, 1);
-	fill: rgba(159, 118, 90, 1);
-}
-.block-color-orange {
-	color: rgba(210, 123, 45, 1);
-	fill: rgba(210, 123, 45, 1);
-}
-.block-color-yellow {
-	color: rgba(203, 148, 52, 1);
-	fill: rgba(203, 148, 52, 1);
-}
-.block-color-teal {
-	color: rgba(80, 148, 110, 1);
-	fill: rgba(80, 148, 110, 1);
-}
-.block-color-blue {
-	color: rgba(56, 125, 201, 1);
-	fill: rgba(56, 125, 201, 1);
-}
-.block-color-purple {
-	color: rgba(154, 107, 180, 1);
-	fill: rgba(154, 107, 180, 1);
-}
-.block-color-pink {
-	color: rgba(193, 76, 138, 1);
-	fill: rgba(193, 76, 138, 1);
-}
-.block-color-red {
-	color: rgba(207, 81, 72, 1);
-	fill: rgba(207, 81, 72, 1);
-}
-.block-color-default_background {
-	color: inherit;
-	fill: inherit;
-}
-.block-color-gray_background {
-	background: rgba(240, 239, 237, 1);
-}
-.block-color-brown_background {
-	background: rgba(245, 237, 233, 1);
-}
-.block-color-orange_background {
-	background: rgba(251, 235, 222, 1);
-}
-.block-color-yellow_background {
-	background: rgba(249, 243, 220, 1);
-}
-.block-color-teal_background {
-	background: rgba(232, 241, 236, 1);
-}
-.block-color-blue_background {
-	background: rgba(229, 242, 252, 1);
-}
-.block-color-purple_background {
-	background: rgba(243, 235, 249, 1);
-}
-.block-color-pink_background {
-	background: rgba(250, 233, 241, 1);
-}
-.block-color-red_background {
-	background: rgba(252, 233, 231, 1);
-}
-.select-value-color-default { background-color: rgba(42, 28, 0, 0.07); }
-.select-value-color-gray { background-color: rgba(28, 19, 1, 0.11); }
-.select-value-color-brown { background-color: rgba(127, 51, 0, 0.156); }
-.select-value-color-orange { background-color: rgba(196, 88, 0, 0.203); }
-.select-value-color-yellow { background-color: rgba(209, 156, 0, 0.282); }
-.select-value-color-green { background-color: rgba(0, 96, 38, 0.156); }
-.select-value-color-blue { background-color: rgba(0, 118, 217, 0.203); }
-.select-value-color-purple { background-color: rgba(92, 0, 163, 0.141); }
-.select-value-color-pink { background-color: rgba(183, 0, 78, 0.152); }
-.select-value-color-red { background-color: rgba(206, 24, 0, 0.164); }
-
-.checkbox {
-	display: inline-flex;
-	vertical-align: text-bottom;
-	width: 16;
-	height: 16;
-	background-size: 16px;
-	margin-left: 2px;
-	margin-right: 5px;
-}
-
-.checkbox-on {
-	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20width%3D%2216%22%20height%3D%2216%22%20fill%3D%22%2358A9D7%22%2F%3E%0A%3Cpath%20d%3D%22M6.71429%2012.2852L14%204.9995L12.7143%203.71436L6.71429%209.71378L3.28571%206.2831L2%207.57092L6.71429%2012.2852Z%22%20fill%3D%22white%22%2F%3E%0A%3C%2Fsvg%3E");
-}
-
-.checkbox-off {
-	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20x%3D%220.75%22%20y%3D%220.75%22%20width%3D%2214.5%22%20height%3D%2214.5%22%20fill%3D%22white%22%20stroke%3D%22%2336352F%22%20stroke-width%3D%221.5%22%2F%3E%0A%3C%2Fsvg%3E");
-}
-	
-
-@media(max-width:960px){body{margin:2em 24px}}@media(max-width:600px){.column-list{display:block}.column{width:100%!important;padding:0!important}table{display:block;overflow-x:auto}.page-title{font-size:2rem}}
-</style><style>@import url('https://cdn.jsdelivr.net/npm/katex@0.16.25/dist/katex-swap.min.css')
-@media(max-width:960px){body{margin:2em 24px}}@media(max-width:600px){.column-list{display:block}.column{width:100%!important;padding:0!important}table{display:block;overflow-x:auto}.page-title{font-size:2rem}}
-</style><link rel="stylesheet" href="/header.css?v=20261015-bilingual"><link rel="stylesheet" href="/shotloom/navigation.css"><meta property="og:site_name" content="CINEV Archive"><link rel="stylesheet" href="/footer.css?v=20261015-note"><script defer src="/language-switch.js"></script><link rel="stylesheet" href="/english.css"></head><body class="technology-page"><header class="portfolio-header"><div class="portfolio-header-inner"><a class="portfolio-brand" href="/en/" aria-label="CineV Product"><svg viewbox="0 0 493 102" aria-hidden="true" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M239.395 50.8836V101.479H226.097V50.8836C226.097 41.0059 222.173 31.5327 215.188 24.548C208.203 17.5634 198.73 13.6395 188.852 13.6395C178.974 13.6395 169.499 17.5631 162.513 24.5474C155.527 31.5317 151.601 41.0049 151.598 50.8836V101.479H138.352V50.8836C138.355 37.492 143.677 24.6498 153.147 15.1815C162.618 5.71314 175.461 0.39406 188.852 0.394061C195.487 0.388488 202.057 1.69023 208.189 4.22494C214.32 6.75966 219.891 10.4776 224.585 15.1665C229.279 19.8553 233.003 25.423 235.544 31.5515C238.085 37.68 239.394 44.2492 239.395 50.8836Z" fill="currentColor"></path><path d="M376.198 88.181H304.912C287.944 88.181 268.474 74.4584 268.474 57.5225H360.98L354.405 44.277H268.506C268.506 27.3093 288.018 13.6185 304.944 13.6185H339.229L332.654 0.373047H301.571C288.178 0.381475 275.335 5.70585 265.864 15.1766C256.393 24.6474 251.069 37.4901 251.061 50.8839C251.061 64.2886 256.386 77.1443 265.864 86.6228C275.343 96.1014 288.198 101.426 301.603 101.426H382.773L376.198 88.181Z" fill="currentColor"></path><path d="M112.837 13.5867V101.427H126.083V0.341309H112.837V13.5867Z" fill="currentColor"></path><path d="M0.309326 50.8839C0.309326 64.2887 5.63433 77.1443 15.1129 86.6229C24.5915 96.1015 37.4472 101.427 50.8519 101.427H101.013V88.1811H50.8519C45.9504 88.1867 41.0959 87.2261 36.5659 85.3542C32.0359 83.4824 27.9193 80.736 24.4514 77.272C20.9836 73.8081 18.2325 69.6946 16.3555 65.1667C14.4785 60.6389 13.5123 55.7854 13.5123 50.8839C13.5123 45.986 14.4771 41.136 16.3514 36.6109C18.2258 32.0858 20.9731 27.9742 24.4364 24.5108C27.8998 21.0475 32.0114 18.3002 36.5365 16.4258C41.0616 14.5515 45.9116 13.5867 50.8095 13.5867H100.97V0.341309H50.8095C37.4122 0.352553 24.5673 5.68252 15.0979 15.1599C5.62852 24.6372 0.309321 37.4865 0.309326 50.8839Z" fill="currentColor"></path><path d="M447.952 88.6887C434.963 62.054 421.21 33.8466 408.089 6.93856C407.081 4.87156 405.513 3.12953 403.563 1.91116C401.614 0.692798 399.361 0.0471448 397.062 0.0478521H366.412C357.341 0.0478521 351.403 9.55164 355.379 17.7091L393.086 95.0368C394.094 97.1046 395.663 98.8474 397.613 100.066C399.564 101.285 401.818 101.931 404.117 101.93H446.339C447.628 101.93 448.891 101.567 449.985 100.884C451.078 100.2 451.958 99.2233 452.523 98.064L447.952 88.6887ZM377.606 13.5539H391.043C391.809 13.5537 392.559 13.7692 393.208 14.1757C393.858 14.5823 394.379 15.1635 394.713 15.8528L400.153 26.9742C400.457 27.5977 400.597 28.2882 400.561 28.9808C400.525 29.6734 400.314 30.3454 399.947 30.9339C399.58 31.5223 399.07 32.0079 398.464 32.3451C397.858 32.6822 397.176 32.8598 396.483 32.8613H383.036C382.271 32.8599 381.521 32.6437 380.872 32.2373C380.223 31.8309 379.701 31.2506 379.366 30.5624L373.944 19.441C373.64 18.8177 373.499 18.1273 373.535 17.4347C373.571 16.742 373.782 16.0698 374.149 15.4812C374.515 14.8926 375.026 14.407 375.632 14.0698C376.237 13.7327 376.919 13.5551 377.612 13.5539H377.606ZM391.219 41.4676H404.66C405.425 41.4673 406.176 41.6829 406.825 42.0894C407.474 42.496 407.995 43.0772 408.33 43.7665L413.754 54.8879C414.057 55.5114 414.197 56.2018 414.161 56.8944C414.125 57.587 413.914 58.2591 413.547 58.8476C413.18 59.436 412.67 59.9216 412.064 60.2588C411.458 60.5959 410.777 60.7735 410.083 60.775H396.646C395.881 60.7736 395.131 60.5574 394.482 60.151C393.834 59.7446 393.312 59.1643 392.976 58.4761L387.554 47.3547C387.25 46.7312 387.109 46.0407 387.145 45.3478C387.181 44.655 387.393 43.9827 387.76 43.394C388.127 42.8054 388.637 42.3198 389.243 41.9828C389.849 41.6458 390.531 41.4685 391.225 41.4676H391.219ZM404.843 69.3812H418.278C419.044 69.381 419.794 69.5965 420.443 70.0031C421.092 70.4097 421.614 70.9909 421.948 71.6802L427.372 82.8016C427.676 83.4251 427.816 84.1155 427.78 84.8081C427.744 85.5007 427.532 86.1728 427.165 86.7613C426.798 87.3497 426.288 87.8353 425.682 88.1724C425.077 88.5096 424.395 88.6872 423.702 88.6887H410.257C409.491 88.6889 408.74 88.4734 408.091 88.0668C407.442 87.6603 406.921 87.0791 406.586 86.3897L401.157 75.2745C400.85 74.6495 400.709 73.9568 400.744 73.2618C400.78 72.5668 400.993 71.8924 401.362 71.3024C401.731 70.7125 402.244 70.2264 402.854 69.8902C403.463 69.5541 404.147 69.3789 404.843 69.3812Z" fill="currentColor"></path><path d="M491.704 17.7072C478.706 44.3684 465.25 71.968 452.523 98.0641C450.317 93.5417 445.868 84.4174 443.668 79.9092L473.15 19.4371C473.453 18.8138 473.594 18.1236 473.558 17.4311C473.522 16.7387 473.31 16.0667 472.943 15.4785C472.576 14.8903 472.066 14.405 471.46 14.0684C470.854 13.7318 470.172 13.5548 469.479 13.5541H464.082C463.317 13.5533 462.567 13.7679 461.918 14.1733C461.269 14.5788 460.747 15.1587 460.412 15.8469L450.517 36.1335C447.64 42.0348 439.235 42.0348 436.358 36.1335L436.266 35.9458C435.742 34.8708 435.469 33.6904 435.469 32.4943C435.469 31.2982 435.742 30.1178 436.266 29.0428C439.302 22.809 443.637 13.9253 447.05 6.93873C448.058 4.87065 449.627 3.12763 451.577 1.90852C453.528 0.68942 455.782 0.0433244 458.081 0.0439458H480.671C489.743 0.0459856 495.683 9.54978 491.704 17.7072Z" fill="currentColor"></path></svg><span class="portfolio-archive-badge">Archive</span></a><nav class="portfolio-nav" aria-label="Page navigation"><a href="/en/" aria-current="page">PRODUCT</a><a href="/en/showcase/">SHOWCASE</a></nav><a class="portfolio-language" href="/shotloom/" hreflang="ko" lang="ko" aria-label="한국어로 보기">한국어</a></div></header><section class="shotloom-hero" aria-labelledby="shotloom-title"><div class="shotloom-hero-inner"><a class="shotloom-back" href="/en/#archive">← Product page</a><p class="shotloom-eyebrow">CINEV / 3D SCENE DIRECTION</p><h1 id="shotloom-title">Shotloom</h1><p class="shotloom-description">Generate a 3D scene from an image, then directly edit character placement, poses, and camera composition.<br>Use your directed scene to generate new images and video.</p><p class="shotloom-period"><span>Project period</span><span><time datetime="2026-04">2026.04</time> — <time datetime="2026-09">2026.09</time></span></p></div></section><article id="3dbc38de-efdd-80e1-96aa-c9151ef359b7" class="page sans"><div class="page-body"><h2 id="3dbc38de-efdd-806e-9fff-fbec0149b0de" class="" dir="auto">1. Featured results</h2><p id="80fcc782-14f3-47ec-883a-4a0844d9ecbb" class="" dir="auto"><strong>Start from one shot and create a new perspective</strong></p><p id="3dbc38de-efdd-804c-af12-d38c0d29d923" class="" dir="auto">Open a storyboard shot as a 3D scene and direct it by editing the characters and camera. The edited scene is used to generate video with <code>SceneGen</code>, and the final frame of the generated video can be added to the <code>CineV</code>  storyboard.</p><figure id="3dbc38de-efdd-80fd-8161-cac75d71e259" dir="ltr"><video controls playsinline preload="metadata" src="/shotloom/media/33.mp4" style="display:block;width:100%;height:auto"></video><figcaption>Result video generated with SceneGen</figcaption></figure><p id="ac0965a4-20f7-4aad-8ef9-0276aff1583d" class="" dir="auto"><strong>From the original shot to 3D scene direction</strong></p><div id="4e4f512d-9844-44ba-aec2-82a1ccca9fba" class="column-list" data-notion-column-list="" dir="auto"><div id="7c0c1736-19fa-484f-8aaa-6f95f64cf400" style="width:50%" class="column" data-notion-column-ratio="0.5" dir="auto"><figure id="3dbc38de-efdd-80ad-b0a6-d3364530ef78" class="image" data-notion-image="media/35.png" dir="ltr"><a href="/shotloom/media/35.png"><img style="width:703.99853515625px" src="/shotloom/media/35.png"></a><figcaption>Original shot — the storyboard image that starts the scene</figcaption></figure></div><div id="0ebf49a3-11a2-4d38-9f9e-ce746c57e095" style="width:50%" class="column" data-notion-column-ratio="0.5" dir="auto"><figure id="3dbc38de-efdd-806d-a21b-ceb333ae0705" class="image" data-notion-image="media/02.png" dir="ltr"><a href="/shotloom/media/02.png"><img style="width:568.676616915423px" src="/shotloom/media/02.png"></a><figcaption>3D scene editing — reframe the camera to compose the character and surrounding space together</figcaption></figure></div></div><p id="3dbc38de-efdd-808a-a6ff-c34126d2aaa7" class="" dir="auto">In this example, the camera was changed from a close view of the character to a composition showing the surrounding space. The video above was generated from the edited scene using <code>SceneGen</code>.</p><h3 id="3dbc38de-efdd-81fe-a47f-f7ebd6986c79" class="" dir="auto">Edit poses, motion, and cameras to create video</h3><p id="3dbc38de-efdd-810c-ad71-c1c1550f2af0" class="" dir="auto">Follow the process of editing a character's poses and actions and the camera composition within one scene, then generating a video with SceneGen.</p><figure id="3dbc38de-efdd-8055-9645-d0962e555360" dir="ltr"><video controls playsinline preload="metadata" src="/shotloom/media/32.mp4" style="display:block;width:100%;height:auto"></video><figcaption>Editing poses, motion, and cameras in Shotloom, then generating video with SceneGen</figcaption></figure><p id="3dbc38de-efdd-81c9-b238-f90de8230030" class="" dir="auto">Detailed instructions: <a href="#0cb557bd-f35c-4538-a264-58e63bdf36cd">4.3 Create character actions</a> · <a href="#dc59e6d3-64bc-4ac5-9615-6e6733406845">4.4 Direct the camera</a> · <a href="#d1bf72c5-fcfd-4e92-a1a4-9d452482be97">4.7 Connect SceneGen results to CineV</a></p><h2 id="ccf83f32-2028-4cbd-9896-9c6f35da5147" class="" dir="auto">2. The product's role</h2><p id="3dbc38de-efdd-8014-8e35-c0eefa12f097" class="" dir="auto"><code><strong>Shotloom</strong></code><strong> is a 3D scene direction tool for editing character actions and camera composition.</strong></p><p id="3dbc38de-efdd-80ba-bfa6-d875e00e484a" class="" dir="auto">Place characters, generate desired actions and apply them to the timeline, then design camera compositions that change over time. Play the scene to review the direction, save your work, and return to editing later.</p><p id="d8a677ad-e1ac-497b-895e-2f6fe79f9a62" class="" dir="auto"><code>CineV</code> shots can be edited, or you can start by building a scene directly in <code>Shotloom</code>. Export your edits as camera images or video, or connect them to generation through <code>SceneGen</code> and production on the <code>CineV</code>  storyboard.</p><ul id="c76112ce-725d-4013-8bc5-87f694cdd7c2" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Scene composition:</strong> Adjust the position and orientation of characters and props.</li></ul><ul id="3dbc38de-efdd-80af-842d-d29b7023bec0" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Direction over time:</strong> Build character actions and camera movements on the timeline.</li></ul><ul id="3dbc38de-efdd-8063-a3c4-d0f8900c8f4d" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Use the results:</strong> Keep editable work and use it for image and video export and <code>CineV</code>  integration.</li></ul><h2 id="3dbc38de-efdd-80a0-b6ab-e623dec02091" class="" dir="auto">3. The complete production workflow</h2><p id="262582ba-49ca-46bd-a47f-97aeb7b9fe2e" class="" dir="auto"><strong>Prepare a scene → Edit characters and cameras → Play and refine → Use the results</strong></p><p id="7bd83f6a-691c-40e4-916b-f19207c1f933" class="" dir="auto">Open <code>CineV</code> shots as 3D scenes, or build a scene directly in <code>Shotloom</code>. Edit character actions and camera composition, then play the result to review it. Keep the work as an editable bundle and continue with the output suited to your purpose.</p><figure id="93154689-28f4-4b20-b1e3-8b4f2b294e2e" class="image" data-notion-image="media/12.png" dir="ltr"><a href="/shotloom/media/12.png"><img style="width:703.9921875px" src="/shotloom/media/12.png"></a><figcaption>The full workflow: prepare and direct a scene, then create an editable bundle, camera exports, or CineV output.</figcaption></figure><table id="d9a78dad-0755-433c-983e-6abf2f55bfa0" class="simple-table" dir="ltr"><thead class="simple-table-header"><tr id="f35ba222-96d1-48f3-81c6-2cac8bc255f1" dir="ltr"><th id="pCQ?" class="simple-table-header-color simple-table-header">Using the results</th><th id="R&lt;ZI" class="simple-table-header-color simple-table-header">Workflow</th><th id="I^U\" class="simple-table-header-color simple-table-header">Output</th></tr></thead><tbody><tr id="1160db83-da8f-4d59-a2ad-f4a962ab23e3" dir="ltr"><td id="pCQ?" class="">Keep editable work</td><td id="R&lt;ZI" class="">Save → Export bundle → Reopen</td><td id="I^U\" class="">An editable <code>.shotloom.zip</code>  bundle</td></tr><tr id="0110ccf8-dc32-485c-b27c-0d16afbe4953" dir="ltr"><td id="pCQ?" class="">Camera export</td><td id="R&lt;ZI" class="">Camera Export → Export complete</td><td id="I^U\" class="">First- and last-frame PNGs and silent WebM</td></tr><tr id="9f73db43-577d-4b10-954a-eb64563e3262" dir="ltr"><td id="pCQ?" class="">CineV integration</td><td id="R&lt;ZI" class="">Generate in SceneGen → Review result → Send to CineV</td><td id="I^U\" class="">A storyboard with the generated video's final frame added</td></tr></tbody></table><p id="3dbc38de-efdd-80dc-a756-e68da11ab673" class="" dir="auto">Camera Export outputs the camera view of the edited 3D scene. SceneGen generates video based on the scene and generation settings, while <code>Send to CineV</code> transfers the final-frame image of the generated video.</p><hr id="cd8b1559-5cad-43b4-8371-ce8513ea8dc0" dir="auto"><h2 id="3dbc38de-efdd-807d-95d6-c582ac216ae4" class="" dir="auto">4. Detailed feature guide</h2><p id="3dbc38de-efdd-8062-a88d-c89f8f025ebe" class="" dir="auto">CineV integration is covered in 4.1 and 4.7, and Shotloom's standalone editing tools in 4.2–4.6. Each workflow can be used independently on a prepared Shot. A Shot is one scene-editing unit; a bundle stores work so it can be reopened and edited.</p><nav id="dfb3fa9e-b3a1-468f-a578-fb2d2660f001" class="table_of_contents" data-notion-toc="" dir="ltr"><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#3dbc38de-efdd-806e-9fff-fbec0149b0de">1. Featured results</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#3dbc38de-efdd-81fe-a47f-f7ebd6986c79">Edit poses, motion, and cameras to create video</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#ccf83f32-2028-4cbd-9896-9c6f35da5147">2. The product's role</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#3dbc38de-efdd-80a0-b6ab-e623dec02091">3. The complete production workflow</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#3dbc38de-efdd-807d-95d6-c582ac216ae4">4. Detailed feature guide</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#fc084624-2a26-4dfd-a7cd-9709d578c867">4.1 Open a CineV shot in Shotloom</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#359489c9-318b-4a3a-8155-57f56af647d6">4.2 Compose a scene</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#0cb557bd-f35c-4538-a264-58e63bdf36cd">4.3 Create character actions</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#dc59e6d3-64bc-4ac5-9615-6e6733406845">4.4 Direct the camera</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#d9d10c48-91d7-458f-9321-8b4b92a30a0d">4.5 Save and resume your work</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#a21a4e3e-a80d-467b-99db-c0bedccbf86c">4.6 Export your results</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#d1bf72c5-fcfd-4e92-a1a4-9d452482be97">4.7 Connect SceneGen results to CineV</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#5cc9a4a2-2e5e-44aa-a343-a40af0cffe49">5. Glossary</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#826a4e65-d681-45be-a7da-b38c1a803de1">Saving, exporting, and generating</a></div></nav><h3 id="fc084624-2a26-4dfd-a7cd-9709d578c867" class="" dir="auto">4.1 Open a CineV shot in Shotloom</h3><p id="dd4e6c2b-2a18-4bb0-b9c0-da2b03ac5584" class="" dir="auto">Select a storyboard shot, generate a 3D scene, and start editing it in Shotloom.</p><details id="3dbc38de-efdd-80f9-86e9-e814e250e0d7" open="" class="toggle" dir="auto"><summary>Open a project and review the storyboard</summary><div class="indented"><p id="d6f25b3b-ce5c-4646-8ff5-c48a3c9705b1" class="" dir="auto">Open the project you want to edit in CineV and review its storyboard.</p><figure id="3dbc38de-efdd-804b-8598-e8fb0306c5a2" class="image" data-notion-image="media/31.png" dir="ltr"><a href="/shotloom/media/31.png"><img style="width:703.991455078125px" src="/shotloom/media/31.png"></a><figcaption>Open a project in CineV</figcaption></figure><figure id="3dbc38de-efdd-8018-b2db-c3b2f194652c" class="image" data-notion-image="media/23.png" dir="ltr"><a href="/shotloom/media/23.png"><img style="width:703.9772338867188px" src="/shotloom/media/23.png"></a><figcaption>Review the project's storyboard</figcaption></figure></div></details><p id="1f55cefe-68f2-40c3-9fd6-113de8f3374c" class="" dir="auto"><strong>1. Select a shot to edit</strong>  — In the toolbar, click <code>3D Shot Edit</code>. The selected shot image and scene generation panel open on the left.</p><figure id="3dbc38de-efdd-80fd-9e9e-dbe4d6e55d23" class="image" data-notion-image="media/24.png" dir="ltr"><a href="/shotloom/media/24.png"><img style="width:703.99853515625px" src="/shotloom/media/24.png"></a><figcaption>The selected shot's 3D Shot Edit panel</figcaption></figure><p id="96ae059f-6368-4978-83b3-aeabd14c0df1" class="" dir="auto"><strong>2. Generate a 3D scene</strong>  — In the left panel, click <code>Generate Scene</code> and wait for generation to finish.</p><figure id="3dbc38de-efdd-8060-8628-db49466a7259" class="image" data-notion-image="media/25.png" dir="ltr"><a href="/shotloom/media/25.png"><img style="width:703.991455078125px" src="/shotloom/media/25.png"></a><figcaption>Generate a scene from the selected shot</figcaption></figure><p id="3dbc38de-efdd-80c0-9388-ccfef0b194ab" class="" dir="auto"><strong>3. Open in Shotloom</strong>  — When generation finishes, click the now-enabled <code>Open in Shotloom</code> button.</p><figure id="3dbc38de-efdd-8066-8a51-fd2713afcc16" class="image" data-notion-image="media/26.png" dir="ltr"><a href="/shotloom/media/26.png"><img style="width:703.99853515625px" src="/shotloom/media/26.png"></a><figcaption>Open Shotloom after scene generation completes</figcaption></figure><p id="0e653493-dccd-46a7-a03d-f401e8cd371e" class="" dir="auto"><strong>4. Review the generated scene</strong>  — Review how characters and space have been reconstructed from the original shot.</p><figure id="3dbc38de-efdd-8072-ae2f-c2f8daf8dd77" class="image" data-notion-image="media/34.png" dir="ltr"><a href="/shotloom/media/34.png"><img style="width:703.9963989257812px" src="/shotloom/media/34.png"></a><figcaption>The 3D scene opened in Shotloom</figcaption></figure><h3 id="359489c9-318b-4a3a-8155-57f56af647d6" class="" dir="auto">4.2 Compose a scene</h3><p id="68f8809e-b41a-402e-96b8-8de7e01104af" class="" dir="auto">Add characters and adjust their positions and orientations to compose the scene you will edit.</p><p id="748c2437-f111-4f7c-be1c-f9eecced51a1" class="" dir="auto"><strong>1. Add a character</strong>  — Add the character you want to use. The image below shows a character already added to the scene.</p><figure id="06585e1c-ad39-43ca-96a0-0752da568c6a" class="image" data-notion-image="media/20.png" dir="ltr"><a href="/shotloom/media/20.png"><img src="/shotloom/media/20.png"></a><figcaption>A character added to the scene</figcaption></figure><p id="33f4444c-2810-4723-b9ab-816c331e0512" class="" dir="auto"><strong>2. Adjust position and orientation</strong>  — Select a character and place it appropriately in the scene.</p><figure id="e9993045-97ed-4c56-803f-cd1e9b4a5036" class="image" data-notion-image="media/21.png" dir="ltr"><a href="/shotloom/media/21.png"><img src="/shotloom/media/21.png"></a><figcaption>Adjust the selected character's position and orientation</figcaption></figure><p id="5ff0a92f-a51d-4630-bb2a-7ca5d9af1bb5" class="" dir="auto"><strong>3. Check the placement</strong>  — Review the full scene to confirm that the character is in the intended position and facing the right direction.</p><figure id="08388d39-c270-4d3f-8e51-89759e170861" class="image" data-notion-image="media/22.png" dir="ltr"><a href="/shotloom/media/22.png"><img src="/shotloom/media/22.png"></a><figcaption>Review character placement in the full scene</figcaption></figure><details id="853ac8d6-c1b2-4765-a0ef-364da0b80f08" open="" class="toggle" dir="auto"><summary>Starting conditions and prop placement</summary><div class="indented"><p id="bd924a68-1330-47e6-91a5-77e88aa9ca2b" class="" dir="auto">Start with a new bundle or an existing Shot open.</p><p id="36b1c44e-50d0-49c5-9077-1bb2aa6b0ee3" class="" dir="auto">If the scene needs props, add them and adjust their positions and orientations too. The example above shows character placement.</p></div></details><h3 id="0cb557bd-f35c-4538-a264-58e63bdf36cd" class="" dir="auto">4.3 Create character actions</h3><p id="15d1e42d-06e3-4f1d-9fd3-1da3e0ee7283" class="" dir="auto">Describe the desired action in a sentence, compare generated candidates, and apply one to the character's timeline.</p><p id="432ae60e-d417-43a6-b4d2-fd823ce3f6d1" class="" dir="auto"><strong>1. Generate an action</strong> — In the <code>Motion</code>  tab, open <code>Create New Motion</code> and enter the action description and settings. Example: Slowly wave your right hand while standing in place.</p><figure id="30a60a84-185e-4068-823b-adc62397303c" class="image" data-notion-image="media/03.png" dir="ltr"><a href="/shotloom/media/03.png"><img src="/shotloom/media/03.png"></a></figure><p id="46b085e9-69c4-40ba-9b8d-8158e3ac76a3" class="" dir="auto"><strong>2. Compare candidates</strong>  — Select a generated candidate to preview it on the character. Use <code>Play Preview</code> to review it again if needed.</p><figure id="0a580f4b-364d-4de3-9e96-50646484b1ef" class="image" data-notion-image="media/04.png" dir="ltr"><a href="/shotloom/media/04.png"><img src="/shotloom/media/04.png"></a></figure><p id="ecd174f1-92d0-4d13-acf7-c8a077f1deee" class="" dir="auto"><strong>3. Apply to the timeline</strong>  — Run Add Performance Clip on the candidate. A Performance Clip is an action clip applied to a character's timeline. Confirm the target character and application range, then click <code>Add Clip</code> button.</p><figure id="23662290-40ca-4275-b5d8-dc0934a9e529" class="image" data-notion-image="media/05.png" dir="ltr"><a href="/shotloom/media/05.png"><img src="/shotloom/media/05.png"></a></figure><p id="d03f5b9b-3370-4944-8bdb-3f09a5393557" class="" dir="auto"><strong>4. Play the applied result</strong>  — Exit the candidate preview and play the actual timeline clip. Confirm that the selected character performs the desired action during the specified interval.</p><figure id="5edf42d2-51b5-4107-8211-33993e37776b" class="image" data-notion-image="media/06.png" dir="ltr"><a href="/shotloom/media/06.png"><img src="/shotloom/media/06.png"></a></figure><details id="1abdfcc3-1b50-4b7c-9426-a531f1d346c7" open="" class="toggle" dir="auto"><summary>Candidate previews, clip application, and poses</summary><div class="indented"><p id="53bd6735-0a46-4fd7-98a7-550725def17e" class="" dir="auto">The Shot must contain a character, and motion generation must be available.</p><p id="6d8719b2-8176-4476-adc6-3f01f54a86d0" class="" dir="auto">Generating and previewing a candidate alone does not add it to the timeline. You must specify a target character and interval, then add the clip.</p><p id="19e6d85a-111c-4ee4-b059-906f4cc9f5f5" class="" dir="auto">To apply a pose, open the <code>Pose</code>  tab, select a candidate, and specify the target character.</p></div></details><h3 id="dc59e6d3-64bc-4ac5-9615-6e6733406845" class="" dir="auto">4.4 Direct the camera</h3><p id="09039e86-aee4-49ce-8e44-5b65c8cb83ba" class="" dir="auto">Place camera keys to change the composition over time and play the scene to review the movement. A camera key stores the camera composition at a particular frame.</p><p id="a68ff161-2b4a-4f45-a3d7-fc8bfaa15170" class="" dir="auto"><strong>1. Select a camera and composition</strong>  — Select the camera to edit and compose the shot in pilot view. Pilot view lets you edit a scene while looking through the selected camera.</p><figure id="97107074-f930-4a01-926f-5105426d3ff9" class="image" data-notion-image="media/07.png" dir="ltr"><a href="/shotloom/media/07.png"><img src="/shotloom/media/07.png"></a><figcaption>Check the composition from the selected camera's viewpoint</figcaption></figure><p id="04c161ea-153d-4c02-af33-a32dd36a631a" class="" dir="auto"><strong>2. Save the starting composition</strong>  — Go to the starting frame, adjust the composition, and save a camera key. After entering values, you must also execute the key-save action.</p><figure id="6a6b0221-1e2a-45c8-b82a-c27450fcdd6a" class="image" data-notion-image="media/08.png" dir="ltr"><a href="/shotloom/media/08.png"><img src="/shotloom/media/08.png"></a></figure><p id="2a1b5e4d-03ab-4852-bbbb-49cdafca7ed5" class="" dir="auto"><strong>3. Save the next composition</strong>  — Move to a later frame, enter the position and rotation for the next composition, and save them as a key.</p><figure id="899dc51a-6ddd-43ce-9ae3-48ba74a2851d" class="image" data-notion-image="media/10.png" dir="ltr"><a href="/shotloom/media/10.png"><img src="/shotloom/media/10.png"></a></figure><details id="fcf4b741-48a1-4b36-b9d6-4abc1e3451f0" open="" class="toggle" dir="auto"><summary>Composition values, FOV, and multiple cameras</summary><div class="indented"><figure id="c79b0058-ea39-4949-8cdf-adbca51e35d0" class="image" data-notion-image="media/09.png" dir="ltr"><a href="/shotloom/media/09.png"><img src="/shotloom/media/09.png"></a><figcaption>Enter the next composition's position and rotation at a later frame</figcaption></figure><p id="edbb92f3-a65f-4511-bacf-d50658bd7efa" class="" dir="auto">Enter position and rotation values in Properties, then save a key. If you saved position and rotation keys together, save any changed FOV separately.</p><p id="70bb9993-337b-49d3-99e8-416cc2cc6e93" class="" dir="auto">If there is no camera, add one first. With multiple cameras, also specify the main camera to use for the current interval.</p></div></details><p id="7ad9136b-ef41-49ed-b35f-2d550b202be4" class="" dir="auto"><strong>4. Check the movement</strong>  — Play between the two keys in the timeline camera preview. Confirm that the camera keys appear at different frames and that the composition changes as intended.</p><figure id="cdeec878-756d-4bd1-a93c-f601e82ca172" class="image" data-notion-image="media/11.png" dir="ltr"><a href="/shotloom/media/11.png"><img src="/shotloom/media/11.png"></a><figcaption>Check movement between two camera keys</figcaption></figure><details id="a193b110-b8d1-4165-bd15-41ee2c2ab919" open="" class="toggle" dir="auto"><summary>Refine camera movement</summary><div class="indented"><p id="ee2e3c20-9d59-4559-9ccb-4bf79a68db3b" class="" dir="auto">Stop playback and go to the frame you want to edit. Adjust its values, save the key again, and play the surrounding interval to check the movement.</p></div></details><h3 id="d9d10c48-91d7-458f-9321-8b4b92a30a0d" class="" dir="auto">4.5 Save and resume your work</h3><p id="e1fa34f9-7a96-432d-9b81-2ae76e9b0bca" class="" dir="auto">Save your edits and keep them in a bundle file that can be reopened for further work.</p><p id="c2ed9b29-c223-4bf7-bb32-b8d83d66f162" class="" dir="auto"><strong>1. Save your work</strong> — <code>File → Save</code> and confirm the <code>Saved</code>  status.</p><figure id="d45a78a2-f8bf-4147-9224-58805d9faae5" class="image" data-notion-image="media/17.png" dir="ltr"><a href="/shotloom/media/17.png"><img src="/shotloom/media/17.png"></a><figcaption>Save your work from the File menu</figcaption></figure><p id="6c2ee6a2-4952-43e6-b2a5-87760e4c587a" class="" dir="auto"><strong>2. Keep an editable bundle</strong> — <code>File → Export</code> to download an editable <code>.shotloom.zip</code>  bundle.</p><figure id="ed2b0557-bd96-4451-95de-d890ef998e1f" class="image" data-notion-image="media/18.png" dir="ltr"><a href="/shotloom/media/18.png"><img src="/shotloom/media/18.png"></a><figcaption>Export an editable Shotloom bundle</figcaption></figure><p id="8bce1c7a-d63a-4855-8d16-f36f6b6b486d" class="" dir="auto"><strong>3. Reopen your work</strong> — <code>File → Import</code> to reopen the saved bundle. Check that characters, clips, and camera keys are preserved, then continue editing.</p><figure id="4aa71ed4-6fca-446f-87f5-f324a81b6c3e" class="image" data-notion-image="media/19.png" dir="ltr"><a href="/shotloom/media/19.png"><img src="/shotloom/media/19.png"></a></figure><details id="69d079d0-ac94-4f37-b7b0-a3058839db7a" open="" class="toggle" dir="auto"><summary>Prepare savable work and verify reloading</summary><div class="indented"><p id="3663e44c-8b99-4f3d-8de7-ff368040aa94" class="" dir="auto">Work in a bundle that can be saved. If using a temporary Preview, first prepare the work in a new or imported bundle.</p><p id="5cbafd41-a48b-437e-959e-bd32847c448f" class="" dir="auto">Return to the same frame as before saving to compare whether character, clip, and camera edits were preserved.</p></div></details><h3 id="a21a4e3e-a80d-467b-99db-c0bedccbf86c" class="" dir="auto">4.6 Export your results</h3><p id="c3ba8d27-adfb-4038-a45c-3b1d9290a40f" class="" dir="auto">Export the edited Shot as the camera's first and last frame images and a video.</p><p id="e5b36f1a-1833-4417-94f1-1b9cf89d926f" class="" dir="auto"><strong>1. Run camera export</strong>  — In the camera export tools at the top right, click <code>Export</code> and choose a folder to save the files. <code>File → Export</code> is used to keep an editable bundle.</p><figure id="4e1f6e98-ae84-42dc-9032-449f376fe53d" class="image" data-notion-image="media/14.png" dir="ltr"><a href="/shotloom/media/14.png"><img src="/shotloom/media/14.png"></a><figcaption>Camera export tools — the Export button at the top right</figcaption></figure><p id="0f4788ab-6ad5-4fe5-aa9d-d3849ff43bfe" class="" dir="auto"><strong>2. Confirm export completion</strong>  — Wait for export to finish and check the completion message.</p><details id="594bf617-4698-4a05-9044-4065d0ac4120" open="" class="toggle" dir="auto"><summary>Export completion message</summary><div class="indented"><figure id="5151f787-9240-4f07-b082-167d79aabe64" class="image" data-notion-image="media/15.png" dir="ltr"><a href="/shotloom/media/15.png"><img src="/shotloom/media/15.png"></a><figcaption>Camera export complete</figcaption></figure></div></details><p id="6b568b99-edf5-437a-a025-82c3b590c1be" class="" dir="auto"><strong>3. Review the output</strong>  — Open the first-frame PNG, last-frame PNG, and silent WebM to review the images and movement. The example below is the exported last frame.</p><figure id="07bc398d-f805-4bd1-b041-ab862afaffb4" class="image" data-notion-image="media/16.png" dir="ltr"><a href="/shotloom/media/16.png"><img src="/shotloom/media/16.png"></a><figcaption>Export result — last-frame PNG</figcaption></figure><details id="ab1a1e7b-baeb-47be-98fa-c5d232c24d82" open="" class="toggle" dir="auto"><summary>Export preparation and file formats</summary><div class="indented"><p id="0ab1bfcd-55f0-4130-9558-bc99365812d3" class="" dir="auto">Run the export when the Shot's camera and playback interval are prepared and camera export is available in the current environment.</p><p id="c015555a-bbdb-4b4f-8866-9ade81737b06" class="" dir="auto">Camera export currently provides first- and last-frame PNGs and 1920×1080 silent VP9/WebM video.</p></div></details><h3 id="d1bf72c5-fcfd-4e92-a1a4-9d452482be97" class="" dir="auto">4.7 Connect SceneGen results to CineV</h3><p id="83b2bc80-02b8-4d30-9579-1f3a8ef56767" class="" dir="auto">From your directed scene, use <code>SceneGen</code>  to generate video and add the final frame of the result to the <code>CineV</code>  storyboard.</p><p id="6b4c8795-2eea-4acc-9e1b-0174596522dc" class="" dir="auto"><strong>1. Direct the scene</strong>  — Edit the characters and camera to create the desired composition. A before-and-after camera comparison for this example is shown in Featured results above.</p><figure id="3dbc38de-efdd-8048-b44d-e8e49e7eb995" class="image" data-notion-image="media/34.png" dir="ltr"><a href="/shotloom/media/34.png"><img style="width:703.9963989257812px" src="/shotloom/media/34.png"></a></figure><p id="39f73f44-1f46-4643-a254-35989a8fcf1d" class="" dir="auto"><strong>2. Generate with SceneGen</strong>  — On the right, open the <code>SceneGen</code>  tab. Describe the mood, lighting, and character actions, or add reference images, then click <code>Generate</code>.</p><figure id="3dbc38de-efdd-80c5-8177-cc48eea147d2" class="image" data-notion-image="media/27.png" dir="ltr"><a href="/shotloom/media/27.png"><img style="width:703.991455078125px" src="/shotloom/media/27.png"></a><figcaption>Enter generation settings in SceneGen</figcaption></figure><p id="d9cd5369-dd1a-4f3d-9f54-e8cea191470a" class="" dir="auto"><strong>3. Review the generated result</strong>  — Once generation finishes, review the video and last-frame image in the result card. The example result video appears near the beginning of this document.</p><figure id="3dbc38de-efdd-80c5-912e-ff857dbc459f" class="image" data-notion-image="media/28.png" dir="ltr"><a href="/shotloom/media/28.png"><img style="width:703.99853515625px" src="/shotloom/media/28.png"></a><figcaption>Review SceneGen results</figcaption></figure><figure id="3dbc38de-efdd-80a7-be3d-d52ac3f264ca" class="image" data-notion-image="media/29.png" dir="ltr"><a href="/shotloom/media/29.png"><img style="width:703.9772338867188px" src="/shotloom/media/29.png"></a><figcaption>Review the generated video's final frame</figcaption></figure><p id="3dbc38de-efdd-80de-9a64-c69b253bf58d" class="" dir="auto"><strong>4. Send to CineV</strong>  — On the result you want to use, click <code>Send to CineV</code> to transfer the final-frame image of the generated video.</p><p id="3dbc38de-efdd-8020-9bd3-ff73e98109fe" class="" dir="auto"><strong>5. Check the storyboard</strong>  — Return to CineV and confirm that the transferred final-frame image has been added to the storyboard.</p><figure id="3dbc38de-efdd-8063-badc-e318177dd60a" class="image" data-notion-image="media/30.png" dir="ltr"><a href="/shotloom/media/30.png"><img style="width:703.99853515625px" src="/shotloom/media/30.png"></a></figure><p id="e32a0ba3-b0d0-4047-a80e-c5a867cca65e" class="" dir="auto"><strong>6. Start the next edit from the new image</strong>  — Select the image added to the storyboard and run <code>3D Shot Edit → Generate Scene → Open in Shotloom</code>. As in 4.1, generate a 3D scene from the new image, then edit character actions and camera composition again.</p><p id="24e5ef2b-83eb-4637-abb4-b5e1446d24eb" class="" dir="auto">You can also generate these results with <code>SceneGen</code> and send the final frame to <code>CineV</code>. Each generated result becomes the starting point for directing the next scene, allowing you to develop it through the same iterative production workflow.</p><figure id="90806692-4fa3-465a-920d-8142cadeeeae" class="image" data-notion-image="media/13.png" dir="ltr"><a href="/shotloom/media/13.png"><img style="width:703.96875px" src="/shotloom/media/13.png"></a><figcaption>Use the final frame added to CineV as new input to repeat scene direction and generation.</figcaption></figure><p id="3dbc38de-efdd-8073-821d-db66b7a040e0" class="" dir="auto">
-</p><hr id="c1b56965-8334-4a48-836e-80788d075ea1" dir="auto"><h2 id="5cc9a4a2-2e5e-44aa-a343-a40af0cffe49" class="" dir="auto">5. Glossary</h2><table id="dcc7351d-f73c-4d8c-8779-f67e06252485" class="simple-table" dir="ltr"><thead class="simple-table-header"><tr id="55fb68ae-a9ca-438d-bc97-f76cb43c61dc" dir="ltr"><th id="R\WX" class="simple-table-header-color simple-table-header" style="width:180px">Term</th><th id="QEqv" class="simple-table-header-color simple-table-header" style="width:524px">Meaning</th></tr></thead><tbody><tr id="84945267-907b-4901-af83-f1d2d14b44eb" dir="ltr"><td id="R\WX" class="" style="width:180px">Shotloom</td><td id="QEqv" class="" style="width:524px">A 3D scene direction tool for editing character placement, actions, and camera composition.</td></tr><tr id="1fb78d02-8d41-4902-8a49-fe7a80c31850" dir="ltr"><td id="R\WX" class="" style="width:180px">CineV</td><td id="QEqv" class="" style="width:524px">A service for managing storyboard shots and production work. Send shots to Shotloom for editing, or receive the last frame of a generated result and add it to the storyboard.</td></tr><tr id="9b7dc770-534d-40e3-a794-9185c49f5f60" dir="ltr"><td id="R\WX" class="" style="width:180px">SceneGen</td><td id="QEqv" class="" style="width:524px">A feature that generates video from the scene edited in Shotloom and the supplied generation settings.</td></tr><tr id="f4ddffae-d0a2-45ff-bb8c-6c530a719fc8" dir="ltr"><td id="R\WX" class="" style="width:180px">Shot</td><td id="QEqv" class="" style="width:524px">The unit for editing one scene. Character actions and camera direction are composed within this unit.</td></tr><tr id="b830bb0b-a259-4922-bcb8-e24ab6df3f5e" dir="ltr"><td id="R\WX" class="" style="width:180px"> bundle</td><td id="QEqv" class="" style="width:524px">A format containing characters, clips, cameras, and other work so it can be reopened and edited. Editable bundles are stored as <code>.shotloom.zip</code>  files.</td></tr><tr id="52b64e57-7712-4388-a0e7-ead75d3e81ce" dir="ltr"><td id="R\WX" class="" style="width:180px">Timeline</td><td id="QEqv" class="" style="width:524px">The editing area where character actions and camera compositions are arranged over time and specific moments can be played or reviewed.</td></tr><tr id="21d2cd2b-82da-456f-a73c-47fb4a1d4c45" dir="ltr"><td id="R\WX" class="" style="width:180px">Performance Clip</td><td id="QEqv" class="" style="width:524px">An action clip applied to a character's timeline. After reviewing a generated motion candidate, specify the target character and application interval to add it.</td></tr><tr id="20406f50-8b38-4c91-9574-b616dfcfe1f1" dir="ltr"><td id="R\WX" class="" style="width:180px">Camera key</td><td id="QEqv" class="" style="width:524px">A point storing camera position, rotation, and other values at a specific frame. Place keys at different times to create changes in composition over time.</td></tr><tr id="cc25ca52-99d8-4c30-b0c6-2deef768a019" dir="ltr"><td id="R\WX" class="" style="width:180px">Pilot view</td><td id="QEqv" class="" style="width:524px">A way to edit composition while viewing the scene through the selected camera.</td></tr></tbody></table><h3 id="826a4e65-d681-45be-a7da-b38c1a803de1" class="" dir="auto">Saving, exporting, and generating</h3><table id="673bc1e1-2bb0-42f1-9e87-f3e8df6c37a8" class="simple-table" dir="ltr"><thead class="simple-table-header"><tr id="561e682d-5456-487d-b3db-355a68dbabe2" dir="ltr"><th id="T\Zu" class="simple-table-header-color simple-table-header" style="width:180px">Action</th><th id="a{eC" class="simple-table-header-color simple-table-header" style="width:524px">Purpose and output</th></tr></thead><tbody><tr id="cc27a646-d3a5-4928-a807-3ca882735d33" dir="ltr"><td id="T\Zu" class="" style="width:180px">File → Export</td><td id="a{eC" class="" style="width:524px">Download an editable Shotloom bundle.</td></tr><tr id="94b806b8-2075-4370-92ff-929dadd36555" dir="ltr"><td id="T\Zu" class="" style="width:180px">Camera Export</td><td id="a{eC" class="" style="width:524px">Export the edited 3D scene as first- and last-frame camera PNGs and a silent WebM video.</td></tr><tr id="3b17bea8-f3ed-435e-9fa8-6149c32bb84e" dir="ltr"><td id="T\Zu" class="" style="width:180px">SceneGen generation</td><td id="a{eC" class="" style="width:524px">Generate new video from the scene and generation settings.</td></tr><tr id="4b7db092-b4d4-4453-a6fe-b458bce7bcf7" dir="ltr"><td id="T\Zu" class="" style="width:180px">Send to CineV</td><td id="a{eC" class="" style="width:524px">Transfer the last-frame image of the selected SceneGen result to the CineV storyboard.</td></tr></tbody></table><p id="3dbc38de-efdd-805e-8563-d1251efea476" class="" dir="auto">
-</p></div></article><span class="sans" style="font-size:14px;padding-top:2em"></span><footer class="portfolio-footer"><div class="portfolio-footer-inner"><div class="portfolio-footer-brand"><svg viewbox="0 0 493 102" aria-hidden="true" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M239.395 50.8836V101.479H226.097V50.8836C226.097 41.0059 222.173 31.5327 215.188 24.548C208.203 17.5634 198.73 13.6395 188.852 13.6395C178.974 13.6395 169.499 17.5631 162.513 24.5474C155.527 31.5317 151.601 41.0049 151.598 50.8836V101.479H138.352V50.8836C138.355 37.492 143.677 24.6498 153.147 15.1815C162.618 5.71314 175.461 0.39406 188.852 0.394061C195.487 0.388488 202.057 1.69023 208.189 4.22494C214.32 6.75966 219.891 10.4776 224.585 15.1665C229.279 19.8553 233.003 25.423 235.544 31.5515C238.085 37.68 239.394 44.2492 239.395 50.8836Z" fill="currentColor"></path><path d="M376.198 88.181H304.912C287.944 88.181 268.474 74.4584 268.474 57.5225H360.98L354.405 44.277H268.506C268.506 27.3093 288.018 13.6185 304.944 13.6185H339.229L332.654 0.373047H301.571C288.178 0.381475 275.335 5.70585 265.864 15.1766C256.393 24.6474 251.069 37.4901 251.061 50.8839C251.061 64.2886 256.386 77.1443 265.864 86.6228C275.343 96.1014 288.198 101.426 301.603 101.426H382.773L376.198 88.181Z" fill="currentColor"></path><path d="M112.837 13.5867V101.427H126.083V0.341309H112.837V13.5867Z" fill="currentColor"></path><path d="M0.309326 50.8839C0.309326 64.2887 5.63433 77.1443 15.1129 86.6229C24.5915 96.1015 37.4472 101.427 50.8519 101.427H101.013V88.1811H50.8519C45.9504 88.1867 41.0959 87.2261 36.5659 85.3542C32.0359 83.4824 27.9193 80.736 24.4514 77.272C20.9836 73.8081 18.2325 69.6946 16.3555 65.1667C14.4785 60.6389 13.5123 55.7854 13.5123 50.8839C13.5123 45.986 14.4771 41.136 16.3514 36.6109C18.2258 32.0858 20.9731 27.9742 24.4364 24.5108C27.8998 21.0475 32.0114 18.3002 36.5365 16.4258C41.0616 14.5515 45.9116 13.5867 50.8095 13.5867H100.97V0.341309H50.8095C37.4122 0.352553 24.5673 5.68252 15.0979 15.1599C5.62852 24.6372 0.309321 37.4865 0.309326 50.8839Z" fill="currentColor"></path><path d="M447.952 88.6887C434.963 62.054 421.21 33.8466 408.089 6.93856C407.081 4.87156 405.513 3.12953 403.563 1.91116C401.614 0.692798 399.361 0.0471448 397.062 0.0478521H366.412C357.341 0.0478521 351.403 9.55164 355.379 17.7091L393.086 95.0368C394.094 97.1046 395.663 98.8474 397.613 100.066C399.564 101.285 401.818 101.931 404.117 101.93H446.339C447.628 101.93 448.891 101.567 449.985 100.884C451.078 100.2 451.958 99.2233 452.523 98.064L447.952 88.6887ZM377.606 13.5539H391.043C391.809 13.5537 392.559 13.7692 393.208 14.1757C393.858 14.5823 394.379 15.1635 394.713 15.8528L400.153 26.9742C400.457 27.5977 400.597 28.2882 400.561 28.9808C400.525 29.6734 400.314 30.3454 399.947 30.9339C399.58 31.5223 399.07 32.0079 398.464 32.3451C397.858 32.6822 397.176 32.8598 396.483 32.8613H383.036C382.271 32.8599 381.521 32.6437 380.872 32.2373C380.223 31.8309 379.701 31.2506 379.366 30.5624L373.944 19.441C373.64 18.8177 373.499 18.1273 373.535 17.4347C373.571 16.742 373.782 16.0698 374.149 15.4812C374.515 14.8926 375.026 14.407 375.632 14.0698C376.237 13.7327 376.919 13.5551 377.612 13.5539H377.606ZM391.219 41.4676H404.66C405.425 41.4673 406.176 41.6829 406.825 42.0894C407.474 42.496 407.995 43.0772 408.33 43.7665L413.754 54.8879C414.057 55.5114 414.197 56.2018 414.161 56.8944C414.125 57.587 413.914 58.2591 413.547 58.8476C413.18 59.436 412.67 59.9216 412.064 60.2588C411.458 60.5959 410.777 60.7735 410.083 60.775H396.646C395.881 60.7736 395.131 60.5574 394.482 60.151C393.834 59.7446 393.312 59.1643 392.976 58.4761L387.554 47.3547C387.25 46.7312 387.109 46.0407 387.145 45.3478C387.181 44.655 387.393 43.9827 387.76 43.394C388.127 42.8054 388.637 42.3198 389.243 41.9828C389.849 41.6458 390.531 41.4685 391.225 41.4676H391.219ZM404.843 69.3812H418.278C419.044 69.381 419.794 69.5965 420.443 70.0031C421.092 70.4097 421.614 70.9909 421.948 71.6802L427.372 82.8016C427.676 83.4251 427.816 84.1155 427.78 84.8081C427.744 85.5007 427.532 86.1728 427.165 86.7613C426.798 87.3497 426.288 87.8353 425.682 88.1724C425.077 88.5096 424.395 88.6872 423.702 88.6887H410.257C409.491 88.6889 408.74 88.4734 408.091 88.0668C407.442 87.6603 406.921 87.0791 406.586 86.3897L401.157 75.2745C400.85 74.6495 400.709 73.9568 400.744 73.2618C400.78 72.5668 400.993 71.8924 401.362 71.3024C401.731 70.7125 402.244 70.2264 402.854 69.8902C403.463 69.5541 404.147 69.3789 404.843 69.3812Z" fill="currentColor"></path><path d="M491.704 17.7072C478.706 44.3684 465.25 71.968 452.523 98.0641C450.317 93.5417 445.868 84.4174 443.668 79.9092L473.15 19.4371C473.453 18.8138 473.594 18.1236 473.558 17.4311C473.522 16.7387 473.31 16.0667 472.943 15.4785C472.576 14.8903 472.066 14.405 471.46 14.0684C470.854 13.7318 470.172 13.5548 469.479 13.5541H464.082C463.317 13.5533 462.567 13.7679 461.918 14.1733C461.269 14.5788 460.747 15.1587 460.412 15.8469L450.517 36.1335C447.64 42.0348 439.235 42.0348 436.358 36.1335L436.266 35.9458C435.742 34.8708 435.469 33.6904 435.469 32.4943C435.469 31.2982 435.742 30.1178 436.266 29.0428C439.302 22.809 443.637 13.9253 447.05 6.93873C448.058 4.87065 449.627 3.12763 451.577 1.90852C453.528 0.68942 455.782 0.0433244 458.081 0.0439458H480.671C489.743 0.0459856 495.683 9.54978 491.704 17.7072Z" fill="currentColor"></path></svg><span class="portfolio-archive-badge">Archive</span></div><p class="portfolio-footer-note">As we bring CineV's journey over the past few years to a close, we leave a record of the technology and works we created together.</p><div class="portfolio-footer-bottom"><span>© 2026 CINAMON, Inc. All rights reserved.</span></div></div></footer></body></html>
+<!doctype html>
+<html lang="en"
+  ><head
+    ><meta name="viewport" content="width=device-width, initial-scale=1" /><meta
+      http-equiv="Content-Type"
+      content="text/html; charset=utf-8" /><title>Shotloom | CINEV Archive</title
+    ><style>
+      /* cspell:disable-file */
+      /* webkit printing magic: print all background colors */
+      html {
+        -webkit-print-color-adjust: exact;
+      }
+      * {
+        box-sizing: border-box;
+        -webkit-print-color-adjust: exact;
+      }
+
+      html,
+      body {
+        margin: 0;
+        padding: 0;
+      }
+      @media only screen {
+        body {
+          margin: 2em auto;
+          max-width: 900px;
+          color: rgb(55, 53, 47);
+        }
+      }
+
+      body {
+        line-height: 1.5;
+        white-space: pre-wrap;
+      }
+
+      a,
+      a.visited {
+        color: inherit;
+        text-decoration: underline;
+      }
+
+      .pdf-relative-link-path {
+        font-size: 80%;
+        color: #444;
+      }
+
+      h1,
+      h2,
+      h3 {
+        letter-spacing: -0.01em;
+        line-height: 1.2;
+        font-weight: 600;
+        margin-bottom: 0;
+      }
+
+      /* Override strong tags inside headings to maintain consistent weight */
+      h1 strong,
+      h2 strong,
+      h3 strong {
+        font-weight: 600;
+      }
+
+      .page-title {
+        font-size: 2.5rem;
+        font-weight: 700;
+        margin-top: 0;
+        margin-bottom: 0.75em;
+      }
+
+      h1 {
+        font-size: 1.875rem;
+        margin-top: 1.875rem;
+      }
+
+      h2 {
+        font-size: 1.5rem;
+        margin-top: 1.5rem;
+      }
+
+      h3 {
+        font-size: 1.25rem;
+        margin-top: 1.25rem;
+      }
+
+      .source {
+        border: 1px solid #ddd;
+        border-radius: 3px;
+        padding: 1.5em;
+        word-break: break-all;
+      }
+
+      .callout {
+        border-radius: 10px;
+        padding: 1rem;
+        /* Paint a complete callout box on every PDF page fragment. */
+        -webkit-box-decoration-break: clone;
+        box-decoration-break: clone;
+      }
+
+      /* For default-background callouts, render the border outline. */
+      .callout.block-color-default_background {
+        border: 1px solid rgba(55, 53, 47, 0.09);
+      }
+
+      figure {
+        margin: 1.25em 0;
+        page-break-inside: avoid;
+      }
+
+      /*
+       * Toggles and callouts hold arbitrary content, so they can easily be taller
+       * than a page. They must stay breakable: avoiding breaks inside them makes
+       * Chromium push the whole block onto the next page, which leaves the previous
+       * page mostly empty before every long toggle.
+       */
+      details,
+      aside {
+        margin: 1.25em 0;
+      }
+
+      /* Keep a toggle's title on the same page as the start of its content. */
+      summary {
+        page-break-after: avoid;
+        break-after: avoid;
+      }
+
+      /*
+       * Toggle headings render as <h1/h2/h3 style="display:inline-block"> inside
+       * <summary>. Without this reset, the heading's margin-top pushes it below the
+       * ::marker (▼), so the triangle and the title appear on separate lines.
+       */
+      summary h1,
+      summary h2,
+      summary h3,
+      summary h4 {
+        margin-top: 0;
+      }
+
+      figcaption {
+        opacity: 0.5;
+        font-size: 85%;
+        margin-top: 0.5em;
+      }
+
+      mark {
+        background-color: transparent;
+      }
+
+      .indented {
+        padding-left: 1.5em;
+      }
+
+      hr {
+        background: transparent;
+        display: block;
+        width: 100%;
+        height: 1px;
+        visibility: visible;
+        border: none;
+        border-bottom: 1px solid rgba(55, 53, 47, 0.09);
+      }
+
+      img {
+        max-width: 100%;
+      }
+
+      @media only print {
+        img {
+          max-height: 100vh;
+          object-fit: contain;
+        }
+
+        table.collection-content {
+          width: 100%;
+          table-layout: fixed;
+        }
+
+        table.collection-content th,
+        table.collection-content td {
+          overflow-wrap: anywhere;
+        }
+
+        table.collection-content td > .user,
+        table.collection-content td > time {
+          white-space: pre-wrap;
+        }
+      }
+
+      @page {
+        margin: 1in;
+      }
+
+      .collection-content-wrapper {
+        overflow-x: auto;
+      }
+
+      @media only print {
+        .collection-content-wrapper {
+          overflow-x: visible;
+        }
+      }
+
+      .collection-content {
+        font-size: 0.875rem;
+      }
+
+      .collection-content td {
+        white-space: pre-wrap;
+        word-break: break-word;
+      }
+
+      .column-list {
+        display: flex;
+        gap: 46px;
+      }
+
+      .column {
+        min-width: 0;
+        overflow: hidden;
+      }
+
+      .column > *:first-child {
+        margin-top: 0;
+      }
+
+      .table_of_contents-item {
+        display: block;
+        font-size: 0.875rem;
+        line-height: 1.3;
+        padding-inline: 0.125rem;
+        padding-block: 0.375rem;
+      }
+
+      .table_of_contents-indent-1 {
+        margin-left: 1.5rem;
+      }
+
+      .table_of_contents-indent-2 {
+        margin-left: 3rem;
+      }
+
+      .table_of_contents-indent-3 {
+        margin-left: 4.5rem;
+      }
+
+      .table_of_contents-link {
+        text-decoration: none;
+        opacity: 0.7;
+        border-bottom: 1px solid rgba(55, 53, 47, 0.18);
+      }
+
+      table,
+      th,
+      td {
+        border: 1px solid rgba(55, 53, 47, 0.09);
+      }
+
+      table {
+        border-collapse: collapse;
+        border-left: none;
+        border-right: none;
+      }
+
+      th,
+      td {
+        font-weight: normal;
+        padding: 0.25em 0.5em;
+        line-height: 1.5;
+        min-height: 1.5em;
+        text-align: left;
+      }
+
+      th {
+        color: rgba(55, 53, 47, 0.6);
+      }
+
+      ol,
+      ul {
+        margin: 0;
+        margin-block-start: 0.6em;
+        margin-block-end: 0.6em;
+      }
+
+      li > ol:first-child,
+      li > ul:first-child {
+        margin-block-start: 0.6em;
+      }
+
+      ul > li {
+        list-style: disc;
+      }
+
+      ul.to-do-list {
+        padding-inline-start: 0;
+      }
+
+      ul.to-do-list > li {
+        list-style: none;
+      }
+
+      .to-do-children-checked {
+        text-decoration: line-through;
+        opacity: 0.375;
+      }
+
+      ul.toggle > li {
+        list-style: none;
+      }
+
+      ul {
+        padding-inline-start: 1.7em;
+      }
+
+      ul > li {
+        padding-left: 0.1em;
+      }
+
+      ol {
+        padding-inline-start: 1.6em;
+      }
+
+      ol.numbered-list.numbered-list-digits-2 {
+        padding-inline-start: 2em;
+      }
+
+      ol.numbered-list.numbered-list-digits-3plus {
+        padding-inline-start: 2.4em;
+      }
+
+      ol > li {
+        padding-left: 0.2em;
+      }
+
+      .mono ol {
+        padding-inline-start: 2em;
+      }
+
+      .mono ol > li {
+        text-indent: -0.4em;
+      }
+
+      .toggle {
+        padding-inline-start: 0em;
+        list-style-type: none;
+      }
+
+      /* Indent toggle children */
+      .toggle > li > details {
+        padding-left: 1.7em;
+      }
+
+      .toggle > li > details > summary {
+        margin-left: -1.1em;
+      }
+
+      .selected-value {
+        display: inline-block;
+        padding: 0 0.5em;
+        background: rgba(206, 205, 202, 0.5);
+        border-radius: 3px;
+        margin-right: 0.5em;
+        margin-top: 0.3em;
+        margin-bottom: 0.3em;
+        white-space: nowrap;
+      }
+
+      .collection-title {
+        display: inline-block;
+        margin-right: 1em;
+      }
+
+      .page-description {
+        margin-bottom: 2em;
+      }
+
+      .simple-table {
+        margin-top: 1em;
+        font-size: 0.875rem;
+        empty-cells: show;
+      }
+      .simple-table td {
+        height: 29px;
+        min-width: 120px;
+      }
+
+      .simple-table th {
+        height: 29px;
+        min-width: 120px;
+      }
+
+      .simple-table-header-color {
+        background: rgb(247, 246, 243);
+        color: black;
+      }
+      .simple-table-header {
+        font-weight: 500;
+      }
+
+      time {
+        opacity: 0.5;
+      }
+
+      .icon {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        max-width: 1.2em;
+        max-height: 1.2em;
+        text-decoration: none;
+        vertical-align: text-bottom;
+        margin-right: 0.5em;
+      }
+
+      /*
+       * Render emoji icons using a ::before pseudo-element to keep the glyph
+       * out of the DOM textContent traversal. This avoids double-rendering icons
+       * in callouts and page titles.
+       * NOTE(slim/html-export-pseudo-icons): I can't tagref this because it will
+       * flag as a duplicate tag after codegen.
+       */
+      .icon[data-emoji]::before {
+        content: attr(data-emoji);
+      }
+
+      img.icon {
+        border-radius: 3px;
+      }
+
+      .callout img.notion-static-icon {
+        width: 1em;
+        height: 1em;
+      }
+
+      .callout p {
+        margin: 0;
+      }
+
+      .callout h1,
+      .callout h2,
+      .callout h3 {
+        margin: 0 0 0.6rem;
+      }
+
+      .user-icon {
+        width: 1.5em;
+        height: 1.5em;
+        border-radius: 100%;
+        margin-right: 0.5rem;
+      }
+
+      .user-icon-inner {
+        font-size: 0.8em;
+      }
+
+      .text-icon {
+        border: 1px solid #000;
+        text-align: center;
+      }
+
+      .page-cover-image {
+        display: block;
+        object-fit: cover;
+        width: 100%;
+        max-height: 30vh;
+      }
+
+      .page-header-icon {
+        font-size: 3rem;
+        margin-bottom: 1rem;
+      }
+
+      .page-header-icon-with-cover {
+        margin-top: -0.72em;
+        margin-left: 0.07em;
+      }
+
+      .page-header-icon img {
+        border-radius: 3px;
+      }
+
+      .link-to-page {
+        margin: 1em 0;
+        padding: 0;
+        border: none;
+        font-weight: 500;
+      }
+
+      p > .user {
+        opacity: 0.5;
+      }
+
+      td > .user,
+      td > time {
+        white-space: nowrap;
+      }
+
+      input[type="checkbox"] {
+        margin-right: 0.4em;
+        vertical-align: middle;
+      }
+
+      p {
+        margin-top: 0.5em;
+        margin-bottom: 0.5em;
+      }
+
+      .image {
+        border: none;
+        margin: 1.5em 0;
+        padding: 0;
+        border-radius: 0;
+        text-align: center;
+      }
+
+      .code,
+      code {
+        background: rgba(135, 131, 120, 0.15);
+        border-radius: 3px;
+        padding: 0.2em 0.4em;
+        border-radius: 3px;
+        font-size: 85%;
+        tab-size: 2;
+      }
+
+      code {
+        color: #eb5757;
+      }
+
+      .code {
+        padding: 1.5em 1em;
+      }
+
+      .code-wrap {
+        white-space: pre-wrap;
+        word-break: break-all;
+      }
+
+      .code > code {
+        background: none;
+        padding: 0;
+        font-size: 100%;
+        color: inherit;
+      }
+
+      blockquote {
+        font-size: 1em;
+        margin: 1em 0;
+        padding-left: 1em;
+        border-left: 3px solid rgb(55, 53, 47);
+      }
+
+      blockquote.quote-large {
+        font-size: 1.25em;
+      }
+
+      .bookmark {
+        text-decoration: none;
+        max-height: 8em;
+        padding: 0;
+        display: flex;
+        width: 100%;
+        align-items: stretch;
+      }
+
+      .bookmark-title {
+        font-size: 0.85em;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        height: 1.75em;
+        white-space: nowrap;
+      }
+
+      .bookmark-text {
+        display: flex;
+        flex-direction: column;
+      }
+
+      .bookmark-info {
+        flex: 4 1 180px;
+        padding: 12px 14px 14px;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+      }
+
+      .bookmark-image {
+        width: 33%;
+        flex: 1 1 180px;
+        display: block;
+        position: relative;
+        object-fit: cover;
+        border-radius: 1px;
+      }
+
+      .bookmark-description {
+        color: rgba(55, 53, 47, 0.6);
+        font-size: 0.75em;
+        overflow: hidden;
+        max-height: 4.5em;
+        word-break: break-word;
+      }
+
+      .bookmark-href {
+        font-size: 0.75em;
+        margin-top: 0.25em;
+      }
+
+      .tab {
+        margin: 1.25em 0;
+        padding-inline: 1rem;
+        border: 1px solid rgba(55, 53, 47, 0.09);
+      }
+
+      .sans { font-family: ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", "Noto Sans Arabic", "Noto Sans Hebrew", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol"; }
+      .code { font-family: "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace; }
+      .serif { font-family: Lyon-Text, Georgia, ui-serif, serif; }
+      .mono { font-family: iawriter-mono, Nitti, Menlo, Courier, monospace; }
+      .pdf .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", "Noto Sans Arabic", "Noto Sans Hebrew", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK JP'; }
+      .pdf:lang(zh-CN) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", "Noto Sans Arabic", "Noto Sans Hebrew", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK SC'; }
+      .pdf:lang(zh-TW) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", "Noto Sans Arabic", "Noto Sans Hebrew", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK TC'; }
+      .pdf:lang(ko-KR) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", "Noto Sans Arabic", "Noto Sans Hebrew", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK KR'; }
+      .pdf .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+      .pdf:lang(zh-CN) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+      .pdf:lang(zh-TW) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+      .pdf:lang(ko-KR) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+      .pdf .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK JP'; }
+      .pdf:lang(zh-CN) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK SC'; }
+      .pdf:lang(zh-TW) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK TC'; }
+      .pdf:lang(ko-KR) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK KR'; }
+      .pdf .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+      .pdf:lang(zh-CN) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+      .pdf:lang(zh-TW) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+      .pdf:lang(ko-KR) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+      .highlight-default {
+        color: rgba(44, 44, 43, 1);
+      }
+      .highlight-gray {
+        color: rgba(125, 122, 117, 1);
+        fill: rgba(125, 122, 117, 1);
+      }
+      .highlight-brown {
+        color: rgba(159, 118, 90, 1);
+        fill: rgba(159, 118, 90, 1);
+      }
+      .highlight-orange {
+        color: rgba(210, 123, 45, 1);
+        fill: rgba(210, 123, 45, 1);
+      }
+      .highlight-yellow {
+        color: rgba(203, 148, 52, 1);
+        fill: rgba(203, 148, 52, 1);
+      }
+      .highlight-teal {
+        color: rgba(80, 148, 110, 1);
+        fill: rgba(80, 148, 110, 1);
+      }
+      .highlight-blue {
+        color: rgba(56, 125, 201, 1);
+        fill: rgba(56, 125, 201, 1);
+      }
+      .highlight-purple {
+        color: rgba(154, 107, 180, 1);
+        fill: rgba(154, 107, 180, 1);
+      }
+      .highlight-pink {
+        color: rgba(193, 76, 138, 1);
+        fill: rgba(193, 76, 138, 1);
+      }
+      .highlight-red {
+        color: rgba(207, 81, 72, 1);
+        fill: rgba(207, 81, 72, 1);
+      }
+      .highlight-default_background {
+        color: rgba(44, 44, 43, 1);
+      }
+      .highlight-gray_background {
+        background: rgba(42, 28, 0, 0.07);
+      }
+      .highlight-brown_background {
+        background: rgba(139, 46, 0, 0.086);
+      }
+      .highlight-orange_background {
+        background: rgba(224, 101, 1, 0.129);
+      }
+      .highlight-yellow_background {
+        background: rgba(211, 168, 0, 0.137);
+      }
+      .highlight-teal_background {
+        background: rgba(0, 100, 45, 0.09);
+      }
+      .highlight-blue_background {
+        background: rgba(0, 124, 215, 0.094);
+      }
+      .highlight-purple_background {
+        background: rgba(102, 0, 178, 0.078);
+      }
+      .highlight-pink_background {
+        background: rgba(197, 0, 93, 0.086);
+      }
+      .highlight-red_background {
+        background: rgba(223, 22, 0, 0.094);
+      }
+      .block-color-default {
+        color: inherit;
+        fill: inherit;
+      }
+      .block-color-gray {
+        color: rgba(125, 122, 117, 1);
+        fill: rgba(125, 122, 117, 1);
+      }
+      .block-color-brown {
+        color: rgba(159, 118, 90, 1);
+        fill: rgba(159, 118, 90, 1);
+      }
+      .block-color-orange {
+        color: rgba(210, 123, 45, 1);
+        fill: rgba(210, 123, 45, 1);
+      }
+      .block-color-yellow {
+        color: rgba(203, 148, 52, 1);
+        fill: rgba(203, 148, 52, 1);
+      }
+      .block-color-teal {
+        color: rgba(80, 148, 110, 1);
+        fill: rgba(80, 148, 110, 1);
+      }
+      .block-color-blue {
+        color: rgba(56, 125, 201, 1);
+        fill: rgba(56, 125, 201, 1);
+      }
+      .block-color-purple {
+        color: rgba(154, 107, 180, 1);
+        fill: rgba(154, 107, 180, 1);
+      }
+      .block-color-pink {
+        color: rgba(193, 76, 138, 1);
+        fill: rgba(193, 76, 138, 1);
+      }
+      .block-color-red {
+        color: rgba(207, 81, 72, 1);
+        fill: rgba(207, 81, 72, 1);
+      }
+      .block-color-default_background {
+        color: inherit;
+        fill: inherit;
+      }
+      .block-color-gray_background {
+        background: rgba(240, 239, 237, 1);
+      }
+      .block-color-brown_background {
+        background: rgba(245, 237, 233, 1);
+      }
+      .block-color-orange_background {
+        background: rgba(251, 235, 222, 1);
+      }
+      .block-color-yellow_background {
+        background: rgba(249, 243, 220, 1);
+      }
+      .block-color-teal_background {
+        background: rgba(232, 241, 236, 1);
+      }
+      .block-color-blue_background {
+        background: rgba(229, 242, 252, 1);
+      }
+      .block-color-purple_background {
+        background: rgba(243, 235, 249, 1);
+      }
+      .block-color-pink_background {
+        background: rgba(250, 233, 241, 1);
+      }
+      .block-color-red_background {
+        background: rgba(252, 233, 231, 1);
+      }
+      .select-value-color-default { background-color: rgba(42, 28, 0, 0.07); }
+      .select-value-color-gray { background-color: rgba(28, 19, 1, 0.11); }
+      .select-value-color-brown { background-color: rgba(127, 51, 0, 0.156); }
+      .select-value-color-orange { background-color: rgba(196, 88, 0, 0.203); }
+      .select-value-color-yellow { background-color: rgba(209, 156, 0, 0.282); }
+      .select-value-color-green { background-color: rgba(0, 96, 38, 0.156); }
+      .select-value-color-blue { background-color: rgba(0, 118, 217, 0.203); }
+      .select-value-color-purple { background-color: rgba(92, 0, 163, 0.141); }
+      .select-value-color-pink { background-color: rgba(183, 0, 78, 0.152); }
+      .select-value-color-red { background-color: rgba(206, 24, 0, 0.164); }
+
+      .checkbox {
+        display: inline-flex;
+        vertical-align: text-bottom;
+        width: 16;
+        height: 16;
+        background-size: 16px;
+        margin-left: 2px;
+        margin-right: 5px;
+      }
+
+      .checkbox-on {
+        background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20width%3D%2216%22%20height%3D%2216%22%20fill%3D%22%2358A9D7%22%2F%3E%0A%3Cpath%20d%3D%22M6.71429%2012.2852L14%204.9995L12.7143%203.71436L6.71429%209.71378L3.28571%206.2831L2%207.57092L6.71429%2012.2852Z%22%20fill%3D%22white%22%2F%3E%0A%3C%2Fsvg%3E");
+      }
+
+      .checkbox-off {
+        background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20x%3D%220.75%22%20y%3D%220.75%22%20width%3D%2214.5%22%20height%3D%2214.5%22%20fill%3D%22white%22%20stroke%3D%22%2336352F%22%20stroke-width%3D%221.5%22%2F%3E%0A%3C%2Fsvg%3E");
+      }
+
+
+      @media(max-width:960px){body{margin:2em 24px}}@media(max-width:600px){.column-list{display:block}.column{width:100%!important;padding:0!important}table{display:block;overflow-x:auto}.page-title{font-size:2rem}}</style
+    ><style>
+      @import url('https://cdn.jsdelivr.net/npm/katex@0.16.25/dist/katex-swap.min.css')
+      @media(max-width:960px){body{margin:2em 24px}}@media(max-width:600px){.column-list{display:block}.column{width:100%!important;padding:0!important}table{display:block;overflow-x:auto}.page-title{font-size:2rem}}</style
+    ><link rel="stylesheet" href="/header.css?v=20261015-bilingual" /><link
+      rel="stylesheet"
+      href="/shotloom/navigation.css" /><meta property="og:site_name" content="CINEV Archive" /><link
+      rel="stylesheet"
+      href="/footer.css?v=20261015-note" /><script defer src="/language-switch.js"></script
+    ><link rel="stylesheet" href="/english.css" /></head
+  ><body class="technology-page"
+    ><header class="portfolio-header"
+      ><div class="portfolio-header-inner"
+        ><a class="portfolio-brand" href="/en/archive/" aria-label="CineV Product"
+          ><svg viewbox="0 0 493 102" aria-hidden="true" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path
+              d="M239.395 50.8836V101.479H226.097V50.8836C226.097 41.0059 222.173 31.5327 215.188 24.548C208.203 17.5634 198.73 13.6395 188.852 13.6395C178.974 13.6395 169.499 17.5631 162.513 24.5474C155.527 31.5317 151.601 41.0049 151.598 50.8836V101.479H138.352V50.8836C138.355 37.492 143.677 24.6498 153.147 15.1815C162.618 5.71314 175.461 0.39406 188.852 0.394061C195.487 0.388488 202.057 1.69023 208.189 4.22494C214.32 6.75966 219.891 10.4776 224.585 15.1665C229.279 19.8553 233.003 25.423 235.544 31.5515C238.085 37.68 239.394 44.2492 239.395 50.8836Z"
+              fill="currentColor"
+            ></path>
+            <path
+              d="M376.198 88.181H304.912C287.944 88.181 268.474 74.4584 268.474 57.5225H360.98L354.405 44.277H268.506C268.506 27.3093 288.018 13.6185 304.944 13.6185H339.229L332.654 0.373047H301.571C288.178 0.381475 275.335 5.70585 265.864 15.1766C256.393 24.6474 251.069 37.4901 251.061 50.8839C251.061 64.2886 256.386 77.1443 265.864 86.6228C275.343 96.1014 288.198 101.426 301.603 101.426H382.773L376.198 88.181Z"
+              fill="currentColor"
+            ></path>
+            <path d="M112.837 13.5867V101.427H126.083V0.341309H112.837V13.5867Z" fill="currentColor"></path>
+            <path
+              d="M0.309326 50.8839C0.309326 64.2887 5.63433 77.1443 15.1129 86.6229C24.5915 96.1015 37.4472 101.427 50.8519 101.427H101.013V88.1811H50.8519C45.9504 88.1867 41.0959 87.2261 36.5659 85.3542C32.0359 83.4824 27.9193 80.736 24.4514 77.272C20.9836 73.8081 18.2325 69.6946 16.3555 65.1667C14.4785 60.6389 13.5123 55.7854 13.5123 50.8839C13.5123 45.986 14.4771 41.136 16.3514 36.6109C18.2258 32.0858 20.9731 27.9742 24.4364 24.5108C27.8998 21.0475 32.0114 18.3002 36.5365 16.4258C41.0616 14.5515 45.9116 13.5867 50.8095 13.5867H100.97V0.341309H50.8095C37.4122 0.352553 24.5673 5.68252 15.0979 15.1599C5.62852 24.6372 0.309321 37.4865 0.309326 50.8839Z"
+              fill="currentColor"
+            ></path>
+            <path
+              d="M447.952 88.6887C434.963 62.054 421.21 33.8466 408.089 6.93856C407.081 4.87156 405.513 3.12953 403.563 1.91116C401.614 0.692798 399.361 0.0471448 397.062 0.0478521H366.412C357.341 0.0478521 351.403 9.55164 355.379 17.7091L393.086 95.0368C394.094 97.1046 395.663 98.8474 397.613 100.066C399.564 101.285 401.818 101.931 404.117 101.93H446.339C447.628 101.93 448.891 101.567 449.985 100.884C451.078 100.2 451.958 99.2233 452.523 98.064L447.952 88.6887ZM377.606 13.5539H391.043C391.809 13.5537 392.559 13.7692 393.208 14.1757C393.858 14.5823 394.379 15.1635 394.713 15.8528L400.153 26.9742C400.457 27.5977 400.597 28.2882 400.561 28.9808C400.525 29.6734 400.314 30.3454 399.947 30.9339C399.58 31.5223 399.07 32.0079 398.464 32.3451C397.858 32.6822 397.176 32.8598 396.483 32.8613H383.036C382.271 32.8599 381.521 32.6437 380.872 32.2373C380.223 31.8309 379.701 31.2506 379.366 30.5624L373.944 19.441C373.64 18.8177 373.499 18.1273 373.535 17.4347C373.571 16.742 373.782 16.0698 374.149 15.4812C374.515 14.8926 375.026 14.407 375.632 14.0698C376.237 13.7327 376.919 13.5551 377.612 13.5539H377.606ZM391.219 41.4676H404.66C405.425 41.4673 406.176 41.6829 406.825 42.0894C407.474 42.496 407.995 43.0772 408.33 43.7665L413.754 54.8879C414.057 55.5114 414.197 56.2018 414.161 56.8944C414.125 57.587 413.914 58.2591 413.547 58.8476C413.18 59.436 412.67 59.9216 412.064 60.2588C411.458 60.5959 410.777 60.7735 410.083 60.775H396.646C395.881 60.7736 395.131 60.5574 394.482 60.151C393.834 59.7446 393.312 59.1643 392.976 58.4761L387.554 47.3547C387.25 46.7312 387.109 46.0407 387.145 45.3478C387.181 44.655 387.393 43.9827 387.76 43.394C388.127 42.8054 388.637 42.3198 389.243 41.9828C389.849 41.6458 390.531 41.4685 391.225 41.4676H391.219ZM404.843 69.3812H418.278C419.044 69.381 419.794 69.5965 420.443 70.0031C421.092 70.4097 421.614 70.9909 421.948 71.6802L427.372 82.8016C427.676 83.4251 427.816 84.1155 427.78 84.8081C427.744 85.5007 427.532 86.1728 427.165 86.7613C426.798 87.3497 426.288 87.8353 425.682 88.1724C425.077 88.5096 424.395 88.6872 423.702 88.6887H410.257C409.491 88.6889 408.74 88.4734 408.091 88.0668C407.442 87.6603 406.921 87.0791 406.586 86.3897L401.157 75.2745C400.85 74.6495 400.709 73.9568 400.744 73.2618C400.78 72.5668 400.993 71.8924 401.362 71.3024C401.731 70.7125 402.244 70.2264 402.854 69.8902C403.463 69.5541 404.147 69.3789 404.843 69.3812Z"
+              fill="currentColor"
+            ></path>
+            <path
+              d="M491.704 17.7072C478.706 44.3684 465.25 71.968 452.523 98.0641C450.317 93.5417 445.868 84.4174 443.668 79.9092L473.15 19.4371C473.453 18.8138 473.594 18.1236 473.558 17.4311C473.522 16.7387 473.31 16.0667 472.943 15.4785C472.576 14.8903 472.066 14.405 471.46 14.0684C470.854 13.7318 470.172 13.5548 469.479 13.5541H464.082C463.317 13.5533 462.567 13.7679 461.918 14.1733C461.269 14.5788 460.747 15.1587 460.412 15.8469L450.517 36.1335C447.64 42.0348 439.235 42.0348 436.358 36.1335L436.266 35.9458C435.742 34.8708 435.469 33.6904 435.469 32.4943C435.469 31.2982 435.742 30.1178 436.266 29.0428C439.302 22.809 443.637 13.9253 447.05 6.93873C448.058 4.87065 449.627 3.12763 451.577 1.90852C453.528 0.68942 455.782 0.0433244 458.081 0.0439458H480.671C489.743 0.0459856 495.683 9.54978 491.704 17.7072Z"
+              fill="currentColor"
+            ></path></svg
+          ><span class="portfolio-archive-badge">Archive</span></a
+        ><nav class="portfolio-nav" aria-label="Page navigation"
+          ><a href="/en/archive/" aria-current="page">PRODUCT</a
+          ><a href="/en/showcase/">SHOWCASE</a></nav
+        ><a class="portfolio-language" href="/shotloom/" hreflang="ko" lang="ko" aria-label="한국어로 보기"
+          >한국어</a
+        ></div
+      ></header
+    ><section class="shotloom-hero" aria-labelledby="shotloom-title"
+      ><div class="shotloom-hero-inner"
+        ><a class="shotloom-back" href="/en/archive/#archive">← Product page</a
+        ><p class="shotloom-eyebrow">CINEV / 3D SCENE DIRECTION</p><h1 id="shotloom-title">Shotloom</h1
+        ><p class="shotloom-description">Generate a 3D scene from an image, then directly edit character placement, poses, and camera composition.<br />Use your directed scene to generate new images and video.</p
+        ><p class="shotloom-period"
+          ><span>Project period</span
+          ><span
+            ><time datetime="2026-04">2026.04</time> — <time datetime="2026-09"
+              >2026.09</time
+            ></span
+          ></p
+        ></div
+      ></section
+    ><article id="3dbc38de-efdd-80e1-96aa-c9151ef359b7" class="page sans"
+      ><div class="page-body"
+        ><h2 id="3dbc38de-efdd-806e-9fff-fbec0149b0de" class="" dir="auto">1. Featured results</h2
+        ><p id="80fcc782-14f3-47ec-883a-4a0844d9ecbb" class="" dir="auto"><strong>Start from one shot and create a new perspective</strong></p
+        ><p id="3dbc38de-efdd-804c-af12-d38c0d29d923" class="" dir="auto"
+          >Open a storyboard shot as a 3D scene and direct it by editing the characters and camera. The edited scene is used to generate video with <code>SceneGen</code>, and the final frame of the generated video can be added to the <code>CineV</code>  storyboard.</p
+        ><figure id="3dbc38de-efdd-80fd-8161-cac75d71e259" dir="ltr"
+          ><video
+            controls
+            playsinline
+            preload="metadata"
+            src="/shotloom/media/33.mp4"
+            style="display:block;width:100%;height:auto"
+          ></video
+          ><figcaption>Result video generated with SceneGen</figcaption></figure
+        ><p id="ac0965a4-20f7-4aad-8ef9-0276aff1583d" class="" dir="auto"><strong>From the original shot to 3D scene direction</strong></p
+        ><div id="4e4f512d-9844-44ba-aec2-82a1ccca9fba" class="column-list" data-notion-column-list="" dir="auto"
+          ><div
+            id="7c0c1736-19fa-484f-8aaa-6f95f64cf400"
+            style="width:50%"
+            class="column"
+            data-notion-column-ratio="0.5"
+            dir="auto"
+            ><figure id="3dbc38de-efdd-80ad-b0a6-d3364530ef78" class="image" data-notion-image="media/35.png" dir="ltr"
+              ><a href="/shotloom/media/35.png"><img style="width:703.99853515625px" src="/shotloom/media/35.png" /></a
+              ><figcaption>Original shot — the storyboard image that starts the scene</figcaption></figure
+            ></div
+          ><div
+            id="0ebf49a3-11a2-4d38-9f9e-ce746c57e095"
+            style="width:50%"
+            class="column"
+            data-notion-column-ratio="0.5"
+            dir="auto"
+            ><figure id="3dbc38de-efdd-806d-a21b-ceb333ae0705" class="image" data-notion-image="media/02.png" dir="ltr"
+              ><a href="/shotloom/media/02.png"><img style="width:568.676616915423px" src="/shotloom/media/02.png" /></a
+              ><figcaption>3D scene editing — reframe the camera to compose the character and surrounding space together</figcaption></figure
+            ></div
+          ></div
+        ><p id="3dbc38de-efdd-808a-a6ff-c34126d2aaa7" class="" dir="auto"
+          >In this example, the camera was changed from a close view of the character to a composition showing the surrounding space. The video above was generated from the edited scene using <code>SceneGen</code>.</p
+        ><h3 id="3dbc38de-efdd-81fe-a47f-f7ebd6986c79" class="" dir="auto">Edit poses, motion, and cameras to create video</h3
+        ><p id="3dbc38de-efdd-810c-ad71-c1c1550f2af0" class="" dir="auto">Follow the process of editing a character's poses and actions and the camera composition within one scene, then generating a video with SceneGen.</p
+        ><figure id="3dbc38de-efdd-8055-9645-d0962e555360" dir="ltr"
+          ><video
+            controls
+            playsinline
+            preload="metadata"
+            src="/shotloom/media/32.mp4"
+            style="display:block;width:100%;height:auto"
+          ></video
+          ><figcaption>Editing poses, motion, and cameras in Shotloom, then generating video with SceneGen</figcaption></figure
+        ><p id="3dbc38de-efdd-81c9-b238-f90de8230030" class="" dir="auto"
+          >Detailed instructions: <a href="#0cb557bd-f35c-4538-a264-58e63bdf36cd">4.3 Create character actions</a> · <a
+            href="#dc59e6d3-64bc-4ac5-9615-6e6733406845"
+            >4.4 Direct the camera</a
+          > · <a href="#d1bf72c5-fcfd-4e92-a1a4-9d452482be97">4.7 Connect SceneGen results to CineV</a></p
+        ><h2 id="ccf83f32-2028-4cbd-9896-9c6f35da5147" class="" dir="auto">2. The product's role</h2
+        ><p id="3dbc38de-efdd-8014-8e35-c0eefa12f097" class="" dir="auto"
+          ><code><strong>Shotloom</strong></code
+          ><strong> is a 3D scene direction tool for editing character actions and camera composition.</strong></p
+        ><p id="3dbc38de-efdd-80ba-bfa6-d875e00e484a" class="" dir="auto">Place characters, generate desired actions and apply them to the timeline, then design camera compositions that change over time. Play the scene to review the direction, save your work, and return to editing later.</p
+        ><p id="d8a677ad-e1ac-497b-895e-2f6fe79f9a62" class="" dir="auto"
+          ><code>CineV</code
+          > shots can be edited, or you can start by building a scene directly in <code>Shotloom</code>. Export your edits as camera images or video, or connect them to generation through <code>SceneGen</code> and production on the <code>CineV</code>  storyboard.</p
+        ><ul id="c76112ce-725d-4013-8bc5-87f694cdd7c2" class="bulleted-list" dir="auto"
+          ><li style="list-style-type:disc"><strong>Scene composition:</strong> Adjust the position and orientation of characters and props.</li></ul
+        ><ul id="3dbc38de-efdd-80af-842d-d29b7023bec0" class="bulleted-list" dir="auto"
+          ><li style="list-style-type:disc"><strong>Direction over time:</strong> Build character actions and camera movements on the timeline.</li></ul
+        ><ul id="3dbc38de-efdd-8063-a3c4-d0f8900c8f4d" class="bulleted-list" dir="auto"
+          ><li style="list-style-type:disc"
+            ><strong>Use the results:</strong> Keep editable work and use it for image and video export and <code>CineV</code>  integration.</li
+          ></ul
+        ><h2 id="3dbc38de-efdd-80a0-b6ab-e623dec02091" class="" dir="auto">3. The complete production workflow</h2
+        ><p id="262582ba-49ca-46bd-a47f-97aeb7b9fe2e" class="" dir="auto"><strong>Prepare a scene → Edit characters and cameras → Play and refine → Use the results</strong></p
+        ><p id="7bd83f6a-691c-40e4-916b-f19207c1f933" class="" dir="auto"
+          >Open <code>CineV</code> shots as 3D scenes, or build a scene directly in <code>Shotloom</code>. Edit character actions and camera composition, then play the result to review it. Keep the work as an editable bundle and continue with the output suited to your purpose.</p
+        ><figure id="93154689-28f4-4b20-b1e3-8b4f2b294e2e" class="image" data-notion-image="media/12.png" dir="ltr"
+          ><a href="/shotloom/media/12.png"><img style="width:703.9921875px" src="/shotloom/media/12.png" /></a
+          ><figcaption>The full workflow: prepare and direct a scene, then create an editable bundle, camera exports, or CineV output.</figcaption></figure
+        ><table id="d9a78dad-0755-433c-983e-6abf2f55bfa0" class="simple-table" dir="ltr"
+          ><thead class="simple-table-header"
+            ><tr id="f35ba222-96d1-48f3-81c6-2cac8bc255f1" dir="ltr"
+              ><th id="pCQ?" class="simple-table-header-color simple-table-header">Using the results</th
+              ><th id="R&lt;ZI" class="simple-table-header-color simple-table-header">Workflow</th
+              ><th id="I^U\" class="simple-table-header-color simple-table-header">Output</th></tr
+            ></thead
+          ><tbody
+            ><tr id="1160db83-da8f-4d59-a2ad-f4a962ab23e3" dir="ltr"
+              ><td id="pCQ?" class="">Keep editable work</td><td id="R&lt;ZI" class="">Save → Export bundle → Reopen</td
+              ><td id="I^U\" class="">An editable <code>.shotloom.zip</code>  bundle</td></tr
+            ><tr id="0110ccf8-dc32-485c-b27c-0d16afbe4953" dir="ltr"
+              ><td id="pCQ?" class="">Camera export</td><td id="R&lt;ZI" class="">Camera Export → Export complete</td
+              ><td id="I^U\" class="">First- and last-frame PNGs and silent WebM</td></tr
+            ><tr id="9f73db43-577d-4b10-954a-eb64563e3262" dir="ltr"
+              ><td id="pCQ?" class="">CineV integration</td><td id="R&lt;ZI" class="">Generate in SceneGen → Review result → Send to CineV</td
+              ><td id="I^U\" class="">A storyboard with the generated video's final frame added</td></tr
+            ></tbody
+          ></table
+        ><p id="3dbc38de-efdd-80dc-a756-e68da11ab673" class="" dir="auto"
+          >Camera Export outputs the camera view of the edited 3D scene. SceneGen generates video based on the scene and generation settings, while <code>Send to CineV</code> transfers the final-frame image of the generated video.</p
+        ><hr id="cd8b1559-5cad-43b4-8371-ce8513ea8dc0" dir="auto" /><h2
+          id="3dbc38de-efdd-807d-95d6-c582ac216ae4"
+          class=""
+          dir="auto"
+          >4. Detailed feature guide</h2
+        ><p id="3dbc38de-efdd-8062-a88d-c89f8f025ebe" class="" dir="auto">CineV integration is covered in 4.1 and 4.7, and Shotloom's standalone editing tools in 4.2–4.6. Each workflow can be used independently on a prepared Shot. A Shot is one scene-editing unit; a bundle stores work so it can be reopened and edited.</p
+        ><nav id="dfb3fa9e-b3a1-468f-a578-fb2d2660f001" class="table_of_contents" data-notion-toc="" dir="ltr"
+          ><div class="table_of_contents-item table_of_contents-indent-0"
+            ><a class="table_of_contents-link" href="#3dbc38de-efdd-806e-9fff-fbec0149b0de">1. Featured results</a></div
+          ><div class="table_of_contents-item table_of_contents-indent-1"
+            ><a class="table_of_contents-link" href="#3dbc38de-efdd-81fe-a47f-f7ebd6986c79">Edit poses, motion, and cameras to create video</a></div
+          ><div class="table_of_contents-item table_of_contents-indent-0"
+            ><a class="table_of_contents-link" href="#ccf83f32-2028-4cbd-9896-9c6f35da5147">2. The product's role</a></div
+          ><div class="table_of_contents-item table_of_contents-indent-0"
+            ><a class="table_of_contents-link" href="#3dbc38de-efdd-80a0-b6ab-e623dec02091">3. The complete production workflow</a></div
+          ><div class="table_of_contents-item table_of_contents-indent-0"
+            ><a class="table_of_contents-link" href="#3dbc38de-efdd-807d-95d6-c582ac216ae4">4. Detailed feature guide</a></div
+          ><div class="table_of_contents-item table_of_contents-indent-1"
+            ><a class="table_of_contents-link" href="#fc084624-2a26-4dfd-a7cd-9709d578c867">4.1 Open a CineV shot in Shotloom</a></div
+          ><div class="table_of_contents-item table_of_contents-indent-1"
+            ><a class="table_of_contents-link" href="#359489c9-318b-4a3a-8155-57f56af647d6">4.2 Compose a scene</a></div
+          ><div class="table_of_contents-item table_of_contents-indent-1"
+            ><a class="table_of_contents-link" href="#0cb557bd-f35c-4538-a264-58e63bdf36cd">4.3 Create character actions</a></div
+          ><div class="table_of_contents-item table_of_contents-indent-1"
+            ><a class="table_of_contents-link" href="#dc59e6d3-64bc-4ac5-9615-6e6733406845">4.4 Direct the camera</a></div
+          ><div class="table_of_contents-item table_of_contents-indent-1"
+            ><a class="table_of_contents-link" href="#d9d10c48-91d7-458f-9321-8b4b92a30a0d">4.5 Save and resume your work</a></div
+          ><div class="table_of_contents-item table_of_contents-indent-1"
+            ><a class="table_of_contents-link" href="#a21a4e3e-a80d-467b-99db-c0bedccbf86c">4.6 Export your results</a></div
+          ><div class="table_of_contents-item table_of_contents-indent-1"
+            ><a class="table_of_contents-link" href="#d1bf72c5-fcfd-4e92-a1a4-9d452482be97">4.7 Connect SceneGen results to CineV</a></div
+          ><div class="table_of_contents-item table_of_contents-indent-0"
+            ><a class="table_of_contents-link" href="#5cc9a4a2-2e5e-44aa-a343-a40af0cffe49">5. Glossary</a></div
+          ><div class="table_of_contents-item table_of_contents-indent-1"
+            ><a class="table_of_contents-link" href="#826a4e65-d681-45be-a7da-b38c1a803de1">Saving, exporting, and generating</a></div
+          ></nav
+        ><h3 id="fc084624-2a26-4dfd-a7cd-9709d578c867" class="" dir="auto">4.1 Open a CineV shot in Shotloom</h3
+        ><p id="dd4e6c2b-2a18-4bb0-b9c0-da2b03ac5584" class="" dir="auto">Select a storyboard shot, generate a 3D scene, and start editing it in Shotloom.</p
+        ><details id="3dbc38de-efdd-80f9-86e9-e814e250e0d7" open="" class="toggle" dir="auto"
+          ><summary>Open a project and review the storyboard</summary
+          ><div class="indented"
+            ><p id="d6f25b3b-ce5c-4646-8ff5-c48a3c9705b1" class="" dir="auto">Open the project you want to edit in CineV and review its storyboard.</p
+            ><figure id="3dbc38de-efdd-804b-8598-e8fb0306c5a2" class="image" data-notion-image="media/31.png" dir="ltr"
+              ><a href="/shotloom/media/31.png"><img style="width:703.991455078125px" src="/shotloom/media/31.png" /></a
+              ><figcaption>Open a project in CineV</figcaption></figure
+            ><figure id="3dbc38de-efdd-8018-b2db-c3b2f194652c" class="image" data-notion-image="media/23.png" dir="ltr"
+              ><a href="/shotloom/media/23.png"
+                ><img style="width:703.9772338867188px" src="/shotloom/media/23.png" /></a
+              ><figcaption>Review the project's storyboard</figcaption></figure
+            ></div
+          ></details
+        ><p id="1f55cefe-68f2-40c3-9fd6-113de8f3374c" class="" dir="auto"
+          ><strong>1. Select a shot to edit</strong>  — In the toolbar, click <code>3D Shot Edit</code>. The selected shot image and scene generation panel open on the left.</p
+        ><figure id="3dbc38de-efdd-80fd-9e9e-dbe4d6e55d23" class="image" data-notion-image="media/24.png" dir="ltr"
+          ><a href="/shotloom/media/24.png"><img style="width:703.99853515625px" src="/shotloom/media/24.png" /></a
+          ><figcaption>The selected shot's 3D Shot Edit panel</figcaption></figure
+        ><p id="96ae059f-6368-4978-83b3-aeabd14c0df1" class="" dir="auto"
+          ><strong>2. Generate a 3D scene</strong>  — In the left panel, click <code>Generate Scene</code> and wait for generation to finish.</p
+        ><figure id="3dbc38de-efdd-8060-8628-db49466a7259" class="image" data-notion-image="media/25.png" dir="ltr"
+          ><a href="/shotloom/media/25.png"><img style="width:703.991455078125px" src="/shotloom/media/25.png" /></a
+          ><figcaption>Generate a scene from the selected shot</figcaption></figure
+        ><p id="3dbc38de-efdd-80c0-9388-ccfef0b194ab" class="" dir="auto"
+          ><strong>3. Open in Shotloom</strong>  — When generation finishes, click the now-enabled <code>Open in Shotloom</code> button.</p
+        ><figure id="3dbc38de-efdd-8066-8a51-fd2713afcc16" class="image" data-notion-image="media/26.png" dir="ltr"
+          ><a href="/shotloom/media/26.png"><img style="width:703.99853515625px" src="/shotloom/media/26.png" /></a
+          ><figcaption>Open Shotloom after scene generation completes</figcaption></figure
+        ><p id="0e653493-dccd-46a7-a03d-f401e8cd371e" class="" dir="auto"
+          ><strong>4. Review the generated scene</strong>  — Review how characters and space have been reconstructed from the original shot.</p
+        ><figure id="3dbc38de-efdd-8072-ae2f-c2f8daf8dd77" class="image" data-notion-image="media/34.png" dir="ltr"
+          ><a href="/shotloom/media/34.png"><img style="width:703.9963989257812px" src="/shotloom/media/34.png" /></a
+          ><figcaption>The 3D scene opened in Shotloom</figcaption></figure
+        ><h3 id="359489c9-318b-4a3a-8155-57f56af647d6" class="" dir="auto">4.2 Compose a scene</h3
+        ><p id="68f8809e-b41a-402e-96b8-8de7e01104af" class="" dir="auto">Add characters and adjust their positions and orientations to compose the scene you will edit.</p
+        ><p id="748c2437-f111-4f7c-be1c-f9eecced51a1" class="" dir="auto"
+          ><strong>1. Add a character</strong>  — Add the character you want to use. The image below shows a character already added to the scene.</p
+        ><figure id="06585e1c-ad39-43ca-96a0-0752da568c6a" class="image" data-notion-image="media/20.png" dir="ltr"
+          ><a href="/shotloom/media/20.png"><img src="/shotloom/media/20.png" /></a
+          ><figcaption>A character added to the scene</figcaption></figure
+        ><p id="33f4444c-2810-4723-b9ab-816c331e0512" class="" dir="auto"
+          ><strong>2. Adjust position and orientation</strong>  — Select a character and place it appropriately in the scene.</p
+        ><figure id="e9993045-97ed-4c56-803f-cd1e9b4a5036" class="image" data-notion-image="media/21.png" dir="ltr"
+          ><a href="/shotloom/media/21.png"><img src="/shotloom/media/21.png" /></a
+          ><figcaption>Adjust the selected character's position and orientation</figcaption></figure
+        ><p id="5ff0a92f-a51d-4630-bb2a-7ca5d9af1bb5" class="" dir="auto"
+          ><strong>3. Check the placement</strong>  — Review the full scene to confirm that the character is in the intended position and facing the right direction.</p
+        ><figure id="08388d39-c270-4d3f-8e51-89759e170861" class="image" data-notion-image="media/22.png" dir="ltr"
+          ><a href="/shotloom/media/22.png"><img src="/shotloom/media/22.png" /></a
+          ><figcaption>Review character placement in the full scene</figcaption></figure
+        ><details id="853ac8d6-c1b2-4765-a0ef-364da0b80f08" open="" class="toggle" dir="auto"
+          ><summary>Starting conditions and prop placement</summary
+          ><div class="indented"
+            ><p id="bd924a68-1330-47e6-91a5-77e88aa9ca2b" class="" dir="auto">Start with a new bundle or an existing Shot open.</p
+            ><p id="36b1c44e-50d0-49c5-9077-1bb2aa6b0ee3" class="" dir="auto">If the scene needs props, add them and adjust their positions and orientations too. The example above shows character placement.</p></div
+          ></details
+        ><h3 id="0cb557bd-f35c-4538-a264-58e63bdf36cd" class="" dir="auto">4.3 Create character actions</h3
+        ><p id="15d1e42d-06e3-4f1d-9fd3-1da3e0ee7283" class="" dir="auto">Describe the desired action in a sentence, compare generated candidates, and apply one to the character's timeline.</p
+        ><p id="432ae60e-d417-43a6-b4d2-fd823ce3f6d1" class="" dir="auto"
+          ><strong>1. Generate an action</strong
+          > — In the <code>Motion</code>  tab, open <code>Create New Motion</code> and enter the action description and settings. Example: Slowly wave your right hand while standing in place.</p
+        ><figure id="30a60a84-185e-4068-823b-adc62397303c" class="image" data-notion-image="media/03.png" dir="ltr"
+          ><a href="/shotloom/media/03.png"><img src="/shotloom/media/03.png" /></a></figure
+        ><p id="46b085e9-69c4-40ba-9b8d-8158e3ac76a3" class="" dir="auto"
+          ><strong>2. Compare candidates</strong>  — Select a generated candidate to preview it on the character. Use <code>Play Preview</code> to review it again if needed.</p
+        ><figure id="0a580f4b-364d-4de3-9e96-50646484b1ef" class="image" data-notion-image="media/04.png" dir="ltr"
+          ><a href="/shotloom/media/04.png"><img src="/shotloom/media/04.png" /></a></figure
+        ><p id="ecd174f1-92d0-4d13-acf7-c8a077f1deee" class="" dir="auto"
+          ><strong>3. Apply to the timeline</strong>  — Run Add Performance Clip on the candidate. A Performance Clip is an action clip applied to a character's timeline. Confirm the target character and application range, then click <code>Add Clip</code> button.</p
+        ><figure id="23662290-40ca-4275-b5d8-dc0934a9e529" class="image" data-notion-image="media/05.png" dir="ltr"
+          ><a href="/shotloom/media/05.png"><img src="/shotloom/media/05.png" /></a></figure
+        ><p id="d03f5b9b-3370-4944-8bdb-3f09a5393557" class="" dir="auto"
+          ><strong>4. Play the applied result</strong>  — Exit the candidate preview and play the actual timeline clip. Confirm that the selected character performs the desired action during the specified interval.</p
+        ><figure id="5edf42d2-51b5-4107-8211-33993e37776b" class="image" data-notion-image="media/06.png" dir="ltr"
+          ><a href="/shotloom/media/06.png"><img src="/shotloom/media/06.png" /></a></figure
+        ><details id="1abdfcc3-1b50-4b7c-9426-a531f1d346c7" open="" class="toggle" dir="auto"
+          ><summary>Candidate previews, clip application, and poses</summary
+          ><div class="indented"
+            ><p id="53bd6735-0a46-4fd7-98a7-550725def17e" class="" dir="auto">The Shot must contain a character, and motion generation must be available.</p
+            ><p id="6d8719b2-8176-4476-adc6-3f01f54a86d0" class="" dir="auto">Generating and previewing a candidate alone does not add it to the timeline. You must specify a target character and interval, then add the clip.</p
+            ><p id="19e6d85a-111c-4ee4-b059-906f4cc9f5f5" class="" dir="auto"
+              >To apply a pose, open the <code>Pose</code>  tab, select a candidate, and specify the target character.</p
+            ></div
+          ></details
+        ><h3 id="dc59e6d3-64bc-4ac5-9615-6e6733406845" class="" dir="auto">4.4 Direct the camera</h3
+        ><p id="09039e86-aee4-49ce-8e44-5b65c8cb83ba" class="" dir="auto">Place camera keys to change the composition over time and play the scene to review the movement. A camera key stores the camera composition at a particular frame.</p
+        ><p id="a68ff161-2b4a-4f45-a3d7-fc8bfaa15170" class="" dir="auto"
+          ><strong>1. Select a camera and composition</strong>  — Select the camera to edit and compose the shot in pilot view. Pilot view lets you edit a scene while looking through the selected camera.</p
+        ><figure id="97107074-f930-4a01-926f-5105426d3ff9" class="image" data-notion-image="media/07.png" dir="ltr"
+          ><a href="/shotloom/media/07.png"><img src="/shotloom/media/07.png" /></a
+          ><figcaption>Check the composition from the selected camera's viewpoint</figcaption></figure
+        ><p id="04c161ea-153d-4c02-af33-a32dd36a631a" class="" dir="auto"
+          ><strong>2. Save the starting composition</strong>  — Go to the starting frame, adjust the composition, and save a camera key. After entering values, you must also execute the key-save action.</p
+        ><figure id="6a6b0221-1e2a-45c8-b82a-c27450fcdd6a" class="image" data-notion-image="media/08.png" dir="ltr"
+          ><a href="/shotloom/media/08.png"><img src="/shotloom/media/08.png" /></a></figure
+        ><p id="2a1b5e4d-03ab-4852-bbbb-49cdafca7ed5" class="" dir="auto"
+          ><strong>3. Save the next composition</strong>  — Move to a later frame, enter the position and rotation for the next composition, and save them as a key.</p
+        ><figure id="899dc51a-6ddd-43ce-9ae3-48ba74a2851d" class="image" data-notion-image="media/10.png" dir="ltr"
+          ><a href="/shotloom/media/10.png"><img src="/shotloom/media/10.png" /></a></figure
+        ><details id="fcf4b741-48a1-4b36-b9d6-4abc1e3451f0" open="" class="toggle" dir="auto"
+          ><summary>Composition values, FOV, and multiple cameras</summary
+          ><div class="indented"
+            ><figure id="c79b0058-ea39-4949-8cdf-adbca51e35d0" class="image" data-notion-image="media/09.png" dir="ltr"
+              ><a href="/shotloom/media/09.png"><img src="/shotloom/media/09.png" /></a
+              ><figcaption>Enter the next composition's position and rotation at a later frame</figcaption></figure
+            ><p id="edbb92f3-a65f-4511-bacf-d50658bd7efa" class="" dir="auto">Enter position and rotation values in Properties, then save a key. If you saved position and rotation keys together, save any changed FOV separately.</p
+            ><p id="70bb9993-337b-49d3-99e8-416cc2cc6e93" class="" dir="auto">If there is no camera, add one first. With multiple cameras, also specify the main camera to use for the current interval.</p></div
+          ></details
+        ><p id="7ad9136b-ef41-49ed-b35f-2d550b202be4" class="" dir="auto"
+          ><strong>4. Check the movement</strong>  — Play between the two keys in the timeline camera preview. Confirm that the camera keys appear at different frames and that the composition changes as intended.</p
+        ><figure id="cdeec878-756d-4bd1-a93c-f601e82ca172" class="image" data-notion-image="media/11.png" dir="ltr"
+          ><a href="/shotloom/media/11.png"><img src="/shotloom/media/11.png" /></a
+          ><figcaption>Check movement between two camera keys</figcaption></figure
+        ><details id="a193b110-b8d1-4165-bd15-41ee2c2ab919" open="" class="toggle" dir="auto"
+          ><summary>Refine camera movement</summary
+          ><div class="indented"
+            ><p id="ee2e3c20-9d59-4559-9ccb-4bf79a68db3b" class="" dir="auto">Stop playback and go to the frame you want to edit. Adjust its values, save the key again, and play the surrounding interval to check the movement.</p></div
+          ></details
+        ><h3 id="d9d10c48-91d7-458f-9321-8b4b92a30a0d" class="" dir="auto">4.5 Save and resume your work</h3
+        ><p id="e1fa34f9-7a96-432d-9b81-2ae76e9b0bca" class="" dir="auto">Save your edits and keep them in a bundle file that can be reopened for further work.</p
+        ><p id="c2ed9b29-c223-4bf7-bb32-b8d83d66f162" class="" dir="auto"
+          ><strong>1. Save your work</strong
+          > — <code>File → Save</code> and confirm the <code>Saved</code>  status.</p
+        ><figure id="d45a78a2-f8bf-4147-9224-58805d9faae5" class="image" data-notion-image="media/17.png" dir="ltr"
+          ><a href="/shotloom/media/17.png"><img src="/shotloom/media/17.png" /></a
+          ><figcaption>Save your work from the File menu</figcaption></figure
+        ><p id="6c2ee6a2-4952-43e6-b2a5-87760e4c587a" class="" dir="auto"
+          ><strong>2. Keep an editable bundle</strong
+          > — <code>File → Export</code> to download an editable <code>.shotloom.zip</code>  bundle.</p
+        ><figure id="ed2b0557-bd96-4451-95de-d890ef998e1f" class="image" data-notion-image="media/18.png" dir="ltr"
+          ><a href="/shotloom/media/18.png"><img src="/shotloom/media/18.png" /></a
+          ><figcaption>Export an editable Shotloom bundle</figcaption></figure
+        ><p id="8bce1c7a-d63a-4855-8d16-f36f6b6b486d" class="" dir="auto"
+          ><strong>3. Reopen your work</strong> — <code>File → Import</code> to reopen the saved bundle. Check that characters, clips, and camera keys are preserved, then continue editing.</p
+        ><figure id="4aa71ed4-6fca-446f-87f5-f324a81b6c3e" class="image" data-notion-image="media/19.png" dir="ltr"
+          ><a href="/shotloom/media/19.png"><img src="/shotloom/media/19.png" /></a></figure
+        ><details id="69d079d0-ac94-4f37-b7b0-a3058839db7a" open="" class="toggle" dir="auto"
+          ><summary>Prepare savable work and verify reloading</summary
+          ><div class="indented"
+            ><p id="3663e44c-8b99-4f3d-8de7-ff368040aa94" class="" dir="auto">Work in a bundle that can be saved. If using a temporary Preview, first prepare the work in a new or imported bundle.</p
+            ><p id="5cbafd41-a48b-437e-959e-bd32847c448f" class="" dir="auto">Return to the same frame as before saving to compare whether character, clip, and camera edits were preserved.</p></div
+          ></details
+        ><h3 id="a21a4e3e-a80d-467b-99db-c0bedccbf86c" class="" dir="auto">4.6 Export your results</h3
+        ><p id="c3ba8d27-adfb-4038-a45c-3b1d9290a40f" class="" dir="auto">Export the edited Shot as the camera's first and last frame images and a video.</p
+        ><p id="e5b36f1a-1833-4417-94f1-1b9cf89d926f" class="" dir="auto"
+          ><strong>1. Run camera export</strong
+          >  — In the camera export tools at the top right, click <code>Export</code> and choose a folder to save the files. <code>File → Export</code> is used to keep an editable bundle.</p
+        ><figure id="4e1f6e98-ae84-42dc-9032-449f376fe53d" class="image" data-notion-image="media/14.png" dir="ltr"
+          ><a href="/shotloom/media/14.png"><img src="/shotloom/media/14.png" /></a
+          ><figcaption>Camera export tools — the Export button at the top right</figcaption></figure
+        ><p id="0f4788ab-6ad5-4fe5-aa9d-d3849ff43bfe" class="" dir="auto"
+          ><strong>2. Confirm export completion</strong>  — Wait for export to finish and check the completion message.</p
+        ><details id="594bf617-4698-4a05-9044-4065d0ac4120" open="" class="toggle" dir="auto"
+          ><summary>Export completion message</summary
+          ><div class="indented"
+            ><figure id="5151f787-9240-4f07-b082-167d79aabe64" class="image" data-notion-image="media/15.png" dir="ltr"
+              ><a href="/shotloom/media/15.png"><img src="/shotloom/media/15.png" /></a
+              ><figcaption>Camera export complete</figcaption></figure
+            ></div
+          ></details
+        ><p id="6b568b99-edf5-437a-a025-82c3b590c1be" class="" dir="auto"
+          ><strong>3. Review the output</strong>  — Open the first-frame PNG, last-frame PNG, and silent WebM to review the images and movement. The example below is the exported last frame.</p
+        ><figure id="07bc398d-f805-4bd1-b041-ab862afaffb4" class="image" data-notion-image="media/16.png" dir="ltr"
+          ><a href="/shotloom/media/16.png"><img src="/shotloom/media/16.png" /></a
+          ><figcaption>Export result — last-frame PNG</figcaption></figure
+        ><details id="ab1a1e7b-baeb-47be-98fa-c5d232c24d82" open="" class="toggle" dir="auto"
+          ><summary>Export preparation and file formats</summary
+          ><div class="indented"
+            ><p id="0ab1bfcd-55f0-4130-9558-bc99365812d3" class="" dir="auto">Run the export when the Shot's camera and playback interval are prepared and camera export is available in the current environment.</p
+            ><p id="c015555a-bbdb-4b4f-8866-9ade81737b06" class="" dir="auto">Camera export currently provides first- and last-frame PNGs and 1920×1080 silent VP9/WebM video.</p></div
+          ></details
+        ><h3 id="d1bf72c5-fcfd-4e92-a1a4-9d452482be97" class="" dir="auto">4.7 Connect SceneGen results to CineV</h3
+        ><p id="83b2bc80-02b8-4d30-9579-1f3a8ef56767" class="" dir="auto"
+          >From your directed scene, use <code>SceneGen</code>  to generate video and add the final frame of the result to the <code>CineV</code>  storyboard.</p
+        ><p id="6b4c8795-2eea-4acc-9e1b-0174596522dc" class="" dir="auto"
+          ><strong>1. Direct the scene</strong>  — Edit the characters and camera to create the desired composition. A before-and-after camera comparison for this example is shown in Featured results above.</p
+        ><figure id="3dbc38de-efdd-8048-b44d-e8e49e7eb995" class="image" data-notion-image="media/34.png" dir="ltr"
+          ><a href="/shotloom/media/34.png"
+            ><img style="width:703.9963989257812px" src="/shotloom/media/34.png" /></a></figure
+        ><p id="39f73f44-1f46-4643-a254-35989a8fcf1d" class="" dir="auto"
+          ><strong>2. Generate with SceneGen</strong
+          >  — On the right, open the <code>SceneGen</code>  tab. Describe the mood, lighting, and character actions, or add reference images, then click <code>Generate</code>.</p
+        ><figure id="3dbc38de-efdd-80c5-8177-cc48eea147d2" class="image" data-notion-image="media/27.png" dir="ltr"
+          ><a href="/shotloom/media/27.png"><img style="width:703.991455078125px" src="/shotloom/media/27.png" /></a
+          ><figcaption>Enter generation settings in SceneGen</figcaption></figure
+        ><p id="d9cd5369-dd1a-4f3d-9f54-e8cea191470a" class="" dir="auto"
+          ><strong>3. Review the generated result</strong>  — Once generation finishes, review the video and last-frame image in the result card. The example result video appears near the beginning of this document.</p
+        ><figure id="3dbc38de-efdd-80c5-912e-ff857dbc459f" class="image" data-notion-image="media/28.png" dir="ltr"
+          ><a href="/shotloom/media/28.png"><img style="width:703.99853515625px" src="/shotloom/media/28.png" /></a
+          ><figcaption>Review SceneGen results</figcaption></figure
+        ><figure id="3dbc38de-efdd-80a7-be3d-d52ac3f264ca" class="image" data-notion-image="media/29.png" dir="ltr"
+          ><a href="/shotloom/media/29.png"><img style="width:703.9772338867188px" src="/shotloom/media/29.png" /></a
+          ><figcaption>Review the generated video's final frame</figcaption></figure
+        ><p id="3dbc38de-efdd-80de-9a64-c69b253bf58d" class="" dir="auto"
+          ><strong>4. Send to CineV</strong>  — On the result you want to use, click <code>Send to CineV</code> to transfer the final-frame image of the generated video.</p
+        ><p id="3dbc38de-efdd-8020-9bd3-ff73e98109fe" class="" dir="auto"
+          ><strong>5. Check the storyboard</strong>  — Return to CineV and confirm that the transferred final-frame image has been added to the storyboard.</p
+        ><figure id="3dbc38de-efdd-8063-badc-e318177dd60a" class="image" data-notion-image="media/30.png" dir="ltr"
+          ><a href="/shotloom/media/30.png"
+            ><img style="width:703.99853515625px" src="/shotloom/media/30.png" /></a></figure
+        ><p id="e32a0ba3-b0d0-4047-a80e-c5a867cca65e" class="" dir="auto"
+          ><strong>6. Start the next edit from the new image</strong>  — Select the image added to the storyboard and run <code>3D Shot Edit → Generate Scene → Open in Shotloom</code>. As in 4.1, generate a 3D scene from the new image, then edit character actions and camera composition again.</p
+        ><p id="24e5ef2b-83eb-4637-abb4-b5e1446d24eb" class="" dir="auto"
+          >You can also generate these results with <code>SceneGen</code> and send the final frame to <code>CineV</code>. Each generated result becomes the starting point for directing the next scene, allowing you to develop it through the same iterative production workflow.</p
+        ><figure id="90806692-4fa3-465a-920d-8142cadeeeae" class="image" data-notion-image="media/13.png" dir="ltr"
+          ><a href="/shotloom/media/13.png"><img style="width:703.96875px" src="/shotloom/media/13.png" /></a
+          ><figcaption>Use the final frame added to CineV as new input to repeat scene direction and generation.</figcaption></figure
+        ><p id="3dbc38de-efdd-8073-821d-db66b7a040e0" class="" dir="auto">
+</p
+        ><hr id="c1b56965-8334-4a48-836e-80788d075ea1" dir="auto" /><h2
+          id="5cc9a4a2-2e5e-44aa-a343-a40af0cffe49"
+          class=""
+          dir="auto"
+          >5. Glossary</h2
+        ><table id="dcc7351d-f73c-4d8c-8779-f67e06252485" class="simple-table" dir="ltr"
+          ><thead class="simple-table-header"
+            ><tr id="55fb68ae-a9ca-438d-bc97-f76cb43c61dc" dir="ltr"
+              ><th id="R\WX" class="simple-table-header-color simple-table-header" style="width:180px"
+                >Term</th
+              ><th id="QEqv" class="simple-table-header-color simple-table-header" style="width:524px"
+                >Meaning</th
+              ></tr
+            ></thead
+          ><tbody
+            ><tr id="84945267-907b-4901-af83-f1d2d14b44eb" dir="ltr"
+              ><td id="R\WX" class="" style="width:180px">Shotloom</td
+              ><td id="QEqv" class="" style="width:524px">A 3D scene direction tool for editing character placement, actions, and camera composition.</td></tr
+            ><tr id="1fb78d02-8d41-4902-8a49-fe7a80c31850" dir="ltr"
+              ><td id="R\WX" class="" style="width:180px">CineV</td
+              ><td id="QEqv" class="" style="width:524px">A service for managing storyboard shots and production work. Send shots to Shotloom for editing, or receive the last frame of a generated result and add it to the storyboard.</td></tr
+            ><tr id="9b7dc770-534d-40e3-a794-9185c49f5f60" dir="ltr"
+              ><td id="R\WX" class="" style="width:180px">SceneGen</td
+              ><td id="QEqv" class="" style="width:524px">A feature that generates video from the scene edited in Shotloom and the supplied generation settings.</td></tr
+            ><tr id="f4ddffae-d0a2-45ff-bb8c-6c530a719fc8" dir="ltr"
+              ><td id="R\WX" class="" style="width:180px">Shot</td
+              ><td id="QEqv" class="" style="width:524px">The unit for editing one scene. Character actions and camera direction are composed within this unit.</td></tr
+            ><tr id="b830bb0b-a259-4922-bcb8-e24ab6df3f5e" dir="ltr"
+              ><td id="R\WX" class="" style="width:180px"> bundle</td
+              ><td id="QEqv" class="" style="width:524px"
+                >A format containing characters, clips, cameras, and other work so it can be reopened and edited. Editable bundles are stored as <code>.shotloom.zip</code>  files.</td
+              ></tr
+            ><tr id="52b64e57-7712-4388-a0e7-ead75d3e81ce" dir="ltr"
+              ><td id="R\WX" class="" style="width:180px">Timeline</td
+              ><td id="QEqv" class="" style="width:524px">The editing area where character actions and camera compositions are arranged over time and specific moments can be played or reviewed.</td></tr
+            ><tr id="21d2cd2b-82da-456f-a73c-47fb4a1d4c45" dir="ltr"
+              ><td id="R\WX" class="" style="width:180px">Performance Clip</td
+              ><td id="QEqv" class="" style="width:524px">An action clip applied to a character's timeline. After reviewing a generated motion candidate, specify the target character and application interval to add it.</td></tr
+            ><tr id="20406f50-8b38-4c91-9574-b616dfcfe1f1" dir="ltr"
+              ><td id="R\WX" class="" style="width:180px">Camera key</td
+              ><td id="QEqv" class="" style="width:524px">A point storing camera position, rotation, and other values at a specific frame. Place keys at different times to create changes in composition over time.</td></tr
+            ><tr id="cc25ca52-99d8-4c30-b0c6-2deef768a019" dir="ltr"
+              ><td id="R\WX" class="" style="width:180px">Pilot view</td
+              ><td id="QEqv" class="" style="width:524px">A way to edit composition while viewing the scene through the selected camera.</td></tr
+            ></tbody
+          ></table
+        ><h3 id="826a4e65-d681-45be-a7da-b38c1a803de1" class="" dir="auto">Saving, exporting, and generating</h3
+        ><table id="673bc1e1-2bb0-42f1-9e87-f3e8df6c37a8" class="simple-table" dir="ltr"
+          ><thead class="simple-table-header"
+            ><tr id="561e682d-5456-487d-b3db-355a68dbabe2" dir="ltr"
+              ><th id="T\Zu" class="simple-table-header-color simple-table-header" style="width:180px"
+                >Action</th
+              ><th id="a{eC" class="simple-table-header-color simple-table-header" style="width:524px"
+                >Purpose and output</th
+              ></tr
+            ></thead
+          ><tbody
+            ><tr id="cc27a646-d3a5-4928-a807-3ca882735d33" dir="ltr"
+              ><td id="T\Zu" class="" style="width:180px">File → Export</td
+              ><td id="a{eC" class="" style="width:524px">Download an editable Shotloom bundle.</td></tr
+            ><tr id="94b806b8-2075-4370-92ff-929dadd36555" dir="ltr"
+              ><td id="T\Zu" class="" style="width:180px">Camera Export</td
+              ><td id="a{eC" class="" style="width:524px">Export the edited 3D scene as first- and last-frame camera PNGs and a silent WebM video.</td></tr
+            ><tr id="3b17bea8-f3ed-435e-9fa8-6149c32bb84e" dir="ltr"
+              ><td id="T\Zu" class="" style="width:180px">SceneGen generation</td
+              ><td id="a{eC" class="" style="width:524px">Generate new video from the scene and generation settings.</td></tr
+            ><tr id="4b7db092-b4d4-4453-a6fe-b458bce7bcf7" dir="ltr"
+              ><td id="T\Zu" class="" style="width:180px">Send to CineV</td
+              ><td id="a{eC" class="" style="width:524px">Transfer the last-frame image of the selected SceneGen result to the CineV storyboard.</td></tr
+            ></tbody
+          ></table
+        ><p id="3dbc38de-efdd-805e-8563-d1251efea476" class="" dir="auto">
+</p></div
+      ></article
+    ><span class="sans" style="font-size:14px;padding-top:2em"></span
+    ><footer class="portfolio-footer"
+      ><div class="portfolio-footer-inner"
+        ><div class="portfolio-footer-brand"
+          ><svg viewbox="0 0 493 102" aria-hidden="true" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path
+              d="M239.395 50.8836V101.479H226.097V50.8836C226.097 41.0059 222.173 31.5327 215.188 24.548C208.203 17.5634 198.73 13.6395 188.852 13.6395C178.974 13.6395 169.499 17.5631 162.513 24.5474C155.527 31.5317 151.601 41.0049 151.598 50.8836V101.479H138.352V50.8836C138.355 37.492 143.677 24.6498 153.147 15.1815C162.618 5.71314 175.461 0.39406 188.852 0.394061C195.487 0.388488 202.057 1.69023 208.189 4.22494C214.32 6.75966 219.891 10.4776 224.585 15.1665C229.279 19.8553 233.003 25.423 235.544 31.5515C238.085 37.68 239.394 44.2492 239.395 50.8836Z"
+              fill="currentColor"
+            ></path>
+            <path
+              d="M376.198 88.181H304.912C287.944 88.181 268.474 74.4584 268.474 57.5225H360.98L354.405 44.277H268.506C268.506 27.3093 288.018 13.6185 304.944 13.6185H339.229L332.654 0.373047H301.571C288.178 0.381475 275.335 5.70585 265.864 15.1766C256.393 24.6474 251.069 37.4901 251.061 50.8839C251.061 64.2886 256.386 77.1443 265.864 86.6228C275.343 96.1014 288.198 101.426 301.603 101.426H382.773L376.198 88.181Z"
+              fill="currentColor"
+            ></path>
+            <path d="M112.837 13.5867V101.427H126.083V0.341309H112.837V13.5867Z" fill="currentColor"></path>
+            <path
+              d="M0.309326 50.8839C0.309326 64.2887 5.63433 77.1443 15.1129 86.6229C24.5915 96.1015 37.4472 101.427 50.8519 101.427H101.013V88.1811H50.8519C45.9504 88.1867 41.0959 87.2261 36.5659 85.3542C32.0359 83.4824 27.9193 80.736 24.4514 77.272C20.9836 73.8081 18.2325 69.6946 16.3555 65.1667C14.4785 60.6389 13.5123 55.7854 13.5123 50.8839C13.5123 45.986 14.4771 41.136 16.3514 36.6109C18.2258 32.0858 20.9731 27.9742 24.4364 24.5108C27.8998 21.0475 32.0114 18.3002 36.5365 16.4258C41.0616 14.5515 45.9116 13.5867 50.8095 13.5867H100.97V0.341309H50.8095C37.4122 0.352553 24.5673 5.68252 15.0979 15.1599C5.62852 24.6372 0.309321 37.4865 0.309326 50.8839Z"
+              fill="currentColor"
+            ></path>
+            <path
+              d="M447.952 88.6887C434.963 62.054 421.21 33.8466 408.089 6.93856C407.081 4.87156 405.513 3.12953 403.563 1.91116C401.614 0.692798 399.361 0.0471448 397.062 0.0478521H366.412C357.341 0.0478521 351.403 9.55164 355.379 17.7091L393.086 95.0368C394.094 97.1046 395.663 98.8474 397.613 100.066C399.564 101.285 401.818 101.931 404.117 101.93H446.339C447.628 101.93 448.891 101.567 449.985 100.884C451.078 100.2 451.958 99.2233 452.523 98.064L447.952 88.6887ZM377.606 13.5539H391.043C391.809 13.5537 392.559 13.7692 393.208 14.1757C393.858 14.5823 394.379 15.1635 394.713 15.8528L400.153 26.9742C400.457 27.5977 400.597 28.2882 400.561 28.9808C400.525 29.6734 400.314 30.3454 399.947 30.9339C399.58 31.5223 399.07 32.0079 398.464 32.3451C397.858 32.6822 397.176 32.8598 396.483 32.8613H383.036C382.271 32.8599 381.521 32.6437 380.872 32.2373C380.223 31.8309 379.701 31.2506 379.366 30.5624L373.944 19.441C373.64 18.8177 373.499 18.1273 373.535 17.4347C373.571 16.742 373.782 16.0698 374.149 15.4812C374.515 14.8926 375.026 14.407 375.632 14.0698C376.237 13.7327 376.919 13.5551 377.612 13.5539H377.606ZM391.219 41.4676H404.66C405.425 41.4673 406.176 41.6829 406.825 42.0894C407.474 42.496 407.995 43.0772 408.33 43.7665L413.754 54.8879C414.057 55.5114 414.197 56.2018 414.161 56.8944C414.125 57.587 413.914 58.2591 413.547 58.8476C413.18 59.436 412.67 59.9216 412.064 60.2588C411.458 60.5959 410.777 60.7735 410.083 60.775H396.646C395.881 60.7736 395.131 60.5574 394.482 60.151C393.834 59.7446 393.312 59.1643 392.976 58.4761L387.554 47.3547C387.25 46.7312 387.109 46.0407 387.145 45.3478C387.181 44.655 387.393 43.9827 387.76 43.394C388.127 42.8054 388.637 42.3198 389.243 41.9828C389.849 41.6458 390.531 41.4685 391.225 41.4676H391.219ZM404.843 69.3812H418.278C419.044 69.381 419.794 69.5965 420.443 70.0031C421.092 70.4097 421.614 70.9909 421.948 71.6802L427.372 82.8016C427.676 83.4251 427.816 84.1155 427.78 84.8081C427.744 85.5007 427.532 86.1728 427.165 86.7613C426.798 87.3497 426.288 87.8353 425.682 88.1724C425.077 88.5096 424.395 88.6872 423.702 88.6887H410.257C409.491 88.6889 408.74 88.4734 408.091 88.0668C407.442 87.6603 406.921 87.0791 406.586 86.3897L401.157 75.2745C400.85 74.6495 400.709 73.9568 400.744 73.2618C400.78 72.5668 400.993 71.8924 401.362 71.3024C401.731 70.7125 402.244 70.2264 402.854 69.8902C403.463 69.5541 404.147 69.3789 404.843 69.3812Z"
+              fill="currentColor"
+            ></path>
+            <path
+              d="M491.704 17.7072C478.706 44.3684 465.25 71.968 452.523 98.0641C450.317 93.5417 445.868 84.4174 443.668 79.9092L473.15 19.4371C473.453 18.8138 473.594 18.1236 473.558 17.4311C473.522 16.7387 473.31 16.0667 472.943 15.4785C472.576 14.8903 472.066 14.405 471.46 14.0684C470.854 13.7318 470.172 13.5548 469.479 13.5541H464.082C463.317 13.5533 462.567 13.7679 461.918 14.1733C461.269 14.5788 460.747 15.1587 460.412 15.8469L450.517 36.1335C447.64 42.0348 439.235 42.0348 436.358 36.1335L436.266 35.9458C435.742 34.8708 435.469 33.6904 435.469 32.4943C435.469 31.2982 435.742 30.1178 436.266 29.0428C439.302 22.809 443.637 13.9253 447.05 6.93873C448.058 4.87065 449.627 3.12763 451.577 1.90852C453.528 0.68942 455.782 0.0433244 458.081 0.0439458H480.671C489.743 0.0459856 495.683 9.54978 491.704 17.7072Z"
+              fill="currentColor"
+            ></path></svg
+          ><span class="portfolio-archive-badge">Archive</span></div
+        ><p class="portfolio-footer-note">As we bring CineV's journey over the past few years to a close, we leave a record of the technology and works we created together.</p
+        ><div class="portfolio-footer-bottom"><span>© 2026 CINAMON, Inc. All rights reserved.</span></div></div
+      ></footer
+    ></body
+  ></html
+>
