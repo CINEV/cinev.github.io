@@ -2,12 +2,12 @@
 
 CINEV 팀이 만들어온 제품, 기술, 연구와 작품을 기록한 한글·영어 웹사이트입니다.
 
-- Website: https://cinev.github.io/
-- English: https://cinev.github.io/en/
+- Website: https://cinev.com/
+- English: https://cinev.com/en/
 
 ## 구성
 
-- `dist/`: 서비스 종료 예정 안내 첫 화면과 정적 사이트·이미지·영상
+- `dist/`: 서비스 종료 안내 첫 화면과 정적 사이트·이미지·영상
 - `dist/archive/`, `dist/en/archive/`: 한글·영어 Product 아카이브 첫 화면
 - `dist/showcase/`: Showcase 빌드 결과
 - `dist/poseshot/`, `dist/shotloom/`, `dist/a2p/`: 프로젝트 상세 페이지
@@ -65,7 +65,7 @@ python3 translations/build-english.py
 
 모든 언어·상세 페이지가 디렉터리별 `index.html`로 제공됩니다. Showcase 소스를 수정했다면 위 빌드 명령을 실행한 뒤 갱신된 `dist/`도 함께 커밋해야 합니다. 배포 workflow는 소스를 다시 빌드하지 않습니다.
 
-루트 `/`와 `/en/`는 서비스 종료 예정 안내가 사용하고, 안내 버튼은 `/archive/`와 `/en/archive/`로 연결됩니다. `/insights/`는 별도 `CINEV/insights` 저장소의 블로그가 사용합니다. `dist/insights`나 커스텀 도메인용 `CNAME` 파일을 추가하지 않습니다. 저장소는 비공개 상태로 유지합니다. GitHub Pages 사용 가능 여부는 조직의 요금제에 따릅니다.
+루트 `/`와 `/en/`는 서비스 종료 안내가 사용하고, 안내 버튼은 `/archive/`와 `/en/archive/`로 연결됩니다. `/insights/`는 별도 `CINEV/insights` 저장소의 블로그가 사용합니다. `dist/insights`나 커스텀 도메인용 `CNAME` 파일을 추가하지 않습니다. 저장소는 비공개 상태로 유지합니다. GitHub Pages 사용 가능 여부는 조직의 요금제에 따릅니다.
 
 ## 미디어
 
@@ -83,4 +83,4 @@ python3 translations/build-english.py
 
 메뉴의 INSIGHTS는 한국어에서 `/insights/ko/`, 영어에서 `/insights/`로 연결됩니다. Insights의 공통 홈 버튼은 같은 호스트의 `/`로 돌아옵니다. 두 저장소를 각각 배포해야 하며 로컬 Python 서버는 Insights를 포함하지 않으므로 해당 링크는 404가 정상입니다.
 
-HTML 생성 후 `python3 scripts/update-seo.py`와 HTML 포맷팅을 실행하고 `python3 scripts/verify-site.py`로 링크·메타데이터를 검사합니다. 기본 origin은 `https://cinev.github.io`이며 배포에서는 `actions/configure-pages`가 반환한 주소를 사용합니다. 나중에 Pages 커스텀 도메인을 `cinev.com`으로 설정하고 메인 사이트를 재배포하면 메타데이터도 해당 주소로 바뀝니다. DNS와 Pages 도메인 설정은 별도로 필요합니다. Insights는 현재도 운영 중인 `https://cinev.com/insights/`를 canonical로 유지합니다. 루트 robots는 두 사이트의 수집을 허용하고 사이트맵을 안내합니다.
+HTML 생성 후 `python3 scripts/update-seo.py`와 HTML 포맷팅을 실행하고 `python3 scripts/verify-site.py`로 링크·메타데이터를 검사합니다. 기본 origin은 `https://cinev.com`이며 배포에서는 `actions/configure-pages`가 반환한 주소를 사용합니다. Pages 커스텀 도메인은 `cinev.com`을 사용합니다. 배포 시 메타데이터도 해당 주소로 갱신됩니다. Insights는 현재도 운영 중인 `https://cinev.com/insights/`를 canonical로 유지합니다. 루트 robots는 두 사이트의 수집을 허용하고 사이트맵을 안내합니다.

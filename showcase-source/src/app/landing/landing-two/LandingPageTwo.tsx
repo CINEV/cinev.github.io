@@ -312,7 +312,7 @@ export function LandingPageTwo() {
                     <span key={tag} className="rounded-full border border-black/18 px-3 py-2 text-xs font-bold sm:px-4">{tag}</span>
                   ))}
                 </div>
-                <button type="button" disabled aria-disabled="true" className="mt-auto inline-flex h-13 w-fit items-center justify-center rounded-full bg-black/15 px-6 text-[15px] font-bold text-black/50 cursor-not-allowed">{tr('2026년 11월 서비스 종료', 'Service ends in November 2026')}</button>
+                <button type="button" disabled aria-disabled="true" className="mt-auto inline-flex h-13 w-fit items-center justify-center rounded-full bg-black/15 px-6 text-[15px] font-bold text-black/50 cursor-not-allowed">{tr('2026년 11월 서비스 종료', 'Service ended in November 2026')}</button>
               </article>
 
               <article className="flex min-h-[540px] flex-col rounded-2xl border border-white/14 bg-[#161616] p-7 sm:rounded-[30px] sm:p-10 lg:p-12">
@@ -389,7 +389,7 @@ export function LandingPageTwo() {
               <Lines>{content.closing.description}</Lines>
             </p>
             <div className="mt-10 flex w-full max-w-[430px] flex-col gap-3 sm:w-auto sm:max-w-none sm:flex-row">
-              <button type="button" disabled aria-disabled="true" className="inline-flex h-13 items-center justify-center rounded-full border border-white/20 bg-white/10 px-7 text-[15px] font-bold text-white/45 cursor-not-allowed">{tr('2026년 11월 서비스 종료', 'Service ends in November 2026')}</button>
+              <button type="button" disabled aria-disabled="true" className="inline-flex h-13 items-center justify-center rounded-full border border-white/20 bg-white/10 px-7 text-[15px] font-bold text-white/45 cursor-not-allowed">{tr('2026년 11월 서비스 종료', 'Service ended in November 2026')}</button>
             </div>
           </div>
         </section>

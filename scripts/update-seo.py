@@ -7,7 +7,7 @@ from xml.sax.saxutils import escape
 
 ROOT = Path(__file__).resolve().parent.parent
 parser = argparse.ArgumentParser()
-parser.add_argument('--origin', default='https://cinev.github.io')
+parser.add_argument('--origin', default='https://cinev.com')
 args = parser.parse_args()
 origin = args.origin.rstrip('/')
 url = urlsplit(origin)
