@@ -10,3 +10,7 @@ footer.portfolio-footer{display:block;margin:0;padding:48px 20px;background:#0a0
 @media(min-width:1280px){footer.portfolio-footer{padding-left:64px;padding-right:64px}}
 
 .portfolio-footer .portfolio-footer-brand{display:flex;align-items:center;gap:0}.portfolio-footer .portfolio-footer-note{margin:22px 0 0;max-width:820px;color:rgba(255,255,255,.58);font-size:14px;font-weight:400;line-height:1.9;letter-spacing:-.1px;word-break:keep-all}.portfolio-footer .portfolio-archive-badge{flex:none}
+
+.portfolio-footer .portfolio-footer-info{display:flex;flex-direction:column;align-items:flex-start;gap:0;font-size:inherit}
+.portfolio-footer .portfolio-footer-contact{color:inherit;text-decoration:underline;text-underline-offset:4px}
+.portfolio-footer .portfolio-footer-contact:focus-visible{outline:2px solid currentColor;outline-offset:4px}

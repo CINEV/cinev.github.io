@@ -157,3 +157,4 @@ Close video
 Close ×
 If the video does not play,
 open the original video
+Contact: cinev@cinamon.io
